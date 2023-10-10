@@ -1,0 +1,26 @@
+Desain database
+- User
+	- ID
+	- username
+	- fullName
+	- NIS
+	- Kelas
+	- Role
+	- Password
+- Jadwal
+	- ID
+	- Jadwal
+	- Nama siswa
+	- Permasalahan
+	- Status
+- Konseling 
+	- ID
+	- Jadwal
+	- Guru BK
+	- NIS
+	- Nama Siswa
+	- Jenis Pelanggaran 
+	- Permasalahan
+	- Tindakan 
+	- Sanksi
+	- Poin
