@@ -4,6 +4,9 @@ Desain database
 	- username
 	- fullName
 	- NIS
+	- TTL
+	- Bapak
+	- Ibu
 	- Kelas
 	- Role
 	- Password
@@ -23,4 +26,8 @@ Desain database
 	- Permasalahan
 	- Tindakan 
 	- Sanksi
+	- Poin
+- Pelanggaran
+	- ID
+	- Nama Pelanggaran
 	- Poin
