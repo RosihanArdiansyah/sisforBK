@@ -2,7 +2,7 @@
 <html>
 <body>
   <div class="login-container">
-    <img style="justify-content: center;" src="/sisforBK/assets/pictures/LOGO SMKN 10 MAKASSAR.png" alt="Profile Picture" class="profile-img">
+    <img style="justify-content: center;" src="<?= base_url('assets/pictures/LOGO SMKN 10 MAKASSAR.png'); ?>" alt="Profile Picture" class="profile-img">
     <h4 style="margin-bottom: 20px; text-align: center">Selamat Datang</h4>
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Username">
