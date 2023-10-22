@@ -8,10 +8,18 @@
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
 
 
+	<!-- title style -->
+	<style>
+		.main-content{
+			max-width: 100%; /* Adjust the maximum width as needed */
+      margin: 0 auto; /* Center the content horizontally */
+      padding: 10px; /* Add padding to the content */
+		}
+	</style>
 	<!-- sidebar style -->
 	<style>
 		.sidebar-wrap {
-			width: 60px;
+			width: 240px;
 			height: 100vh;
 			background-color: #000;
 			color: #fff;
@@ -19,7 +27,7 @@
 			transition: 0.8s;
 		}
 		.sidebar-wrap:hover {
-			width: 280px;
+			width: 240px;
 		}
 		.sidebar-wrap:hover .logo-wrap span {
 			display: flex;
@@ -41,7 +49,7 @@
 			font-size: 35px;
 			display: flex;
 			align-items: center;
-			gap: 10px;
+			gap: 4px;
 		}
 		.sidebar-wrap .logo-wrap span {
 			font-size: 18px;

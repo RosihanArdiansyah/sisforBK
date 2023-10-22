@@ -1,10 +1,15 @@
 
 <div class="container">
-		<div class="main-content" style="margin-top:16px;">
-										<!-- Your main content for index.php goes here -->
+
+		<div class="card text-dark bg-warning main-content" style="margin-top:16px;">
+					<!-- Your main content for index.php goes here -->
+			<div class="card-body">	
 				<h1>Data User</h1>
 				<h4>halaman yang berisikan tabel pengguna aplikasi</h4>
+			</div>
 		</div>
+
+
 
 		<script>
 		$(document).ready(function() {

@@ -1,9 +1,12 @@
 
 <div class="container">
-		<div class="main-content" style="margin-top:16px;">
-										<!-- Your main content for index.php goes here -->
+	
+		<div class="card text-dark bg-warning main-content" style="margin-top:16px;">
+					<!-- Your main content for index.php goes here -->
+			<div class="card-body">	
 				<h1>Data Pelanggaran</h1>
 				<h4>Halaman yang berisikan data pelanggaran</h4>
+			</div>
 		</div>
 
 		<script>
