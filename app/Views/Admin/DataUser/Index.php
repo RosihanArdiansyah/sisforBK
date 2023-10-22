@@ -9,6 +9,13 @@
 			</div>
 		</div>
 
+		<div class="card sub-content" style="margin-top:16px; max-height: 70%; overflow-y: auto">
+		<!-- Button in the top right corner -->
+			<button type="button" class="btn btn-success position-absolute top-0 end-0" style="margin: 10px;">Tambah Data Pengguna</button>
+			<div class="card-body">
+				<h4 class="card-title">Data Pengguna</h4>
+			</div>
+		</div>
 
 
 		<script>

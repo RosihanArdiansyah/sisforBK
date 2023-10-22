@@ -7,6 +7,14 @@
 		</div>
 	</div>
 
+    <div class="card sub-content" style="margin-top:16px; max-height: 70%; overflow-y: auto">
+		<!-- Button in the top right corner -->
+		<button type="button" class="btn btn-primary position-absolute top-0 end-0" style="margin: 10px;">Ubah Profil</button>
+		<div class="card-body">
+			<h4 class="card-title">Profil</h4>
+		</div>
+	</div>
+    
     <script>
     $(document).ready(function() {
         var currentUrl = window.location.pathname;
