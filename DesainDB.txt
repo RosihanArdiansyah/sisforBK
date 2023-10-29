@@ -13,20 +13,17 @@ Desain database
 - Jadwal
 	- ID
 	- Jadwal
-	- Nama siswa
+	- user.ID
 	- Permasalahan
 	- Status
 - Konseling 
 	- ID
-	- Jadwal
+	- Jadwal.ID
 	- Guru BK
-	- NIS
-	- Nama Siswa
-	- Jenis Pelanggaran 
+	- Pelanggaran.ID 
 	- Permasalahan
 	- Tindakan 
 	- Sanksi
-	- Poin
 - Pelanggaran
 	- ID
 	- Nama Pelanggaran
