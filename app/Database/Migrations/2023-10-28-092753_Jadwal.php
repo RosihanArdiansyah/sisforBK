@@ -18,6 +18,9 @@ class Jadwal extends Migration
             'Jadwal' => [
                 'type' => 'DATE',
             ],
+            'Waktu' => [
+                'type' => 'TIME',
+            ],
             'UserID' => [
                 'type' => 'INT',
                 'constraint' => 5,
@@ -25,10 +28,11 @@ class Jadwal extends Migration
             ],
             'Permasalahan' => [
                 'type' => 'TEXT',
+                'null' => true,
             ],
             'Status' => [
-                'type' => 'VARCHAR',
-                'constraint' => 50,
+                'type' => 'INT',
+                'default' => 0,
             ],
         ]);
 

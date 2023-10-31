@@ -22,34 +22,40 @@ class User extends Migration
             'fullName' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'NIS' => [
                 'type' => 'VARCHAR',
                 'constraint' => 10,
+                'null' => true,
             ],
             'TTL' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
+                'type' => 'DATE',
+                'null' => true,
             ],
             'Bapak' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'Ibu' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
             ],
             'Kelas' => [
                 'type' => 'VARCHAR',
                 'constraint' => 10,
+                'null' => true,
             ],
             'Role' => [
-                'type' => 'VARCHAR',
-                'constraint' => 50,
+                'type' => 'BOOLEAN',
+                'default' => false
             ],
             'Password' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255,
+                'constraint' => 32,
+                'default' => md5('123456'),
             ],
         ]);
 

@@ -8,24 +8,28 @@ class AdminController extends BaseController
 {
     public function index()
     {
-        // Load header view from the layout folder
-        echo view('Admin/Layout/header');
+        // Check if the user is authenticated with the role
+        if (session()->get('role') == 1) {
+            // User dashboard content
 
-        // Load sidebar view from the layout folder
-        echo view('Admin/Layout/sidebar');
+            // Load header view from the layout folder
+            echo view('Admin/Layout/header');
 
-        // Load main content (index) view
-        echo view('Admin/index');
+            // Load sidebar view from the layout folder
+            echo view('Admin/Layout/sidebar');
 
-        // Load modal view from the layout folder
-        echo view('Admin/Layout/modal');
+            // Load main content (index) view
+            echo view('Admin/index');
 
-        // Load footer view from the layout folder
-        echo view('Admin/Layout/footer');
-        // echo view('header');
-        // return view('login');
-        // echo('Admin');
-                // Your code here
+            // Load modal view from the layout folder
+            echo view('Admin/Layout/modal');
+
+            // Load footer view from the layout folder
+            echo view('Admin/Layout/footer');
+        } else {
+            // Redirect to login or display an error message
+            return redirect()->to('/')->with('error', 'Access denied');
+        }
     }
 
     public function profile()

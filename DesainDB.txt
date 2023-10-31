@@ -13,6 +13,7 @@ Desain database
 - Jadwal
 	- ID
 	- Jadwal
+	- Waktu
 	- user.ID
 	- Permasalahan
 	- Status

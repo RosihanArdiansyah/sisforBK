@@ -8,25 +8,30 @@ class UserController extends BaseController
 {
     public function index()
     {
-        // Load header view from the layout folder
-        echo view('User/Layout/header');
+        // Check if the user is authenticated with the role
+        if (session()->get('role') == 0) {
+            // User dashboard content
 
-        // Load sidebar view from the layout folder
-        echo view('User/Layout/sidebar');
+            // Load header view from the layout folder
+            echo view('User/Layout/header');
 
-        // Load main content (index) view
-        echo view('User/index');
+            // Load sidebar view from the layout folder
+            echo view('User/Layout/sidebar');
 
-        // Load modal view from the layout folder
-        echo view('User/Layout/modal');
+            // Load main content (index) view
+            echo view('User/index');
 
-        // Load footer view from the layout folder
-        echo view('User/Layout/footer');
-        // echo view('header');
-        // return view('login');
-        // echo('user');
-                // Your code here
+            // Load modal view from the layout folder
+            echo view('User/Layout/modal');
+
+            // Load footer view from the layout folder
+            echo view('User/Layout/footer');
+        } else {
+            // Redirect to login or display an error message
+            return redirect()->to('/')->with('error', 'Access denied');
+        }
     }
+    
 
     public function profile()
     {
