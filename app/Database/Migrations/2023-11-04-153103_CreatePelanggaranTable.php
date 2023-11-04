@@ -15,18 +15,18 @@ class Pelanggaran extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'NamaPelanggaran' => [
+            'namaPelanggaran' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'Poin' => [
+            'poin' => [
                 'type' => 'INT',
                 'constraint' => 5,
             ],
         ]);
 
         $this->forge->addKey('ID', true);
-        $this->forge->addUniqueKey('NamaPelanggaran');
+        $this->forge->addUniqueKey('namaPelanggaran');
         $this->forge->createTable('pelanggaran');
     }
 

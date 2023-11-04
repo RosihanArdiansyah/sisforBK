@@ -1,10 +1,9 @@
-
 <div class="container">
 	
 	<div class="card text-dark bg-warning main-content" style="margin-top:16px;">
 					<!-- Your main content for index.php goes here -->
 		<div class="card-body">	
-			<h1>Data Konseling</h1>
+			<h2>Data Konseling</h>
 			<h4>Halaman yang berisikan tabel konseling</h4>
 		</div>
 	</div>
@@ -14,6 +13,28 @@
 		<button type="button" class="btn btn-success position-absolute top-0 end-0" style="margin: 10px;">Tambah Data Konseling</button>
 		<div class="card-body">
 			<h4 class="card-title">Hasil Konseling</h4>
+			<table id="konselingTable" class="table table-striped table-bordered dataTable" style="padding: 10px;">
+				<thead class="table-dark">
+					<tr>
+						<th>ID</th>
+						<th>User</th>
+						<th>Permasalahan</th>
+						<th>Waktu</th>
+						<th>Pelanggaran</th>
+					</tr>
+				</thead>
+					<tbody>
+						<?php foreach ($konselingData as $konseling): ?>
+							<tr>
+								<td><?= $konseling['ID']; ?></td>
+								<td><?= $konseling['userName']; ?></td>
+								<td><?= $konseling['permasalahan']; ?></td>
+								<td><?= $konseling['waktu']; ?></td>
+								<td><?= $konseling['namaPelanggaran']; ?></td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+			</table>
 		</div>
 	</div>
 
@@ -30,6 +51,20 @@
 			if (currentUrl === linkUrl) {
 				$(this).addClass("active");
 			}
+		});
+
+		// Create a DataTable object
+		var dataTable = $('#konselingTable').DataTable({
+			// Add a search filter
+			search: {
+				smart: true,
+				columns: ['ID', 'username','permasalahan','waktu','namaPelanggaran']
+			},
+		});
+
+		// Handle the search event
+		$('#konselingTable_filter input').on('keyup', function() {
+			dataTable.search(this.value).draw();
 		});
 	});
 	</script>

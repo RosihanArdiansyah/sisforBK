@@ -15,29 +15,29 @@ class Jadwal extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'Jadwal' => [
+            'jadwal' => [
                 'type' => 'DATE',
             ],
-            'Waktu' => [
+            'waktu' => [
                 'type' => 'TIME',
             ],
-            'UserID' => [
+            'userID' => [
                 'type' => 'INT',
                 'constraint' => 5,
                 'unsigned' => true,
             ],
-            'Permasalahan' => [
+            'permasalahan' => [
                 'type' => 'TEXT',
                 'null' => true,
             ],
-            'Status' => [
+            'status' => [
                 'type' => 'INT',
                 'default' => 0,
             ],
         ]);
 
         $this->forge->addKey('ID', true);
-        $this->forge->addForeignKey('UserID', 'user', 'ID', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('userID', 'user', 'ID', 'CASCADE', 'CASCADE');
         $this->forge->createTable('jadwal');
     }
 

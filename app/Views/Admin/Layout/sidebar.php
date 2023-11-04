@@ -7,7 +7,7 @@
 	<hr>
 	<ul class="nav nav-pills flex-column mb-auto">
 		<li class="nav-item">
-			<a href="/admin" class="nav-link">
+			<a href="<?=base_url("/admin");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="fas fa-home"></i>
 				</div>
@@ -15,7 +15,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/admin/profile" class="nav-link">
+			<a href="<?=base_url("/admin/profile");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="far fa-user"></i>
 				</div>
@@ -23,7 +23,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/admin/konseling" class="nav-link">
+			<a href="<?=base_url("/admin/konseling");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="fab fa-first-order"></i>
 				</div>
@@ -32,7 +32,7 @@
 		</li>
 		<hr>
 		<li>
-			<a href="/admin/dataRules" class="nav-link">
+			<a href="<?=base_url("/admin/dataRules");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="fas fa-gavel"></i>
 				</div>
@@ -40,7 +40,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/admin/dataUser" class="nav-link">
+			<a href="<?=base_url("/admin/dataUser");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="far fa-user"></i>
 				</div>
@@ -49,7 +49,7 @@
 		</li>
 		<hr>
 		<li>
-			<a href="/" class="nav-link">
+			<a href="<?=base_url("/");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="fas fa-sign-out-alt"></i>
 				</div>

@@ -15,34 +15,31 @@ class Konseling extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'JadwalID' => [
+            'jadwalID' => [
                 'type' => 'INT',
                 'constraint' => 5,
                 'unsigned' => true,
             ],
-            'GuruBK' => [
+            'guruBK' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'PelanggaranID' => [
+            'pelanggaranID' => [
                 'type' => 'INT',
                 'constraint' => 5,
                 'unsigned' => true,
             ],
-            'Permasalahan' => [
+            'tindakan' => [
                 'type' => 'TEXT',
             ],
-            'Tindakan' => [
-                'type' => 'TEXT',
-            ],
-            'Sanksi' => [
+            'sanksi' => [
                 'type' => 'TEXT',
             ],
         ]);
 
         $this->forge->addKey('ID', true);
-        $this->forge->addForeignKey('JadwalID', 'jadwal', 'ID', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('PelanggaranID', 'pelanggaran', 'ID', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('jadwalID', 'jadwal', 'ID', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('pelanggaranID', 'pelanggaran', 'ID', 'CASCADE', 'CASCADE');
         $this->forge->createTable('konseling');
     }
 
