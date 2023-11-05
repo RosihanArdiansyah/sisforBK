@@ -29,6 +29,8 @@ class Home extends BaseController
             // Authentication successful
             // Set user role in session
             session()->set('role', $user['Role']);
+            session()->set('username', $user['username']);
+            session()->set('fullName', $user['fullName']);
 
             // Role-based redirection
             if ($user['Role'] == 0) {
@@ -62,5 +64,14 @@ class Home extends BaseController
         } else {
             return redirect()->to('/');
         }
+    }
+
+    public function logout()
+    {
+        // Clear all user session data
+        session()->destroy();
+
+        // Redirect to the homepage
+        return redirect()->to('/');
     }
 }

@@ -49,7 +49,7 @@
 		</li>
 		<hr>
 		<li>
-			<a href="<?=base_url("/");?>" class="nav-link">
+			<a href="<?= site_url('logout') ?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="fas fa-sign-out-alt"></i>
 				</div>

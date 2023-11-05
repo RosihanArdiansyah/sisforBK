@@ -11,7 +11,7 @@
 
 		<div class="card sub-content" style="margin-top:16px; max-height: 70%; overflow-y: auto">
 		<!-- Button in the top right corner -->
-			<button type="button" class="btn btn-success position-absolute top-0 end-0" style="margin: 10px;">Tambah Data Pengguna</button>
+			<button type="button" id="userCreateBtn" class="btn btn-success position-absolute top-0 end-0" style="margin: 10px;">Tambah Data Pengguna</button>
 			<div class="card-body">
 				<h4 class="card-title" style="margin-bottom: 20px;">Data Pengguna</h4>
 				<table id="userTable" class="table table-striped table-bordered dataTable" style="padding: 10px;">
@@ -64,6 +64,8 @@
 				});
 				// Create a DataTable object
 				var dataTable = $('#userTable').DataTable({
+					pageLength: 5,
+					lengthMenu: [5, 10, 25, 30],
 					// Add a search filter
 					search: {
 						smart: true,
@@ -88,6 +90,39 @@
 				$('#userTable_filter select').on('change', function() {
 					dataTable.column(0).search(this.value).draw();
 				});
+
+				$('#userCreateBtn').click(function() {
+					$('#createUserModal').modal('show');
+				});
+
+				$('#createUserForm').submit(function(e) {
+					e.preventDefault();
+
+					$.ajax({
+						url: '<?= base_url('createUser'); ?>',
+						method: 'POST',
+						data: $('#createUserForm').serialize(),
+						success: function(data) {
+							$('#createUserModal').modal('hide');
+							$('#createUserForm').trigger('reset');
+							Swal.fire({
+									icon: 'success',
+									title: 'User Created',
+									text: 'User berhasil dibuat!',
+							}).then(function () {
+									window.location.href = '<?= base_url('admin/dataUser'); ?>';
+							});
+						},
+						error: function(error) {
+							Swal.fire({
+								icon: 'error',
+								title: 'Error',
+								text: 'User tidak dapat dibuat!',
+							});
+						}
+					});
+				});
+
 		});
 
 		</script>

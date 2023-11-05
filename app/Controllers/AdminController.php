@@ -9,8 +9,14 @@ class AdminController extends BaseController
     public function index()
     {
         $jadwalModel = new \App\Models\JadwalModel();
-        $data['jadwal'] = $jadwalModel->findAll();
+        $data['jadwal'] = $jadwalModel
+            ->select('jadwal.*, user.fullName as user_fullName')
+            ->join('user', 'user.ID = jadwal.userID')
+            ->where('user.username', session()->get('username'))
+            ->findAll();
+
         $data['title'] = "Dashboard";
+        $data['username'] = session()->get('username');
         // Check if the user is authenticated with the role
         if (session()->get('role') == 1) {
             // User dashboard content
@@ -151,8 +157,47 @@ class AdminController extends BaseController
                 // Your code here
     }
 
-    public function logout()
+    public function createUser()
     {
-        // logout here
+        $userModel = new \App\Models\UserModel();
+        $TTL = $this->request->getPost('TTL');
+        $NIS = $this->request->getPost('NIS');
+        $Bapak = $this->request->getPost('Bapak');
+        $Ibu = $this->request->getPost('Ibu');
+        $Kelas = $this->request->getPost('Kelas');
+
+        if (empty($NIS)) {
+            $NIS = NULL; // Set a default value
+        }else if(empty($Bapak)){
+            $Bapak = NULL; // Set a default value
+        }else if(empty($Ibu)){
+            $Ibu = NULL; // Set a default value
+        }else if(empty($Kelas)){
+            $Kelas = NULL; // Set a default value
+        }else if(empty($TTL)){
+            $TTL = NULL; // Set a default value
+        }
+
+        $data = [
+            'username' => $this->request->getPost('username'),
+            'fullName' => $this->request->getPost('fullName'),
+            'TTL' => $TTL,
+            'NIS' => $NIS,
+            'Bapak' => $Bapak,
+            'Ibu' => $Ibu,
+            'Kelas' => $Kelas,
+            'Role' => $this->request->getPost('Role'),
+        ];
+    
+        // Add your user creation logic here
+        if ($userModel->insert($data)) {
+            // Data inserted successfully
+            return redirect()->to('/admin/dataUser')->with('success', 'User created successfully');
+        } else {
+            // Handle errors
+            return redirect()->back()->withInput()->with('error', 'Failed to create user');
+        };
+        // Assuming success, return a JSON response
+        return $this->response->setJSON(['success' => true]);
     }
 }

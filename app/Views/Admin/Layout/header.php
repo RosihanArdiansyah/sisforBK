@@ -12,6 +12,13 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
   
+	<!-- sweet alert -->
+	<script src="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js
+	"></script>
+	<link href="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
+	" rel="stylesheet">
 
 	<!-- title style -->
 	<style>
@@ -128,6 +135,36 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+		}
+	</style>
+	<!-- modal style -->
+	<style>
+		/* CSS for the modal */
+		.modal {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.7);
+		}
+
+		.modal-content {
+				background-color: #fff;
+				margin: 15% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 90%;
+				position: relative;
+		}
+
+		.close {
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 10px;
+				cursor: pointer;
 		}
 	</style>
 
