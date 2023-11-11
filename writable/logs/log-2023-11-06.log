@@ -1,0 +1,83 @@
+CRITICAL - 2023-11-06 16:05:20 --> Undefined array key "id"
+in APPPATH\Views\Admin\DataUser\Index.php on line 43.
+ 1 APPPATH\Views\Admin\DataUser\Index.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php', 43)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/DataUser/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(143): view('Admin/DataUser/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-06 16:05:26 --> Undefined array key "id"
+in APPPATH\Views\Admin\DataUser\Index.php on line 43.
+ 1 APPPATH\Views\Admin\DataUser\Index.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php', 43)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/DataUser/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(143): view('Admin/DataUser/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-06 16:05:26 --> Undefined array key "id"
+in APPPATH\Views\Admin\DataUser\Index.php on line 43.
+ 1 APPPATH\Views\Admin\DataUser\Index.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php', 43)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/DataUser/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(143): view('Admin/DataUser/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-06 16:05:27 --> Undefined array key "id"
+in APPPATH\Views\Admin\DataUser\Index.php on line 43.
+ 1 APPPATH\Views\Admin\DataUser\Index.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php', 43)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/DataUser/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(143): view('Admin/DataUser/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-06 16:05:27 --> Undefined array key "id"
+in APPPATH\Views\Admin\DataUser\Index.php on line 43.
+ 1 APPPATH\Views\Admin\DataUser\Index.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php', 43)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/DataUser/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(143): view('Admin/DataUser/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-06 16:05:27 --> Undefined array key "id"
+in APPPATH\Views\Admin\DataUser\Index.php on line 43.
+ 1 APPPATH\Views\Admin\DataUser\Index.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php', 43)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/DataUser/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(143): view('Admin/DataUser/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-06 16:07:41 --> Undefined variable $user
+in APPPATH\Views\Admin\Layout\modal.php on line 61.
+ 1 APPPATH\Views\Admin\Layout\modal.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Layout/modal', [], true)
+ 5 APPPATH\Controllers\AdminController.php(146): view('Admin/Layout/modal')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-06 22:20:59 --> Class "App\Controllers\UserModel" not found
+in APPPATH\Controllers\AdminController.php on line 207.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->show('1')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

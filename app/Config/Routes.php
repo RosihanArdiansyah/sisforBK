@@ -21,3 +21,6 @@ $routes->get('/admin/konseling', 'AdminController::konseling');
 $routes->get('/admin/dataRules', 'AdminController::dataRules');
 $routes->get('/admin/dataUser', 'AdminController::dataUser');
 $routes->post('createUser', 'AdminController::createUser');
+$routes->post('updateUser', 'AdminController::updateUser');
+$routes->add('getUserForEdit/(:num)', 'AdminController::getUserForEdit/$1');
+$routes->get('/admin/dataUser/(:num)', 'AdminController::show/$1');

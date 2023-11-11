@@ -200,4 +200,70 @@ class AdminController extends BaseController
         // Assuming success, return a JSON response
         return $this->response->setJSON(['success' => true]);
     }
+
+    public function show($id)
+    {
+        // Load the user model
+        $userModel = new \App\Models\UserModel();
+
+        // Retrieve user data by ID
+        $userData = $userModel->getWhere(['id' => $id])->getResult();
+
+        // Check if user data was found
+        if ($userData) {
+            // Display user data
+            echo json_encode($userData);
+        } else {
+            // Handle user not found error
+            echo 'User not found';
+        }
+    }
+
+    public function updateUser()
+    {
+        $userModel = new \App\Models\UserModel();
+
+        $TTL = $this->request->getPost('editTTL');
+        $NIS = $this->request->getPost('editNIS');
+        $Bapak = $this->request->getPost('editBapak');
+        $Ibu = $this->request->getPost('editIbu');
+        $Kelas = $this->request->getPost('editKelas');
+
+        if (empty($NIS)) {
+            $NIS = NULL; // Set a default value
+        }else if(empty($Bapak)){
+            $Bapak = NULL; // Set a default value
+        }else if(empty($Ibu)){
+            $Ibu = NULL; // Set a default value
+        }else if(empty($Kelas)){
+            $Kelas = NULL; // Set a default value
+        }else if(empty($TTL)){
+            $TTL = NULL; // Set a default value
+        }
+
+        // Get the form data
+        $data = [
+            // Add similar lines for other fields
+            'username' => $this->request->getPost('editUsername'),
+            'fullName' => $this->request->getPost('editFullName'),
+            $TTL,
+            $NIS,
+            $Bapak,
+            $Ibu,
+            $Kelas,
+            'Role' => $this->request->getPost('editRole'),
+            // ...
+        ];
+
+        // Update the user data
+        if ($userModel->update($this->request->getPost('editUserId'), $data)) {
+            // Data updated successfully
+            echo json_encode(['success' => true]);
+            return redirect()->to('/admin/dataUser')->with('success', 'User updated successfully');
+        } else {
+            // Handle errors
+            echo json_encode(['success' => false, 'error' => 'Failed to update user']);
+        }
+    }
+
 }

@@ -22,6 +22,7 @@
 							<th>NIS/NIP</th>
 							<th>Nama Lengkap</th>
 							<th>Role</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -37,6 +38,9 @@
 											<?php else: ?>
 													guru
 											<?php endif; ?>
+									</td>
+									<td>
+										<button type="button" class="btn btn-primary" onClick="editUser(<?= $user['ID']; ?>)"><i class="far fa-edit"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
@@ -123,6 +127,82 @@
 					});
 				});
 
+				// Add an event listener for the edit form submission
+				$('#editUserForm').submit(function(e) {
+						e.preventDefault();
+						var formData = $(this).serialize();
+						console.log(formData);
+
+						$.ajax({
+								url: '<?= base_url('updateUser'); ?>', // Change the URL to your controller method for updating user data
+								method: 'POST',
+								data: formData,
+								success: function(data) {
+										console.log(data);
+										$('#editUserModal').modal('hide');
+										$('#editUserForm').trigger('reset');
+										Swal.fire({
+												icon: 'success',
+												title: 'User Updated',
+												text: 'User berhasil diperbarui!',
+										}).then(function () {
+												// You may want to reload or update the table data here
+												window.location.href = '<?= base_url('admin/dataUser'); ?>';
+												// For example: window.location.reload();
+										});
+								},
+								error: function(error) {
+										Swal.fire({
+												icon: 'error',
+												title: 'Error',
+												text: 'User tidak dapat diperbarui!',
+										});
+								}
+						});
+				});
+
 		});
 
 		</script>
+
+		<script>
+				// Define the editUser function to handle the edit action
+				function editUser(id) {
+						
+						$.ajax({
+								url: '<?= base_url('/admin/dataUser/'); ?>'+id, // Change the URL to your controller method
+								method: 'GET',
+								success: function(data) {
+										// Parse the JSON response
+										var userData = JSON.parse(data);
+										console.log(userData[0]);
+
+										// Populate the modal fields with user data
+										$('#editUserId').val(userData[0].ID);
+										$('#editUsername').val(userData[0].username);
+										$('#editFullName').val(userData[0].fullName);
+										$('#editTTL').val(userData[0].TTL);
+										$('#editNIS').val(userData[0].NIS);
+										$('#editBapak').val(userData[0].Bapak);
+										$('#editIbu').val(userData[0].Ibu);
+										$('#editKelas').val(userData[0].Kelas);
+										$('#editRole').val(userData[0].Role);
+										// Add similar lines for other input fields
+
+										// Show the editUserModal
+										$('#editUserModal').modal('show');
+									},
+								error: function(error) {
+										Swal.fire({
+												icon: 'error',
+												title: 'Error',
+												text: 'User tidak dapat diedit!',
+										});
+								}
+						});
+				}
+
+				
+		</script>
+
+		
