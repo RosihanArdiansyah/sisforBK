@@ -22,5 +22,8 @@ $routes->get('/admin/dataRules', 'AdminController::dataRules');
 $routes->get('/admin/dataUser', 'AdminController::dataUser');
 $routes->post('createUser', 'AdminController::createUser');
 $routes->post('updateUser', 'AdminController::updateUser');
+$routes->post('createJadwal', 'AdminController::createJadwal');
+$routes->post('updateJadwal', 'AdminController::updateJadwal');
+$routes->get('showJadwal(:num)', 'AdminController::showJadwal/$1');
 $routes->add('getUserForEdit/(:num)', 'AdminController::getUserForEdit/$1');
 $routes->get('/admin/dataUser/(:num)', 'AdminController::show/$1');

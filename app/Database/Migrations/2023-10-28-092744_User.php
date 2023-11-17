@@ -43,10 +43,10 @@ class User extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
-            'Kelas' => [
-                'type' => 'VARCHAR',
-                'constraint' => 10,
-                'null' => true,
+            'kelas' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
             ],
             'Role' => [
                 'type' => 'BOOLEAN',

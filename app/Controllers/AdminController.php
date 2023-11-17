@@ -7,12 +7,19 @@ namespace App\Controllers;
 class AdminController extends BaseController
 {
     public function index()
-    {
+    {   
+        $userModel = new \App\Models\UserModel();
+        $kelasModel = new \App\Models\KelasModel();
+        $data['users'] = $userModel
+            ->select('user.*, kelas.kelas as kls')
+            ->join('kelas', 'user.kelas = kelas.ID')
+            ->findAll();
+        $data['kelas'] = $kelasModel->findAll();
         $jadwalModel = new \App\Models\JadwalModel();
         $data['jadwal'] = $jadwalModel
             ->select('jadwal.*, user.fullName as user_fullName')
             ->join('user', 'user.ID = jadwal.userID')
-            ->where('user.username', session()->get('username'))
+            // ->where('user.username', session()->get('username'))
             ->findAll();
 
         $data['title'] = "Dashboard";
@@ -29,9 +36,6 @@ class AdminController extends BaseController
 
             // Load main content (index) view
             echo view('Admin/index', $data);
-
-            // Load modal view from the layout folder
-            echo view('Admin/Layout/modal');
 
             // Load footer view from the layout folder
             echo view('Admin/Layout/footer');
@@ -53,9 +57,6 @@ class AdminController extends BaseController
 
             // Load main content (index) view
             echo view('Admin/Profil/index');
-
-            // Load modal view from the layout folder
-            echo view('Admin/Layout/modal');
 
             // Load footer view from the layout folder
             echo view('Admin/Layout/footer');    
@@ -88,9 +89,6 @@ class AdminController extends BaseController
             // Load main content (index) view
             echo view('Admin/Konseling/index', $data);
 
-            // Load modal view from the layout folder
-            echo view('Admin/Layout/modal');
-
             // Load footer view from the layout folder
             echo view('Admin/Layout/footer');        
         } else {
@@ -115,9 +113,6 @@ class AdminController extends BaseController
             // Load main content (index) view
             echo view('Admin/DataPelanggaran/index', $data);
 
-            // Load modal view from the layout folder
-            echo view('Admin/Layout/modal');
-
             // Load footer view from the layout folder
             echo view('Admin/Layout/footer');        
         } else {
@@ -130,7 +125,9 @@ class AdminController extends BaseController
     public function dataUser()
     {
         $userModel = new \App\Models\UserModel();
+        $kelasModel = new \App\Models\KelasModel();
         $data['users'] = $userModel->findAll();
+        $data['kelas'] = $kelasModel->findAll();
         $data['title'] = "Data Pengguna";
         if (session()->get('role') == 1) {
             // Load header view from the layout folder
@@ -141,9 +138,6 @@ class AdminController extends BaseController
 
             // Load main content (index) view
             echo view('Admin/DataUser/index', $data);
-
-            // Load modal view from the layout folder
-            echo view('Admin/Layout/modal');
 
             // Load footer view from the layout folder
             echo view('Admin/Layout/footer');        
@@ -201,6 +195,30 @@ class AdminController extends BaseController
         return $this->response->setJSON(['success' => true]);
     }
 
+    public function createJadwal()
+    {
+        $jadwalModel = new \App\Models\JadwalModel();
+
+        $data = [
+            'Jadwal' => $this->request->getPost('jadwal'),
+            'Waktu' => $this->request->getPost('waktu'),
+            'UserID' => $this->request->getPost('userID'),
+            'Permasalahan' => $this->request->getPost('permasalahan'),
+            'Status' => 1,
+        ];
+    
+        // Add your user creation logic here
+        if ($jadwalModel->insert($data)) {
+            // Data inserted successfully
+            return redirect()->to('/admin')->with('success', 'Schedule created successfully');
+        } else {
+            // Handle errors
+            return redirect()->back()->withInput()->with('error', 'Failed to create user');
+        };
+        // Assuming success, return a JSON response
+        return $this->response->setJSON(['success' => true]);
+    }
+
     public function show($id)
     {
         // Load the user model
@@ -216,6 +234,24 @@ class AdminController extends BaseController
         } else {
             // Handle user not found error
             echo 'User not found';
+        }
+    }
+
+    public function showJadwal($id)
+    {
+        // Load the user model
+        $jadwalModel = new \App\Models\JadwalModel();
+
+        // Retrieve user data by ID
+        $jadwalData = $jadwalModel->getWhere(['id' => $id])->getResult();
+
+        // Check if user data was found
+        if ($jadwalData) {
+            // Display user data
+            echo json_encode($jadwalData);
+        } else {
+            // Handle user not found error
+            echo 'Jadwal not found';
         }
     }
 
@@ -263,6 +299,29 @@ class AdminController extends BaseController
         } else {
             // Handle errors
             echo json_encode(['success' => false, 'error' => 'Failed to update user']);
+        }
+    }
+
+    public function updateJadwal()
+    {
+        $jadwalModel = new \App\Models\JadwalModel();
+
+        $data = [
+            'Jadwal' => $this->request->getPost('editJadwal'),
+            'Waktu' => $this->request->getPost('editWaktu'),
+            'UserID' => $this->request->getPost('editUserID'),
+            'Permasalahan' => $this->request->getPost('editPermasalahan'),
+            'Status' => $this->request->getPost('editStatus'),
+        ];
+
+        // Update the user data
+        if ($jadwalModel->update($this->request->getPost('editJadwalId'), $data)) {
+            // Data updated successfully
+            echo json_encode(['success' => true]);
+            return redirect()->to('/admin')->with('success', 'Jadwal updated successfully');
+        } else {
+            // Handle errors
+            echo json_encode(['success' => false, 'error' => 'Failed to update jadwal']);
         }
     }
 

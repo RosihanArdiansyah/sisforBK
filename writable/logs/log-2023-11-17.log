@@ -1,0 +1,103 @@
+CRITICAL - 2023-11-17 13:21:28 --> Undefined variable $kelas
+in APPPATH\Views\Admin\Layout\modal.php on line 99.
+ 1 APPPATH\Views\Admin\Layout\modal.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kelas', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php', 99)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Layout/modal', [], true)
+ 5 APPPATH\Controllers\AdminController.php(37): view('Admin/Layout/modal', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-17 13:30:05 --> Undefined array key "kelas"
+in APPPATH\Views\Admin\Layout\modal.php on line 136.
+ 1 APPPATH\Views\Admin\Layout\modal.php(136): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "kelas"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php', 136)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Layout/modal', [], true)
+ 5 APPPATH\Controllers\AdminController.php(152): view('Admin/Layout/modal', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-17 13:41:01 --> mysqli_sql_exception: Unknown table 'sisforbk.users' in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `users`....', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `users`....')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `users`....')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `users`....', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(16): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->index()
+#8 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-17 13:41:01 --> Unknown table 'sisforbk.users'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `users`.*, `kelas`.`kelas` as `kls`
+FROM `user`
+JOIN `kelas` ON `users`.`kelas` = `kelas`.`ID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(16): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-17 13:47:18 --> mysqli_sql_exception: Column 'status' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ja...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ja...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ja...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ja...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(226): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createJadwal()
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-17 13:47:18 --> Column 'status' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `jadwal` (`Jadwal`, `Waktu`, `UserID`, `Permasalahan`, `Status`) VALUES (:Jadwal:, :Waktu:, :UserID:, :Permasalahan:, :Status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\AdminController.php(226): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createJadwal()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-17 13:52:57 --> Undefined array key "kls"
+in APPPATH\Views\Admin\Layout\modal.php on line 136.
+ 1 APPPATH\Views\Admin\Layout\modal.php(136): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "kls"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php', 136)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\modal.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Layout/modal', [], true)
+ 5 APPPATH\Controllers\AdminController.php(155): view('Admin/Layout/modal', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-17 15:21:08 --> Updates are not allowed unless they contain a "where" or "like" clause.
+in SYSTEMPATH\Model.php on line 380.
+ 1 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 3 APPPATH\Controllers\AdminController.php(318): CodeIgniter\Model->update(null, [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->updateJadwal()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-17 15:25:33 --> Updates are not allowed unless they contain a "where" or "like" clause.
+in SYSTEMPATH\Model.php on line 380.
+ 1 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 3 APPPATH\Controllers\AdminController.php(318): CodeIgniter\Model->update(null, [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->updateJadwal()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
