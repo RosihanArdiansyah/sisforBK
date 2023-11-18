@@ -47,6 +47,12 @@ class AdminController extends BaseController
 
     public function profile()
     {
+        $userModel = new \App\Models\UserModel();
+        $kelasModel = new \App\Models\KelasModel();
+        $data['kelas'] = $kelasModel->findAll();
+        $data['users'] = $userModel
+            ->Where('user.username', session()->get('username'))
+            ->findAll();
         $data['title'] = "Profil";
         if (session()->get('role') == 1) {
             // Load header view from the layout folder
@@ -56,7 +62,7 @@ class AdminController extends BaseController
             echo view('Admin/Layout/sidebar');
 
             // Load main content (index) view
-            echo view('Admin/Profil/index');
+            echo view('Admin/Profil/index',$data);
 
             // Load footer view from the layout folder
             echo view('Admin/Layout/footer');    
@@ -295,7 +301,7 @@ class AdminController extends BaseController
         if ($userModel->update($this->request->getPost('editUserId'), $data)) {
             // Data updated successfully
             echo json_encode(['success' => true]);
-            return redirect()->to('/admin/dataUser')->with('success', 'User updated successfully');
+            return redirect()->back()->with('success', 'User updated successfully');
         } else {
             // Handle errors
             echo json_encode(['success' => false, 'error' => 'Failed to update user']);
