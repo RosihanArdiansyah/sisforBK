@@ -77,6 +77,12 @@ class AdminController extends BaseController
     public function konseling()
     {
         $konselingModel = new \App\Models\KonselingModel();
+        $jadwalModel = new \App\Models\JadwalModel();
+        $pelanggaranModel = new \App\Models\PelanggaranModel();
+        $userModel = new \App\Models\UserModel();
+        $data['pelanggaran'] = $pelanggaranModel->findAll();
+        $data['jadwal'] = $jadwalModel->findAll();
+        $data['users'] = $userModel->findAll();
         $data['konselingData'] = $konselingModel
             ->select('konseling.id, konseling.jadwalID, konseling.pelanggaranID, jadwal.permasalahan, jadwal.waktu, jadwal.userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS pelanggaranName')
             ->join('jadwal', 'konseling.jadwalID = jadwal.id')

@@ -11,9 +11,12 @@
 
 	<div class="card sub-content" style="margin-top:16px; max-height: 70%; overflow-y: auto">
 		<!-- Button in the top right corner -->
-		<button type="button" id="jadwalCreateBtn" class="btn btn-success position-absolute top-0 end-0" style="margin: 10px;">Buat Jadwal Konseling</button>
+		<div style="display: flex; justify-content: flex-end;">
+				<button type="button" id="jadwalCreateBtn" class="btn btn-primary" style="margin: 10px;">Buat Jadwal Konseling</button>
+				<button type="button" id="jadwalPrintBtn" class="btn btn-success" style="margin: 10px;">Cetak Surat Panggilan</button>
+		</div>
 		<div class="card-body">
-		<h4 class="card-title" style="margin-bottom: 20px;">Jadwal Konseling</h4>
+			<h4 class="card-title" style="margin-bottom: 20px; position: absolute; top: 16px; left: 16px;">Jadwal Konseling</h4>
 				<table id="jadwalTable" class="table table-striped table-bordered dataTable" style="padding: 10px;">
 					<thead class="table-dark">
 						<tr>
@@ -29,7 +32,8 @@
 					<?php foreach ($jadwal as $jwd): ?>
 							<tr>
 									<td><?= $jwd['ID']; ?></td>
-									<td><?= $jwd['jadwal']; ?></td>
+									<?php setlocale(LC_TIME, 'id_ID'); ?>
+									<td><?= strftime('%A, %d %B %Y', strtotime($jwd['jadwal'])); ?></td>
 									<td><?= date('H:i', strtotime($jwd['waktu'])); ?></td>
 									<td><?= $jwd['user_fullName']; ?></td>
 									<td>
@@ -42,7 +46,8 @@
 											<?php endif; ?>
 									</td>
 									<td>
-										<button type="button" class="btn btn-primary" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
+										<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>

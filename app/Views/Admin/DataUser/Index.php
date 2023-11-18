@@ -34,13 +34,13 @@
 									<td><?= $user['fullName']; ?></td>
 									<td>
 											<?php if ($user['Role'] == 0): ?>
-													siswa
+													<span class="badge bg-secondary">Siswa</span>
 											<?php else: ?>
-													guru
+													<span class="badge bg-primary">Guru</span>
 											<?php endif; ?>
 									</td>
 									<td>
-										<button type="button" class="btn btn-primary" onClick="editUser(<?= $user['ID']; ?>)"><i class="far fa-edit"></i></button>
+										<button type="button" class="btn btn-primary" onClick="editUser(<?= $user['ID']; ?>)" data-toggle="tooltip" title="ubah data siswa"><i class="far fa-edit"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
