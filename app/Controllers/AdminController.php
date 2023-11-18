@@ -225,6 +225,27 @@ class AdminController extends BaseController
         return $this->response->setJSON(['success' => true]);
     }
 
+    public function createRule()
+    {
+        $ruleModel = new \App\Models\PelanggaranModel();
+
+        $data = [
+            'NamaPelanggaran' => $this->request->getPost('namaPelanggaran'),
+            'Poin' => $this->request->getPost('poin'),
+        ];
+    
+        // Add your user creation logic here
+        if ($ruleModel->insert($data)) {
+            // Data inserted successfully
+            return redirect()->to('/admin/dataRules')->with('success', 'Rule created successfully');
+        } else {
+            // Handle errors
+            return redirect()->back()->withInput()->with('error', 'Failed to create user');
+        };
+        // Assuming success, return a JSON response
+        return $this->response->setJSON(['success' => true]);
+    }
+
     public function show($id)
     {
         // Load the user model
@@ -258,6 +279,24 @@ class AdminController extends BaseController
         } else {
             // Handle user not found error
             echo 'Jadwal not found';
+        }
+    }
+
+    public function showRule($id)
+    {
+        // Load the user model
+        $ruleModel = new \App\Models\PelanggaranModel();
+
+        // Retrieve user data by ID
+        $ruleData = $ruleModel->getWhere(['id' => $id])->getResult();
+
+        // Check if user data was found
+        if ($ruleData) {
+            // Display user data
+            echo json_encode($ruleData);
+        } else {
+            // Handle user not found error
+            echo 'Rule not found';
         }
     }
 
@@ -328,6 +367,26 @@ class AdminController extends BaseController
         } else {
             // Handle errors
             echo json_encode(['success' => false, 'error' => 'Failed to update jadwal']);
+        }
+    }
+
+    public function updateRule()
+    {
+        $ruleModel = new \App\Models\PelanggaranModel();
+
+        $data = [
+            'NamaPelanggaran' => $this->request->getPost('editNamaPelanggaran'),
+            'Poin' => $this->request->getPost('editPoin'),
+        ];
+
+        // Update the user data
+        if ($ruleModel->update($this->request->getPost('editRuleID'), $data)) {
+            // Data updated successfully
+            echo json_encode(['success' => true]);
+            return redirect()->back()->with('success', 'rule updated successfully');
+        } else {
+            // Handle errors
+            echo json_encode(['success' => false, 'error' => 'Failed to update rule']);
         }
     }
 
