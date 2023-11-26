@@ -574,3 +574,14 @@ in SYSTEMPATH\Model.php on line 380.
  5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
  6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-18 05:17:17 --> Undefined array key "editRole"
+in APPPATH\Views\Admin\DataUser\Index.php on line 164.
+ 1 APPPATH\Views\Admin\DataUser\Index.php(164): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "editRole"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php', 164)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\DataUser\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/DataUser/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(153): view('Admin/DataUser/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->dataUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

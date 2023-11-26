@@ -48,6 +48,7 @@
 									<td>
 										<button type="button" class="btn btn-primary" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
 										<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+										<button type="button" data-toggle="tooltip" title="buat laporan konseling" class="btn btn-success" onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
@@ -59,6 +60,64 @@
 
 
 		<!-- modal -->
+
+		<!-- post konseling report -->
+		<div class="modal fade" id="addKonselingModal" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+						<div class="modal-content">
+								<div class="modal-header">
+										<h5 class="modal-title" id="addReportModalLabel">Buat Laporan Konseling</h5>
+										<button type="button" class="btn btn-secondary btn-danger" id="reportAddCloseBtn" style="float: right">Close</button>
+								</div>
+								<form id="addReportJadwalForm">
+									<div class="modal-body">
+											<div class="form-group">
+													<input type="hidden" class="form-control" id="addReportJadwalId" name="addReportJadwalId">
+													<label for="addReportUserID">Nama Siswa</label>
+													<select class="form-control" id="addReportUserID" name="addReportUserID" required>
+															<?php foreach ($users as $user): ?>
+																	<option value="<?= $user['ID']; ?>" disabled><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
+															<?php endforeach; ?>
+													</select>
+											</div>
+											<div class="form-group">
+												<label for="addReportPermasalahan">Permasalahan</label>
+												<textarea readonly class="form-control" id="addReportPermasalahan" name="addReportPermasalahan"></textarea>          
+											</div>
+											<div class="form-group">
+												<label for="addReportJadwal">Tanggal:</label>
+												<input readonly class="form-control" id="addReportJadwal" type="date" name="editJadwal" required>            
+											</div>
+											<div class="form-group">
+												<label for="addReportWaktu">Waktu:</label>
+												<input readonly class="form-control" id="addReportWaktu" type="time" name="addReportWaktu" required>           
+											</div>
+											<div class="form-group">
+												<label for="addReportPelanggaran">Pelanggaran</label>
+												<select class="form-control" id="addReportPelanggaranID" name="addReportPelanggaran" readonly required>
+														<option value="">Pilih Pelanggaran</option>
+														<?php foreach ($pelanggaran as $rules): ?>
+																<option value="<?= $rules['ID']; ?>"><?= $rules['namaPelanggaran']; ?>- <?= $rules['poin']; ?></option>
+														<?php endforeach; ?>
+												</select>          
+											</div>
+											<div class="form-group">
+												<label for="addReportSanksi">Sanksi</label>
+												<textarea readonly class="form-control" id="addReportSanksi" name="addReportSanksi"></textarea>          
+											</div>
+											<div class="form-group">
+												<label for="addReportTindakan">Tindakan</label>
+												<textarea readonly class="form-control" id="addReportTindakan" name="addReportTindakan"></textarea>          
+											</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-primary" id="addReportButton">Buat Laporan Konseling</button>
+									</div>
+								</form>
+						</div>
+				</div>
+		</div>
+
+		<!-- create jadwal -->
 		<div class="modal fade" id="createJadwalModal" tabindex="-1" role="dialog" aria-labelledby="createJadwalModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -134,7 +193,8 @@
 											</div>
 											<div class="form-group">
 													<label for="editStatus">Status</label>
-													<select class="form-control" id="editStatus" name="editStatus" required>
+													<select class="form-control" id="editStatus" name="editStatus">
+														<option value="">Ditunda</option>
 														<option value="0">Ditolak</option>
 														<option value="1">Diterima</option>
 													</select>
@@ -145,7 +205,7 @@
 								</form>
 						</div>
 				</div>
-		</div>
+		</div>		
 		
 		<script>
 			$(document).ready(function() {
@@ -267,6 +327,40 @@
 
 										// Show the editUserModal
 										$('#editJadwalModal').modal('show');
+									},
+								error: function(error) {
+										Swal.fire({
+												icon: 'error',
+												title: 'Error',
+												text: 'Jadwal tidak dapat diedit!',
+										});
+								}
+						});
+						
+				}
+		</script>
+
+		<script>
+				// Define the editUser function to handle the edit action
+				function buatLaporan(id) {
+						$.ajax({
+								url: '<?= base_url('showJadwal'); ?>'+id, // Change the URL to your controller method
+								method: 'GET',
+								success: function(data) {
+										// Parse the JSON response
+										var jadwalData = JSON.parse(data);
+										console.log(jadwalData[0].ID);
+
+										// Populate the modal fields with user data
+										$('#addReportJadwalId').val(jadwalData[0].ID);
+										$('#addReportUserID').val(jadwalData[0].userID);
+										$('#addReportPermasalahan').val(jadwalData[0].permasalahan);
+										$('#addReportJadwal').val(jadwalData[0].jadwal);
+										$('#addReportWaktu').val(jadwalData[0].waktu);
+										// Add similar lines for other input fields
+
+										// Show the editUserModal
+										$('#addKonselingModal').modal('show');
 									},
 								error: function(error) {
 										Swal.fire({

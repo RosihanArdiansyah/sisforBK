@@ -10,9 +10,11 @@ class AdminController extends BaseController
     {   
         $userModel = new \App\Models\UserModel();
         $kelasModel = new \App\Models\KelasModel();
+        $ruleModel = new \App\Models\PelanggaranModel();
         $data['users'] = $userModel
             ->select('user.*, kelas.kelas as kls')
             ->join('kelas', 'user.kelas = kelas.ID')
+            ->where('user.Role' , '0')
             ->findAll();
         $data['kelas'] = $kelasModel->findAll();
         $jadwalModel = new \App\Models\JadwalModel();
@@ -21,7 +23,7 @@ class AdminController extends BaseController
             ->join('user', 'user.ID = jadwal.userID')
             // ->where('user.username', session()->get('username'))
             ->findAll();
-
+        $data['pelanggaran'] = $ruleModel->findAll();
         $data['title'] = "Dashboard";
         $data['username'] = session()->get('username');
         // Check if the user is authenticated with the role
@@ -216,6 +218,7 @@ class AdminController extends BaseController
             'Waktu' => $this->request->getPost('waktu'),
             'UserID' => $this->request->getPost('userID'),
             'Permasalahan' => $this->request->getPost('permasalahan'),
+            'GuruBK' => session()->get('ID'),
             'Status' => 1,
         ];
     

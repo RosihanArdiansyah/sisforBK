@@ -1,0 +1,3 @@
+- Data user dipisah jadi data siswa n data guru
+- Data pelanggaran disesuaikan dengan tata tertib sekolah
+- cetak surat panggilan dan laporan bimbingan

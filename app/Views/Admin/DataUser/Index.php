@@ -76,7 +76,7 @@
 							</div>
 							<div class="form-group">
 								<label for="NIS">NIS/NIP</label>
-								<input type="text" class="form-control" placeholder="Masukkan NIS/ NIP" id="NIS" name="NIS">
+								<input type="text" class="form-control" placeholder="Masukkan NIS/ NIP" id="NIS" name="NIS" required>
 							</div>
 							<div class="form-group">
 								<label for="Bapak">Bapak</label>
@@ -88,7 +88,7 @@
 							</div>
 							<div class="form-group">
 								<label for="Kelas">Kelas</label>
-								<select class="form-control" id="Kelas" name="Kelas" required>
+								<select class="form-control" id="Kelas" name="Kelas">
 									<option value="null">--Pilih Kelas--</option>
 										<?php foreach ($kelas as $kls): ?>
 												<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>
@@ -137,7 +137,7 @@
 												</div>
 												<div class="form-group">
 													<label for="editNIS">NIS/NIP</label>
-													<input type="text" class="form-control" placeholder="Masukkan NIS/ NIP" id="editNIS" name="editNIS">
+													<input type="text" class="form-control" placeholder="Masukkan NIS/ NIP" id="editNIS" name="editNIS" required>
 												</div>
 												<div class="form-group">
 													<label for="editBapak">Bapak</label>
@@ -149,7 +149,7 @@
 												</div>
 												<div class="form-group">
 													<label for="editKelas">Kelas</label>
-													<select class="form-control" id="editKelas" name="editKelas" required>
+													<select class="form-control" id="editKelas" name="editKelas">
 														<option value="null">--Pilih Kelas--</option>
 														<?php foreach ($kelas as $kls): ?>
 																<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>

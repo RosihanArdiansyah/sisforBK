@@ -1,0 +1,25 @@
+CRITICAL - 2023-11-26 11:09:07 --> Undefined variable $pelanggaranModel
+in APPPATH\Controllers\AdminController.php on line 26.
+ 1 APPPATH\Controllers\AdminController.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pelanggaranModel', 'C:\\xampp\\htdocs\\sisforBK\\app\\Controllers\\AdminController.php', 26)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 11:09:12 --> Undefined variable $pelanggaranModel
+in APPPATH\Controllers\AdminController.php on line 26.
+ 1 APPPATH\Controllers\AdminController.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pelanggaranModel', 'C:\\xampp\\htdocs\\sisforBK\\app\\Controllers\\AdminController.php', 26)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 12:02:31 --> Undefined variable $originalValue
+in APPPATH\Views\Admin\index.php on line 78.
+ 1 APPPATH\Views\Admin\index.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $originalValue', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\index.php', 78)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(40): view('Admin/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

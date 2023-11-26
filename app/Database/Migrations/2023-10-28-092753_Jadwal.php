@@ -26,6 +26,11 @@ class Jadwal extends Migration
                 'constraint' => 5,
                 'unsigned' => true,
             ],
+            'guruBK' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],
             'permasalahan' => [
                 'type' => 'TEXT',
                 'null' => true,

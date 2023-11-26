@@ -31,6 +31,7 @@ class Home extends BaseController
             session()->set('role', $user['Role']);
             session()->set('username', $user['username']);
             session()->set('fullName', $user['fullName']);
+            session()->set('ID', $user['ID']);
 
             // Role-based redirection
             if ($user['Role'] == 0) {

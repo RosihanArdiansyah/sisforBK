@@ -27,5 +27,6 @@ $routes->post('updateJadwal', 'AdminController::updateJadwal');
 $routes->get('showJadwal(:num)', 'AdminController::showJadwal/$1');
 $routes->post('createRule', 'AdminController::createRule');
 $routes->post('updateRule', 'AdminController::updateRule');
+$routes->post('createReport', 'AdminController::createReport');
 $routes->get('showRule(:num)', 'AdminController::showRule/$1');
 $routes->get('/admin/dataUser/(:num)', 'AdminController::show/$1');
