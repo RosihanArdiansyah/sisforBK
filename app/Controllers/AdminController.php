@@ -86,10 +86,10 @@ class AdminController extends BaseController
         $data['jadwal'] = $jadwalModel->findAll();
         $data['users'] = $userModel->findAll();
         $data['konselingData'] = $konselingModel
-            ->select('konseling.id, konseling.jadwalID, konseling.pelanggaranID, jadwal.permasalahan, jadwal.waktu, jadwal.userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS pelanggaranName')
-            ->join('jadwal', 'konseling.jadwalID = jadwal.id')
-            ->join('pelanggaran', 'konseling.pelanggaranID = pelanggaran.id')
-            ->join('user', 'jadwal.userID = user.id')
+            ->select('konseling.*, jadwal.permasalahan AS permasalahan, jadwal.waktu AS ,jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran')
+            ->join('jadwal', 'konseling.jadwalID = jadwal.ID')
+            ->join('pelanggaran', 'konseling.pelanggaranID = pelanggaran.ID')
+            ->join('user', 'jadwal.userID = user.ID')
             ->findAll();        
 
         $data['title'] = "Data Konseling";
@@ -224,6 +224,31 @@ class AdminController extends BaseController
     
         // Add your user creation logic here
         if ($jadwalModel->insert($data)) {
+            // Data inserted successfully
+            return redirect()->to('/admin')->with('success', 'Schedule created successfully');
+        } else {
+            // Handle errors
+            return redirect()->back()->withInput()->with('error', 'Failed to create user');
+        };
+        // Assuming success, return a JSON response
+        return $this->response->setJSON(['success' => true]);
+    }
+
+    public function createReport()
+    {
+        $konselingModel = new \App\Models\KonselingModel();
+
+        $data = [
+            'ID' => $this->request->getPost('addReportId'),
+            'JadwalID' => $this->request->getPost('addReportJadwalId'),
+            'Waktu' => $this->request->getPost('addReportWaktu'),
+            'GuruBK' => session()->get('ID'),
+            'PelanggaranID' => $this->request->getPost('addReportPelanggaran'),
+            'Sanksi' => $this->request->getPost('addReportSanksi'),
+        ];
+    
+        // Add your user creation logic here
+        if ($konselingModel->save($data)) {
             // Data inserted successfully
             return redirect()->to('/admin')->with('success', 'Schedule created successfully');
         } else {

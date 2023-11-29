@@ -10,7 +10,7 @@
 
 	<div class="card sub-content" style="margin-top:16px; max-height: 70%; overflow-y: auto">
 		<!-- Button in the top right corner -->
-		<button type="button" class="btn btn-success position-absolute top-0 end-0" style="margin: 10px;">Tambah Data Konseling</button>
+		<!-- <button type="button" class="btn btn-success position-absolute top-0 end-0" style="margin: 10px;">Tambah Data Konseling</button> -->
 		<div class="card-body">
 			<h4 class="card-title">Hasil Konseling</h4>
 			<table id="konselingTable" class="table table-striped table-bordered dataTable" style="padding: 10px;">
@@ -29,7 +29,7 @@
 								<td><?= $konseling['ID']; ?></td>
 								<td><?= $konseling['userName']; ?></td>
 								<td><?= $konseling['permasalahan']; ?></td>
-								<td><?= $konseling['waktu']; ?></td>
+								<td><?= strftime('%A, %d %B %Y', strtotime($konseling['jadwal'])); ?></td>
 								<td><?= $konseling['namaPelanggaran']; ?></td>
 							</tr>
 						<?php endforeach; ?>

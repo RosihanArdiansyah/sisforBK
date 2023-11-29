@@ -73,6 +73,7 @@
 									<div class="modal-body">
 											<div class="form-group">
 													<input type="hidden" class="form-control" id="addReportJadwalId" name="addReportJadwalId">
+													<input type="hidden" class="form-control" id="addReportId" name="addReportId">
 													<label for="addReportUserID">Nama Siswa</label>
 													<select class="form-control" id="addReportUserID" name="addReportUserID" required>
 															<?php foreach ($users as $user): ?>
@@ -94,7 +95,7 @@
 											</div>
 											<div class="form-group">
 												<label for="addReportPelanggaran">Pelanggaran</label>
-												<select class="form-control" id="addReportPelanggaranID" name="addReportPelanggaran" readonly required>
+												<select class="form-control" id="addReportPelanggaran" name="addReportPelanggaran" required>
 														<option value="">Pilih Pelanggaran</option>
 														<?php foreach ($pelanggaran as $rules): ?>
 																<option value="<?= $rules['ID']; ?>"><?= $rules['namaPelanggaran']; ?>- <?= $rules['poin']; ?></option>
@@ -103,11 +104,11 @@
 											</div>
 											<div class="form-group">
 												<label for="addReportSanksi">Sanksi</label>
-												<textarea readonly class="form-control" id="addReportSanksi" name="addReportSanksi"></textarea>          
+												<textarea required class="form-control" id="addReportSanksi" name="addReportSanksi"></textarea>          
 											</div>
 											<div class="form-group">
 												<label for="addReportTindakan">Tindakan</label>
-												<textarea readonly class="form-control" id="addReportTindakan" name="addReportTindakan"></textarea>          
+												<textarea required class="form-control" id="addReportTindakan" name="addReportTindakan"></textarea>          
 											</div>
 									<div class="modal-footer">
 										<button type="submit" class="btn btn-primary" id="addReportButton">Buat Laporan Konseling</button>
@@ -264,6 +265,34 @@
 										icon: 'error',
 										title: 'Error',
 										text: 'Jadwal tidak dapat dibuat!',
+									});
+								}
+							});
+						});
+
+						$('#addReportJadwalForm').submit(function(e) {
+							e.preventDefault();
+
+							$.ajax({
+								url: '<?= base_url('createReport'); ?>',
+								method: 'POST',
+								data: $('#addReportJadwalForm').serialize(),
+								success: function(data) {
+									$('#addKonselingModal').modal('hide');
+									$('#addReportJadwalForm').trigger('reset');
+									Swal.fire({
+											icon: 'success',
+											title: 'Report Created',
+											text: 'Laporan berhasil dibuat!',
+									}).then(function () {
+											window.location.href = '<?= base_url('admin'); ?>';
+									});
+								},
+								error: function(error) {
+									Swal.fire({
+										icon: 'error',
+										title: 'Error',
+										text: 'Laporan tidak dapat dibuat!',
 									});
 								}
 							});
