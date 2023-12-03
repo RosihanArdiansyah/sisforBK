@@ -244,6 +244,7 @@ class AdminController extends BaseController
             'Waktu' => $this->request->getPost('addReportWaktu'),
             'GuruBK' => session()->get('ID'),
             'PelanggaranID' => $this->request->getPost('addReportPelanggaran'),
+            'Tindakan' => $this->request->getPost('addReportTindakan'),
             'Sanksi' => $this->request->getPost('addReportSanksi'),
         ];
     
@@ -325,7 +326,7 @@ class AdminController extends BaseController
         // Retrieve user data by ID
         $jadwalData = $jadwalModel->getWhere(['id' => $id])->getResult();
         $konselingData = $konselingModel
-        ->select('konseling.*, jadwal.permasalahan AS permasalahan, jadwal.waktu AS waktu,jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran')
+        ->select('konseling.*, konseling.ID AS reportID, jadwal.permasalahan AS permasalahan, jadwal.waktu AS waktu,jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran')
             ->join('jadwal', 'konseling.jadwalID = jadwal.ID')
             ->join('pelanggaran', 'konseling.pelanggaranID = pelanggaran.ID')
             ->join('user', 'jadwal.userID = user.ID')

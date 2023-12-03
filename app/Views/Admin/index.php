@@ -46,9 +46,9 @@
 											<?php endif; ?>
 									</td>
 									<td>
-										<button type="button" class="btn btn-primary" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
-										<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-										<button type="button" data-toggle="tooltip" title="buat laporan konseling" class="btn btn-success" onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
+										<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
+										<button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="buat laporan konseling"  onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
@@ -381,7 +381,13 @@
 										console.log(jadwalData[0].ID);
 
 										// Populate the modal fields with user data
-										$('#addReportJadwalId').val(jadwalData[0].ID);
+										if(jadwalData[0].reportID == null) {
+											$('#addReportId').val('');
+											$('#addReportJadwalId').val(jadwalData[0].ID);
+										} else {
+											$('#addReportId').val(jadwalData[0].reportID);
+											$('#addReportJadwalId').val(jadwalData[0].jadwalID);
+										}
 										$('#addReportUserID').val(jadwalData[0].userID);
 										$('#addReportPermasalahan').val(jadwalData[0].permasalahan);
 										$('#addReportJadwal').val(jadwalData[0].jadwal);

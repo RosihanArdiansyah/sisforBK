@@ -38,6 +38,64 @@
 		</div>
 	</div>
 
+	<!-- modal -->
+	<!-- post konseling report -->
+	<div class="modal fade" id="editKonselingModal" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+					<div class="modal-content">
+							<div class="modal-header">
+									<h5 class="modal-title" id="addReportModalLabel">Buat Laporan Konseling</h5>
+									<button type="button" class="btn btn-secondary btn-danger" id="reportAddCloseBtn" style="float: right">Close</button>
+							</div>
+							<form id="addReportJadwalForm">
+								<div class="modal-body">
+										<div class="form-group">
+												<input type="hidden" class="form-control" id="addReportJadwalId" name="addReportJadwalId">
+												<input type="hidden" class="form-control" id="addReportId" name="addReportId">
+												<label for="addReportUserID">Nama Siswa</label>
+												<select class="form-control" id="addReportUserID" name="addReportUserID" required>
+														<?php foreach ($users as $user): ?>
+																<option value="<?= $user['ID']; ?>" disabled><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
+														<?php endforeach; ?>
+												</select>
+										</div>
+										<div class="form-group">
+											<label for="addReportPermasalahan">Permasalahan</label>
+											<textarea readonly class="form-control" id="addReportPermasalahan" name="addReportPermasalahan"></textarea>          
+										</div>
+										<div class="form-group">
+											<label for="addReportJadwal">Tanggal:</label>
+											<input readonly class="form-control" id="addReportJadwal" type="date" name="editJadwal" required>            
+										</div>
+										<div class="form-group">
+											<label for="addReportWaktu">Waktu:</label>
+											<input readonly class="form-control" id="addReportWaktu" type="time" name="addReportWaktu" required>           
+										</div>
+										<div class="form-group">
+											<label for="addReportPelanggaran">Pelanggaran</label>
+											<select class="form-control" id="addReportPelanggaran" name="addReportPelanggaran" required>
+													<option value="">Pilih Pelanggaran</option>
+													<?php foreach ($pelanggaran as $rules): ?>
+															<option value="<?= $rules['ID']; ?>"><?= $rules['namaPelanggaran']; ?>- <?= $rules['poin']; ?></option>
+													<?php endforeach; ?>
+											</select>          
+										</div>
+										<div class="form-group">
+											<label for="addReportSanksi">Sanksi</label>
+											<textarea required class="form-control" id="addReportSanksi" name="addReportSanksi"></textarea>          
+										</div>
+										<div class="form-group">
+											<label for="addReportTindakan">Tindakan</label>
+											<textarea required class="form-control" id="addReportTindakan" name="addReportTindakan"></textarea>          
+										</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary" id="addReportButton">Buat Laporan Konseling</button>
+								</div>
+							</form>
+					</div>
+			</div>
+	</div>
+
 	<script>
 	$(document).ready(function() {
 		var currentUrl = window.location.pathname;
