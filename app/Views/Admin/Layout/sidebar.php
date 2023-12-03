@@ -47,6 +47,14 @@
 				<span>Data User</span>
 			</a>
 		</li>
+		<li>
+			<a href="<?=base_url("/admin/dataGuru");?>" class="nav-link">
+				<div class="icon-wrap">
+					<i class="far fa-user"></i>
+				</div>
+				<span>Data Guru</span>
+			</a>
+		</li>
 		<hr>
 		<li>
 			<a href="<?= site_url('logout') ?>" class="nav-link">

@@ -84,7 +84,11 @@ class AdminController extends BaseController
         $userModel = new \App\Models\UserModel();
         $data['pelanggaran'] = $pelanggaranModel->findAll();
         $data['jadwal'] = $jadwalModel->findAll();
-        $data['users'] = $userModel->findAll();
+        $data['users'] = $userModel
+            ->select('user.*, kelas.kelas as kls')
+            ->join('kelas', 'user.kelas = kelas.ID')
+            ->where('user.Role' , '0')
+            ->findAll();
         $data['konselingData'] = $konselingModel
             ->select('konseling.*, jadwal.permasalahan AS permasalahan, jadwal.waktu AS ,jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran')
             ->join('jadwal', 'konseling.jadwalID = jadwal.ID')
@@ -140,7 +144,40 @@ class AdminController extends BaseController
     {
         $userModel = new \App\Models\UserModel();
         $kelasModel = new \App\Models\KelasModel();
-        $data['users'] = $userModel->findAll();
+        $data['users'] = $userModel
+        ->where('user.Role' , '0')
+        ->findAll();
+        $data['kelas'] = $kelasModel->findAll();
+        $data['title'] = "Data Pengguna";
+        if (session()->get('role') == 1) {
+            // Load header view from the layout folder
+            echo view('Admin/Layout/header', $data);
+
+            // Load sidebar view from the layout folder
+            echo view('Admin/Layout/sidebar');
+
+            // Load main content (index) view
+            echo view('Admin/DataUser/index', $data);
+
+            // Load footer view from the layout folder
+            echo view('Admin/Layout/footer');        
+        } else {
+            // Redirect to login or display an error message
+            return redirect()->to('/')->with('error', 'Access denied');
+        }
+        
+
+        
+                // Your code here
+    }
+
+    public function dataGuru()
+    {
+        $userModel = new \App\Models\UserModel();
+        $kelasModel = new \App\Models\KelasModel();
+        $data['users'] = $userModel
+        ->where('user.Role' , '1')
+        ->findAll();
         $data['kelas'] = $kelasModel->findAll();
         $data['title'] = "Data Pengguna";
         if (session()->get('role') == 1) {
@@ -251,7 +288,7 @@ class AdminController extends BaseController
         // Add your user creation logic here
         if ($konselingModel->save($data)) {
             // Data inserted successfully
-            return redirect()->to('/admin')->with('success', 'Schedule created successfully');
+            return redirect()->back()->with('success', 'Report created successfully');
         } else {
             // Handle errors
             return redirect()->back()->withInput()->with('error', 'Failed to create user');

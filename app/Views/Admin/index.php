@@ -49,6 +49,7 @@
 										<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
 										<button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
 										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="buat laporan konseling"  onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
+										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="cetak jadwal konseling"><i class="fas fa-print"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>

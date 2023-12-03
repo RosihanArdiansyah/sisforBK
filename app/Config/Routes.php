@@ -20,6 +20,7 @@ $routes->get('/admin/profile', 'AdminController::profile');
 $routes->get('/admin/konseling', 'AdminController::konseling');
 $routes->get('/admin/dataRules', 'AdminController::dataRules');
 $routes->get('/admin/dataUser', 'AdminController::dataUser');
+$routes->get('/admin/dataGuru', 'AdminController::dataGuru');
 $routes->post('createUser', 'AdminController::createUser');
 $routes->post('updateUser', 'AdminController::updateUser');
 $routes->post('createJadwal', 'AdminController::createJadwal');

@@ -21,6 +21,7 @@
 						<th>Permasalahan</th>
 						<th>Waktu</th>
 						<th>Pelanggaran</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 					<tbody>
@@ -31,6 +32,9 @@
 								<td><?= $konseling['permasalahan']; ?></td>
 								<td><?= strftime('%A, %d %B %Y', strtotime($konseling['jadwal'])); ?></td>
 								<td><?= $konseling['namaPelanggaran']; ?></td>
+								<td>
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" title="ubah laporan konseling" onClick="buatLaporan(<?= $konseling['ID']; ?>)"><i class="far fa-edit"></i></button>
+								</td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>
@@ -45,7 +49,7 @@
 					<div class="modal-content">
 							<div class="modal-header">
 									<h5 class="modal-title" id="addReportModalLabel">Buat Laporan Konseling</h5>
-									<button type="button" class="btn btn-secondary btn-danger" id="reportAddCloseBtn" style="float: right">Close</button>
+									<button type="button" class="btn btn-secondary btn-danger" id="reportEditCloseBtn" style="float: right">Close</button>
 							</div>
 							<form id="addReportJadwalForm">
 								<div class="modal-body">
@@ -124,5 +128,77 @@
 		$('#konselingTable_filter input').on('keyup', function() {
 			dataTable.search(this.value).draw();
 		});
+
+		$('#addReportJadwalForm').submit(function(e) {
+			e.preventDefault();
+
+			$.ajax({
+				url: '<?= base_url('createReport'); ?>',
+				method: 'POST',
+				data: $('#addReportJadwalForm').serialize(),
+				success: function(data) {
+					$('#editKonselingModal').modal('hide');
+					$('#addReportJadwalForm').trigger('reset');
+					Swal.fire({
+							icon: 'success',
+							title: 'Report Created',
+							text: 'Laporan berhasil dibuat!',
+					}).then(function () {
+							window.location.href = '<?= base_url('admin'); ?>';
+					});
+				},
+				error: function(error) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Error',
+						text: 'Laporan tidak dapat dibuat!',
+					});
+				}
+			});
+		});
 	});
+	</script>
+
+	<script>
+					// Define the editUser function to handle the edit action
+		function buatLaporan(id) {
+				$.ajax({
+						url: '<?= base_url('showReport'); ?>'+id, // Change the URL to your controller method
+						method: 'GET',
+						success: function(data) {
+								// Parse the JSON response
+								var jadwalData = JSON.parse(data);
+								console.log(jadwalData[0].ID);
+
+								// Populate the modal fields with user data
+								if(jadwalData[0].reportID == null) {
+									$('#addReportId').val('');
+									$('#addReportJadwalId').val(jadwalData[0].ID);
+								} else {
+									$('#addReportId').val(jadwalData[0].reportID);
+									$('#addReportJadwalId').val(jadwalData[0].jadwalID);
+								}
+								$('#addReportUserID').val(jadwalData[0].userID);
+								$('#addReportPermasalahan').val(jadwalData[0].permasalahan);
+								$('#addReportJadwal').val(jadwalData[0].jadwal);
+								$('#addReportWaktu').val(jadwalData[0].waktu);
+								$('#addReportPelanggaran').val(jadwalData[0].pelanggaranID);
+								$('#addReportSanksi').val(jadwalData[0].sanksi);
+								$('#addReportTindakan').val(jadwalData[0].tindakan);
+								
+								// Add similar lines for other input fields
+
+								// Show the editUserModal
+								$('#editKonselingModal').modal('show');
+							},
+						error: function(error) {
+								Swal.fire({
+										icon: 'error',
+										title: 'Error',
+										text: 'Jadwal tidak dapat diedit!',
+								});
+						}
+				});
+				
+		}
 	</script>
