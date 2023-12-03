@@ -373,7 +373,7 @@
 				// Define the editUser function to handle the edit action
 				function buatLaporan(id) {
 						$.ajax({
-								url: '<?= base_url('showJadwal'); ?>'+id, // Change the URL to your controller method
+								url: '<?= base_url('showReport'); ?>'+id, // Change the URL to your controller method
 								method: 'GET',
 								success: function(data) {
 										// Parse the JSON response
@@ -386,6 +386,10 @@
 										$('#addReportPermasalahan').val(jadwalData[0].permasalahan);
 										$('#addReportJadwal').val(jadwalData[0].jadwal);
 										$('#addReportWaktu').val(jadwalData[0].waktu);
+										$('#addReportPelanggaran').val(jadwalData[0].pelanggaranID);
+										$('#addReportSanksi').val(jadwalData[0].sanksi);
+										$('#addReportTindakan').val(jadwalData[0].tindakan);
+										
 										// Add similar lines for other input fields
 
 										// Show the editUserModal

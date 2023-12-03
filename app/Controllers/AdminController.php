@@ -316,6 +316,34 @@ class AdminController extends BaseController
         }
     }
 
+    public function showReport($id)
+    {
+        // Load the user model
+        $jadwalModel = new \App\Models\JadwalModel();
+        $konselingModel = new \App\Models\KonselingModel();
+
+        // Retrieve user data by ID
+        $jadwalData = $jadwalModel->getWhere(['id' => $id])->getResult();
+        $konselingData = $konselingModel
+        ->select('konseling.*, jadwal.permasalahan AS permasalahan, jadwal.waktu AS waktu,jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran')
+            ->join('jadwal', 'konseling.jadwalID = jadwal.ID')
+            ->join('pelanggaran', 'konseling.pelanggaranID = pelanggaran.ID')
+            ->join('user', 'jadwal.userID = user.ID')
+            ->getWhere(['jadwalID' => $id])->getResult();
+
+        // Check if user data was found
+        if ($konselingData) {
+            // Display user data
+            echo json_encode($konselingData);
+        } else if($jadwalData){
+            // Handle user not found error
+            echo json_encode($jadwalData);
+            
+        } else {
+            echo 'Report not found';
+        }
+    }
+
     public function showRule($id)
     {
         // Load the user model
