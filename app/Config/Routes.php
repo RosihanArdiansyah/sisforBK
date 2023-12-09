@@ -23,6 +23,7 @@ $routes->get('/admin/dataUser', 'AdminController::dataUser');
 $routes->get('/admin/dataGuru', 'AdminController::dataGuru');
 $routes->post('createUser', 'AdminController::createUser');
 $routes->post('updateUser', 'AdminController::updateUser');
+$routes->delete('deleteUser/(:num)', 'AdminController::deleteUser/$1');
 $routes->post('createJadwal', 'AdminController::createJadwal');
 $routes->post('updateJadwal', 'AdminController::updateJadwal');
 $routes->get('showJadwal(:num)', 'AdminController::showJadwal/$1');

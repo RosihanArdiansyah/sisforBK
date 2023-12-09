@@ -37,6 +37,9 @@ class AdminController extends BaseController
             // Load sidebar view from the layout folder
             echo view('Admin/Layout/sidebar');
 
+            // Load modal view from the Admin/Layout folder and pass $data to it
+            // echo view('Admin/Layout/modal', $data);
+
             // Load main content (index) view
             echo view('Admin/index', $data);
 
@@ -453,15 +456,15 @@ class AdminController extends BaseController
         $jadwalModel = new \App\Models\JadwalModel();
 
         $data = [
-            'Jadwal' => $this->request->getPost('editJadwal'),
-            'Waktu' => $this->request->getPost('editWaktu'),
-            'UserID' => $this->request->getPost('editUserID'),
-            'Permasalahan' => $this->request->getPost('editPermasalahan'),
-            'Status' => $this->request->getPost('editStatus'),
+            'Jadwal' => $this->request->getPost('jadwal'),
+            'Waktu' => $this->request->getPost('waktu'),
+            'UserID' => $this->request->getPost('userID'),
+            'Permasalahan' => $this->request->getPost('permasalahan'),
+            'Status' => $this->request->getPost('status'),
         ];
 
         // Update the user data
-        if ($jadwalModel->update($this->request->getPost('editJadwalId'), $data)) {
+        if ($jadwalModel->update($this->request->getPost('addJadwalId'), $data)) {
             // Data updated successfully
             echo json_encode(['success' => true]);
             return redirect()->to('/admin')->with('success', 'Jadwal updated successfully');
@@ -516,6 +519,20 @@ class AdminController extends BaseController
         } else {
             // Handle errors during deletion
             echo json_encode(['success' => false, 'error' => 'Failed to delete jadwal']);
+        }
+    }
+
+    public function deleteUser($id){
+        $userModel = new \App\Models\UserModel();
+        $deleted = $userModel->where('ID', $id)->delete();
+
+        if ($deleted) {
+            // Deletion was successful
+            echo json_encode(['success' => true, 'message' => 'User deleted successfully']);
+            return redirect()->back()->with('success', 'User deleted successfully');
+        } else {
+            // Handle errors during deletion
+            echo json_encode(['success' => false, 'error' => 'Failed to delete user']);
         }
     }
 

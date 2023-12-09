@@ -3,6 +3,7 @@
 					$('#createUserModal').modal('hide');
 				});
   $('#jadwalCloseBtn').click(function() {
+    $('#createJadwalModal').find('input, textarea, select').val(''); // Clear all fields
     $('#createJadwalModal').modal('hide');
   });
   $('#ruleCloseBtn').click(function() {

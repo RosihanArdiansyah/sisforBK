@@ -41,6 +41,7 @@
 									</td>
 									<td>
 										<button type="button" class="btn btn-primary" onClick="editUser(<?= $user['ID']; ?>)" data-toggle="tooltip" title="ubah data siswa"><i class="far fa-edit"></i></button>
+										<button type="button" class="btn btn-danger" onClick="deleteUser(<?= $user['ID']; ?>)"><i class="far fa-trash-alt"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
@@ -324,6 +325,50 @@
 				}
 
 				
+		</script>
+
+		<script>
+				// Define the deleteUser function to handle the delete action
+				function deleteUser(id) {
+						Swal.fire({
+								title: 'Apakah Anda yakin?',
+								text: "Anda tidak akan dapat mengembalikan ini!",
+								icon: 'warning',
+								showCancelButton: true,
+								confirmButtonColor: '#3085d6',
+								cancelButtonColor: '#d33',
+								confirmButtonText: 'Ya!'
+						}).then((result) => {
+								if (result.isConfirmed) {
+										$.ajax({
+												type: 'DELETE',
+												url:  '<?= base_url('deleteUser/'); ?>' + id, // Refactored endpoint
+												success: function(data) {
+														Swal.fire({
+																icon: 'success',
+																title: 'User Deleted',
+																text: 'User berhasil dihapus!', // Changed message to reflect user deletion
+														}).then(function () {
+																location.reload();
+														});
+												},
+												error: function(error) {
+														Swal.fire({
+																icon: 'error',
+																title: 'Error',
+																text: 'User tidak dapat dihapus!', // Changed message to reflect user deletion error
+														});
+												}
+										});
+								} else {
+										Swal.fire({
+												icon: 'error',
+												title: 'Batal',
+												text: 'Batal menghapus user', // Changed message to canceled user deletion
+										});
+								}
+						});
+				}
 		</script>
 
 		

@@ -58,156 +58,6 @@
 				</table>
 		</div>
 	</div>
-
-
-		<!-- modal -->
-
-		<!-- post konseling report -->
-		<div class="modal fade" id="addKonselingModal" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-						<div class="modal-content">
-								<div class="modal-header">
-										<h5 class="modal-title" id="addReportModalLabel">Buat Laporan Konseling</h5>
-										<button type="button" class="btn btn-secondary btn-danger" id="reportAddCloseBtn" style="float: right">Close</button>
-								</div>
-								<form id="addReportJadwalForm">
-									<div class="modal-body">
-											<div class="form-group">
-													<input type="hidden" class="form-control" id="addReportJadwalId" name="addReportJadwalId">
-													<input type="hidden" class="form-control" id="addReportId" name="addReportId">
-													<label for="addReportUserID">Nama Siswa</label>
-													<select class="form-control" id="addReportUserID" name="addReportUserID" required>
-															<?php foreach ($users as $user): ?>
-																	<option value="<?= $user['ID']; ?>" disabled><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
-															<?php endforeach; ?>
-													</select>
-											</div>
-											<div class="form-group">
-												<label for="addReportPermasalahan">Permasalahan</label>
-												<textarea readonly class="form-control" id="addReportPermasalahan" name="addReportPermasalahan"></textarea>          
-											</div>
-											<div class="form-group">
-												<label for="addReportJadwal">Tanggal:</label>
-												<input readonly class="form-control" id="addReportJadwal" type="date" name="editJadwal" required>            
-											</div>
-											<div class="form-group">
-												<label for="addReportWaktu">Waktu:</label>
-												<input readonly class="form-control" id="addReportWaktu" type="time" name="addReportWaktu" required>           
-											</div>
-											<div class="form-group">
-												<label for="addReportPelanggaran">Pelanggaran</label>
-												<select class="form-control" id="addReportPelanggaran" name="addReportPelanggaran" required>
-														<option value="">Pilih Pelanggaran</option>
-														<?php foreach ($pelanggaran as $rules): ?>
-																<option value="<?= $rules['ID']; ?>"><?= $rules['namaPelanggaran']; ?>- <?= $rules['poin']; ?></option>
-														<?php endforeach; ?>
-												</select>          
-											</div>
-											<div class="form-group">
-												<label for="addReportSanksi">Sanksi</label>
-												<textarea required class="form-control" id="addReportSanksi" name="addReportSanksi"></textarea>          
-											</div>
-											<div class="form-group">
-												<label for="addReportTindakan">Tindakan</label>
-												<textarea required class="form-control" id="addReportTindakan" name="addReportTindakan"></textarea>          
-											</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" id="addReportButton">Buat Laporan Konseling</button>
-									</div>
-								</form>
-						</div>
-				</div>
-		</div>
-
-		<!-- create jadwal -->
-		<div class="modal fade" id="createJadwalModal" tabindex="-1" role="dialog" aria-labelledby="createJadwalModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="createJadwalModalLabel">Buat Jadwal Konseling</h5>
-						<button type="button" class="btn btn-secondary btn-danger" id="jadwalCloseBtn" style="float: right">Close</button>
-					</div>
-					<form id="createJadwalForm">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="userID">Nama Siswa</label>
-								<select class="form-control" id="userID" name="userID" required>
-										<!-- Fetch and loop through all users to populate the options -->
-										<option value="">Pilih Siswa</option>
-										<?php foreach ($users as $user): ?>
-												<option value="<?= $user['ID']; ?>"><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
-										<?php endforeach; ?>
-								</select>      
-							</div>
-							<div class="form-group">
-								<label for="permasalahan">Permasalahan</label>
-								<textarea  class="form-control" id="permasalahan" name="permasalahan"></textarea>          
-							</div>
-							<div class="form-group">
-								<label for="jadwal">Tanggal:</label>
-								<input class="form-control" id="jadwal" type="date" name="jadwal" required>            
-							</div>
-							<div class="form-group">
-								<label for="waktu">Waktu:</label>
-								<input class="form-control" id="waktu" type="time" name="waktu" required>           
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary" id="createJadwalButton">Create Jadwal</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!-- Add this modal for editing user information -->
-		<div class="modal fade" id="editJadwalModal" tabindex="-1" role="dialog" aria-labelledby="editJadwalModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-						<div class="modal-content">
-								<div class="modal-header">
-										<h5 class="modal-title" id="editJadwalModalLabel">Edit Jadwal Konseling</h5>
-										<button type="button" class="btn btn-secondary btn-danger" id="jadwalEditCloseBtn" style="float: right">Close</button>
-								</div>
-								<form id="editJadwalForm">
-									<div class="modal-body">
-											<div class="form-group">
-												<input type="hidden" class="form-control" id="editJadwalId" name="editJadwalId">
-												<label for="editUserID">Nama Siswa</label>
-												<select class="form-control" id="editUserID" name="editUserID" required>
-														<!-- Fetch and loop through all users to populate the options -->
-														<option value="">Pilih Siswa</option>
-														<?php foreach ($users as $user): ?>
-																<option value="<?= $user['ID']; ?>"><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
-														<?php endforeach; ?>
-												</select>      
-											</div>
-											<div class="form-group">
-												<label for="editPermasalahan">Permasalahan</label>
-												<textarea  class="form-control" id="editPermasalahan" name="editPermasalahan"></textarea>          
-											</div>
-											<div class="form-group">
-												<label for="editJadwal">Tanggal:</label>
-												<input class="form-control" id="editJadwal" type="date" name="editJadwal" required>            
-											</div>
-											<div class="form-group">
-												<label for="editWaktu">Waktu:</label>
-												<input class="form-control" id="editWaktu" type="time" name="editWaktu" required>           
-											</div>
-											<div class="form-group">
-													<label for="editStatus">Status</label>
-													<select class="form-control" id="editStatus" name="editStatus">
-														<option value="">Ditunda</option>
-														<option value="0">Ditolak</option>
-														<option value="1">Diterima</option>
-													</select>
-												</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" id="editJadwalButton">Buat Jadwal Konseling</button>
-									</div>
-								</form>
-						</div>
-				</div>
-		</div>		
 		
 		<script>
 			$(document).ready(function() {
@@ -240,32 +90,38 @@
 						});
 
 						$('#jadwalCreateBtn').click(function() {
+							$('#statusForm').hide();
 							$('#createJadwalModal').modal('show');
 						});
 
 						$('#createJadwalForm').submit(function(e) {
 							e.preventDefault();
 
+							var jadwalId = $('#addJadwalId').val();
+							var ajaxUrl = jadwalId === '' ? '<?= base_url('createJadwal'); ?>' : '<?= base_url('updateJadwal'); ?>';
+							var successMessage = jadwalId === '' ? 'Jadwal berhasil dibuat!' : 'Jadwal berhasil diperbarui!';
+							var errorMessage = jadwalId === '' ? 'Jadwal tidak dapat dibuat!' : 'Jadwal tidak dapat diperbarui!';
+
 							$.ajax({
-								url: '<?= base_url('createJadwal'); ?>',
+								url: ajaxUrl,
 								method: 'POST',
 								data: $('#createJadwalForm').serialize(),
 								success: function(data) {
 									$('#createJadwalModal').modal('hide');
 									$('#createJadwalForm').trigger('reset');
 									Swal.fire({
-											icon: 'success',
-											title: 'Jadwal Created',
-											text: 'Jadwal berhasil dibuat!',
+										icon: 'success',
+										title: jadwalId === '' ? 'Jadwal Created' : 'Jadwal Updated',
+										text: successMessage,
 									}).then(function () {
-											window.location.href = '<?= base_url('admin'); ?>';
+										window.location.href = '<?= base_url('admin'); ?>';
 									});
 								},
 								error: function(error) {
 									Swal.fire({
 										icon: 'error',
 										title: 'Error',
-										text: 'Jadwal tidak dapat dibuat!',
+										text: errorMessage,
 									});
 								}
 							});
@@ -347,16 +203,21 @@
 										console.log(jadwalData[0].ID);
 
 										// Populate the modal fields with user data
-										$('#editJadwalId').val(jadwalData[0].ID);
-										$('#editUserID').val(jadwalData[0].userID);
-										$('#editPermasalahan').val(jadwalData[0].permasalahan);
-										$('#editJadwal').val(jadwalData[0].jadwal);
-										$('#editWaktu').val(jadwalData[0].waktu);
-										$('#editStatus').val(jadwalData[0].status);
+										$('#addJadwalId').val(jadwalData[0].ID);
+										$('#userID').val(jadwalData[0].userID);
+										$('#permasalahan').val(jadwalData[0].permasalahan);
+										$('#jadwal').val(jadwalData[0].jadwal);
+										$('#waktu').val(jadwalData[0].waktu);
+										if (jadwalData[0].ID) {
+												$('#status').val(jadwalData[0].status);
+												$('#statusForm').show();
+										} else {
+												$('#statusForm').hide();
+										}
 										// Add similar lines for other input fields
 
 										// Show the editUserModal
-										$('#editJadwalModal').modal('show');
+										$('#createJadwalModal').modal('show');
 									},
 								error: function(error) {
 										Swal.fire({
@@ -454,7 +315,7 @@
 								if (result.isConfirmed) {
 										$.ajax({
 												type: 'DELETE',
-												url: 'deleteJadwal/' + id,
+												url: '<?= base_url('deleteJadwal/'); ?>' + id,
 												success: function(data) {
 														Swal.fire({
 																icon: 'success',
@@ -484,3 +345,157 @@
 				}
 		</script>
 		
+
+		  <!-- create jadwal -->
+		<div class="modal fade" id="createJadwalModal" tabindex="-1" role="dialog" aria-labelledby="createJadwalModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="createJadwalModalLabel">Buat Jadwal Konseling</h5>
+						<button type="button" class="btn btn-secondary btn-danger" id="jadwalCloseBtn" style="float: right">Close</button>
+					</div>
+					<form id="createJadwalForm">
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="hidden" id="addJadwalId" name="addJadwalId">
+								<label for="userID">Nama Siswa</label>
+								<select class="form-control" id="userID" name="userID" required>
+										<!-- Fetch and loop through all users to populate the options -->
+										<option value="">Pilih Siswa</option>
+										<?php foreach ($users as $user): ?>
+												<option value="<?= $user['ID']; ?>"><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
+										<?php endforeach; ?>
+								</select>      
+							</div>
+							<div class="form-group">
+								<label for="permasalahan">Permasalahan</label>
+								<textarea  class="form-control" id="permasalahan" name="permasalahan"></textarea>          
+							</div>
+							<div class="form-group">
+								<label for="jadwal">Tanggal:</label>
+								<input class="form-control" id="jadwal" type="date" name="jadwal" required>            
+							</div>
+							<div class="form-group">
+								<label for="waktu">Waktu:</label>
+								<input class="form-control" id="waktu" type="time" name="waktu" required>           
+							</div>
+						<div class="form-group" id="statusForm">
+							<label for="status">Status</label>
+							<select class="form-control" id="status" name="status">
+								<option value="">Ditunda</option>
+								<option value="0">Ditolak</option>
+								<option value="1">Diterima</option>
+							</select>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary" id="createJadwalButton">Create Jadwal</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<!-- post konseling report -->
+		<div class="modal fade" id="addKonselingModal" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+						<div class="modal-content">
+								<div class="modal-header">
+										<h5 class="modal-title" id="addReportModalLabel">Buat Laporan Konseling</h5>
+										<button type="button" class="btn btn-secondary btn-danger" id="reportAddCloseBtn" style="float: right">Close</button>
+								</div>
+								<form id="addReportJadwalForm">
+									<div class="modal-body">
+											<div class="form-group">
+													<input type="hidden" class="form-control" id="addReportJadwalId" name="addReportJadwalId">
+													<input type="hidden" class="form-control" id="addReportId" name="addReportId">
+													<label for="addReportUserID">Nama Siswa</label>
+													<select class="form-control" id="addReportUserID" name="addReportUserID" required>
+															<?php foreach ($users as $user): ?>
+																	<option value="<?= $user['ID']; ?>" disabled><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
+															<?php endforeach; ?>
+													</select>
+											</div>
+											<div class="form-group">
+												<label for="addReportPermasalahan">Permasalahan</label>
+												<textarea readonly class="form-control" id="addReportPermasalahan" name="addReportPermasalahan"></textarea>          
+											</div>
+											<div class="form-group">
+												<label for="addReportJadwal">Tanggal:</label>
+												<input readonly class="form-control" id="addReportJadwal" type="date" name="editJadwal" required>            
+											</div>
+											<div class="form-group">
+												<label for="addReportWaktu">Waktu:</label>
+												<input readonly class="form-control" id="addReportWaktu" type="time" name="addReportWaktu" required>           
+											</div>
+											<div class="form-group">
+												<label for="addReportPelanggaran">Pelanggaran</label>
+												<select class="form-control" id="addReportPelanggaran" name="addReportPelanggaran" required>
+														<option value="">Pilih Pelanggaran</option>
+														<?php foreach ($pelanggaran as $rules): ?>
+																<option value="<?= $rules['ID']; ?>"><?= $rules['namaPelanggaran']; ?>- <?= $rules['poin']; ?></option>
+														<?php endforeach; ?>
+												</select>          
+											</div>
+											<div class="form-group">
+												<label for="addReportSanksi">Sanksi</label>
+												<textarea required class="form-control" id="addReportSanksi" name="addReportSanksi"></textarea>          
+											</div>
+											<div class="form-group">
+												<label for="addReportTindakan">Tindakan</label>
+												<textarea required class="form-control" id="addReportTindakan" name="addReportTindakan"></textarea>          
+											</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-primary" id="addReportButton">Buat Laporan Konseling</button>
+									</div>
+								</form>
+						</div>
+				</div>
+		</div>
+
+		<!-- Add this modal for editing user information -->
+		<!-- <div class="modal fade" id="editJadwalModal" tabindex="-1" role="dialog" aria-labelledby="editJadwalModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+						<div class="modal-content">
+								<div class="modal-header">
+										<h5 class="modal-title" id="editJadwalModalLabel">Edit Jadwal Konseling</h5>
+										<button type="button" class="btn btn-secondary btn-danger" id="jadwalEditCloseBtn" style="float: right">Close</button>
+								</div>
+								<form id="editJadwalForm">
+									<div class="modal-body">
+											<div class="form-group">
+												<input type="hidden" class="form-control" id="editJadwalId" name="editJadwalId">
+												<label for="editUserID">Nama Siswa</label>
+												<select class="form-control" id="editUserID" name="editUserID" required>
+														<option value="">Pilih Siswa</option>
+														<?php foreach ($users as $user): ?>
+																<option value="<?= $user['ID']; ?>"><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
+														<?php endforeach; ?>
+												</select>      
+											</div>
+											<div class="form-group">
+												<label for="editPermasalahan">Permasalahan</label>
+												<textarea  class="form-control" id="editPermasalahan" name="editPermasalahan"></textarea>          
+											</div>
+											<div class="form-group">
+												<label for="editJadwal">Tanggal:</label>
+												<input class="form-control" id="editJadwal" type="date" name="editJadwal" required>            
+											</div>
+											<div class="form-group">
+												<label for="editWaktu">Waktu:</label>
+												<input class="form-control" id="editWaktu" type="time" name="editWaktu" required>           
+											</div>
+											<div class="form-group">
+													<label for="editStatus">Status</label>
+													<select class="form-control" id="editStatus" name="editStatus">
+														<option value="">Ditunda</option>
+														<option value="0">Ditolak</option>
+														<option value="1">Diterima</option>
+													</select>
+												</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-primary" id="editJadwalButton">Buat Jadwal Konseling</button>
+									</div>
+								</form>
+						</div>
+				</div>
+		</div>		 -->
