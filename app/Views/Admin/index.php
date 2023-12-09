@@ -357,36 +357,37 @@
 					<form id="createJadwalForm">
 						<div class="modal-body">
 							<div class="form-group">
-								<input type="hidden" id="addJadwalId" name="addJadwalId">
-								<label for="userID">Nama Siswa</label>
-								<select class="form-control" id="userID" name="userID" required>
-										<!-- Fetch and loop through all users to populate the options -->
-										<option value="">Pilih Siswa</option>
-										<?php foreach ($users as $user): ?>
-												<option value="<?= $user['ID']; ?>"><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
-										<?php endforeach; ?>
-								</select>      
+									<input type="hidden" id="addJadwalId" name="addJadwalId">
+									<label for="userID">Nama Siswa</label>
+									<select class="form-control" id="userID" name="userID" required>
+											<!-- Fetch and loop through all users to populate the options -->
+											<option value="">Pilih Siswa</option>
+											<?php foreach ($users as $user): ?>
+													<option value="<?= $user['ID']; ?>"><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
+											<?php endforeach; ?>
+									</select>      
+								</div>
+								<div class="form-group">
+									<label for="permasalahan">Permasalahan</label>
+									<textarea  class="form-control" id="permasalahan" name="permasalahan"></textarea>          
+								</div>
+								<div class="form-group">
+									<label for="jadwal">Tanggal:</label>
+									<input class="form-control" id="jadwal" type="date" name="jadwal" required>            
+								</div>
+								<div class="form-group">
+									<label for="waktu">Waktu:</label>
+									<input class="form-control" id="waktu" type="time" name="waktu" required>           
+								</div>
+								<div class="form-group" id="statusForm">
+									<label for="status">Status</label>
+									<select class="form-control" id="status" name="status">
+										<option value="">Ditunda</option>
+										<option value="0">Ditolak</option>
+										<option value="1">Diterima</option>
+									</select>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="permasalahan">Permasalahan</label>
-								<textarea  class="form-control" id="permasalahan" name="permasalahan"></textarea>          
-							</div>
-							<div class="form-group">
-								<label for="jadwal">Tanggal:</label>
-								<input class="form-control" id="jadwal" type="date" name="jadwal" required>            
-							</div>
-							<div class="form-group">
-								<label for="waktu">Waktu:</label>
-								<input class="form-control" id="waktu" type="time" name="waktu" required>           
-							</div>
-						<div class="form-group" id="statusForm">
-							<label for="status">Status</label>
-							<select class="form-control" id="status" name="status">
-								<option value="">Ditunda</option>
-								<option value="0">Ditolak</option>
-								<option value="1">Diterima</option>
-							</select>
-						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-primary" id="createJadwalButton">Create Jadwal</button>
 						</div>
