@@ -47,9 +47,9 @@
 									</td>
 									<td>
 										<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
-										<button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+										<button type="button" class="btn btn-danger btn-sm" onClick="deleteJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-trash-alt"></i></button>
 										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="buat laporan konseling"  onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
-										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="cetak jadwal konseling"><i class="fas fa-print"></i></button>
+										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="cetak jadwal konseling" onClick="printJadwal(<?= $jwd['ID']; ?>)"><i class="fas fa-print"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
@@ -414,4 +414,73 @@
 				}
 		</script>
 
+		<script>
+				function printJadwal(id) {
+						// Create a new window
+						var printWindow = window.open('', '_blank');
+
+						// Load data into the new window
+						$.ajax({
+								type: 'GET',
+								url: 'printJadwal/' + id,
+								success: function (data) {
+										// Write the data to the new window
+										printWindow.document.write(data);
+										printWindow.document.close();
+
+										// Ensure the content is fully loaded before printing
+										printWindow.onload = function () {
+												// Focus and print the new window
+												printWindow.focus();
+												printWindow.print();
+										};
+								}
+						});
+				}
+		</script>
+
+		<script>
+				// Define the editUser function to handle the edit action
+				function deleteJadwal(id) {
+						Swal.fire({
+								title: 'Apakah Anda yakin?',
+								text: "Anda tidak akan dapat mengembalikan ini!",
+								icon: 'warning',
+								showCancelButton: true,
+								confirmButtonColor: '#3085d6',
+								cancelButtonColor: '#d33',
+								confirmButtonText: 'Ya!'
+						}).then((result) => {
+								if (result.isConfirmed) {
+										$.ajax({
+												type: 'DELETE',
+												url: 'deleteJadwal/' + id,
+												success: function(data) {
+														Swal.fire({
+																icon: 'success',
+																title: 'Jadwal Deleted',
+																text: 'Jadwal berhasil dihapus!',
+														}).then(function () {
+																window.location.href = '<?= base_url('admin'); ?>';
+																console.log(data);
+														});
+												},
+												error: function(error) {
+														Swal.fire({
+																icon: 'error',
+																title: 'Error',
+																text: 'Jadwal tidak dapat dihapus!',
+														});
+												}
+										});
+								} else {
+										Swal.fire({
+												icon: 'error',
+												title: 'Batal',
+												text: 'Batal menghapus jadwal',
+										});
+								}
+						});
+				}
+		</script>
 		

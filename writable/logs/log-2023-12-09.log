@@ -1,0 +1,88 @@
+CRITICAL - 2023-12-09 04:36:20 --> Call to undefined method App\Models\JadwalModel::getResult
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\AdminController.php(501): CodeIgniter\Model->__call('getResult', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-09 04:37:21 --> Call to undefined method App\Models\JadwalModel::getResult
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\AdminController.php(501): CodeIgniter\Model->__call('getResult', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-09 04:37:22 --> Call to undefined method App\Models\JadwalModel::getResult
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\AdminController.php(501): CodeIgniter\Model->__call('getResult', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-09 04:37:43 --> mysqli_sql_exception: Column 'ID' in where clause is ambiguous in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `jadwal`...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `jadwal`...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `jadwal`...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `jadwal`...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(501): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+#8 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-12-09 04:37:43 --> Column 'ID' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `jadwal`.*, `user`.`fullName` as `user_fullName`
+FROM `jadwal`
+JOIN `user` ON `user`.`ID` = `jadwal`.`userID`
+WHERE `ID` = :ID:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(501): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-09 04:38:22 --> Call to undefined method App\Models\JadwalModel::getResult
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\AdminController.php(501): CodeIgniter\Model->__call('getResult', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-09 04:38:45 --> Undefined variable $title
+in APPPATH\Views\Admin\Layout\header.php on line 4.
+ 1 APPPATH\Views\Admin\Layout\header.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\header.php', 4)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Layout/header', [], true)
+ 5 APPPATH\Controllers\AdminController.php(503): view('Admin/Layout/header')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-09 04:38:46 --> Undefined variable $title
+in APPPATH\Views\Admin\Layout\header.php on line 4.
+ 1 APPPATH\Views\Admin\Layout\header.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\header.php', 4)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Layout/header', [], true)
+ 5 APPPATH\Controllers\AdminController.php(503): view('Admin/Layout/header')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-09 04:39:27 --> Undefined variable $title
+in APPPATH\Views\Admin\Layout\header.php on line 4.
+ 1 APPPATH\Views\Admin\Layout\header.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\header.php', 4)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Layout\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Layout/header', [], true)
+ 5 APPPATH\Controllers\AdminController.php(504): view('Admin/Layout/header')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printJadwal()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

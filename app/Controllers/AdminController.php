@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 // use App\Controller\BaseController;
+use Dompdf\Dompdf;
 
 class AdminController extends BaseController
 {
@@ -489,5 +490,34 @@ class AdminController extends BaseController
             echo json_encode(['success' => false, 'error' => 'Failed to update rule']);
         }
     }
+
+    public function printJadwal($id)
+    {
+        $jadwalModel = new \App\Models\JadwalModel();
+        $data['jadwal'] = $jadwalModel
+        ->select('jadwal.*, user.fullName as user_fullName, kelas.kelas as kls')
+        ->join('user', 'user.ID = jadwal.userID')
+        ->join('kelas', 'kelas.ID = user.Kelas')
+        ->where('jadwal.ID', $id)
+        ->findAll();
+
+        // Render the 'print' view without the layout
+        return view('Admin/Layout/print', $data);
+    }
+
+    public function deleteJadwal($id){
+        $jadwalModel = new \App\Models\JadwalModel();
+        $deleted = $jadwalModel->where('ID', $id)->delete();
+
+        if ($deleted) {
+            // Deletion was successful
+            echo json_encode(['success' => true, 'message' => 'Jadwal deleted successfully']);
+            return redirect()->back()->with('success', 'Jadwal deleted successfully');
+        } else {
+            // Handle errors during deletion
+            echo json_encode(['success' => false, 'error' => 'Failed to delete jadwal']);
+        }
+    }
+
 
 }

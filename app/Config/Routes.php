@@ -26,6 +26,8 @@ $routes->post('updateUser', 'AdminController::updateUser');
 $routes->post('createJadwal', 'AdminController::createJadwal');
 $routes->post('updateJadwal', 'AdminController::updateJadwal');
 $routes->get('showJadwal(:num)', 'AdminController::showJadwal/$1');
+$routes->get('printJadwal/(:num)', 'AdminController::printJadwal/$1');
+$routes->delete('deleteJadwal/(:num)', 'AdminController::deleteJadwal/$1');
 $routes->post('createRule', 'AdminController::createRule');
 $routes->post('updateRule', 'AdminController::updateRule');
 $routes->post('createReport', 'AdminController::createReport');
