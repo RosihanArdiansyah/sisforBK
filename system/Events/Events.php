@@ -16,8 +16,6 @@ use Config\Services;
 
 /**
  * Events
- *
- * @see \CodeIgniter\Events\EventsTest
  */
 class Events
 {

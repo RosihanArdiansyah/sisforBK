@@ -43,8 +43,6 @@ use ReflectionMethod;
  *         class Class {
  *             function method(array $params=null)
  *         }
- *
- * @see \CodeIgniter\View\CellTest
  */
 class Cell
 {

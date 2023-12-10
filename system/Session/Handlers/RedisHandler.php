@@ -223,7 +223,7 @@ class RedisHandler extends BaseHandler
 
                 if (($pingReply === true) || ($pingReply === '+PONG')) {
                     if (isset($this->lockKey)) {
-                        $this->releaseLock();
+                        $this->redis->del($this->lockKey);
                     }
 
                     if (! $this->redis->close()) {

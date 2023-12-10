@@ -20,9 +20,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Config\Paths;
 use Throwable;
 
-/**
- * @see \CodeIgniter\Debug\ExceptionHandlerTest
- */
 final class ExceptionHandler extends BaseExceptionHandler implements ExceptionHandlerInterface
 {
     use ResponseTrait;
@@ -129,13 +126,7 @@ final class ExceptionHandler extends BaseExceptionHandler implements ExceptionHa
         // Production environments should have a custom exception file.
         $view = 'production.php';
 
-        if (
-            in_array(
-                strtolower(ini_get('display_errors')),
-                ['1', 'true', 'on', 'yes'],
-                true
-            )
-        ) {
+        if (str_ireplace(['off', 'none', 'no', 'false', 'null'], '', ini_get('display_errors'))) {
             $view = 'error_exception.php';
         }
 

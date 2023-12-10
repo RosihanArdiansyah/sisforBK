@@ -701,12 +701,12 @@ if (! function_exists('validation_errors')) {
      */
     function validation_errors()
     {
-        $errors = session('_ci_validation_errors');
+        session();
 
         // Check the session to see if any were
         // passed along from a redirect withErrors() request.
-        if ($errors !== null && (ENVIRONMENT === 'testing' || ! is_cli())) {
-            return $errors;
+        if (isset($_SESSION['_ci_validation_errors']) && (ENVIRONMENT === 'testing' || ! is_cli())) {
+            return $_SESSION['_ci_validation_errors'];
         }
 
         $validation = Services::validation();

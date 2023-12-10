@@ -26,7 +26,6 @@ use InvalidArgumentException;
  *
  * @method static BaseConfig|null config(...$arguments)
  * @method static Model|null      models(string $alias, array $options = [], ?ConnectionInterface &$conn = null)
- * @see \CodeIgniter\Config\FactoriesTest
  */
 class Factories
 {
@@ -100,8 +99,6 @@ class Factories
      */
     public static function define(string $component, string $alias, string $classname): void
     {
-        $component = strtolower($component);
-
         if (isset(self::$aliases[$component][$alias])) {
             if (self::$aliases[$component][$alias] === $classname) {
                 return;
@@ -132,14 +129,12 @@ class Factories
      */
     public static function __callStatic(string $component, array $arguments)
     {
-        $component = strtolower($component);
-
         // First argument is the class alias, second is options
         $alias   = trim(array_shift($arguments), '\\ ');
         $options = array_shift($arguments) ?? [];
 
         // Determine the component-specific options
-        $options = array_merge(self::getOptions($component), $options);
+        $options = array_merge(self::getOptions(strtolower($component)), $options);
 
         if (! $options['getShared']) {
             if (isset(self::$aliases[$component][$alias])) {
@@ -149,8 +144,7 @@ class Factories
             }
 
             // Try to locate the class
-            $class = self::locateClass($options, $alias);
-            if ($class !== null) {
+            if ($class = self::locateClass($options, $alias)) {
                 return new $class(...$arguments);
             }
 
@@ -382,7 +376,7 @@ class Factories
             // Handle Config as a special case to prevent logic loops
             ? self::$configOptions
             // Load values from the best Factory configuration (will include Registrars)
-            : config('Factory')->{$component} ?? [];
+            : config(Factory::class)->{$component} ?? [];
 
         // The setOptions() reset the component. So getOptions() may reset
         // the component.
@@ -399,8 +393,6 @@ class Factories
      */
     public static function setOptions(string $component, array $values): array
     {
-        $component = strtolower($component);
-
         // Allow the config to replace the component name, to support "aliases"
         $values['component'] = strtolower($values['component'] ?? $component);
 
@@ -429,21 +421,21 @@ class Factories
      */
     public static function reset(?string $component = null)
     {
-        if ($component !== null) {
+        if ($component) {
             unset(
-                self::$options[$component],
-                self::$aliases[$component],
-                self::$instances[$component],
-                self::$updated[$component]
+                static::$options[$component],
+                static::$aliases[$component],
+                static::$instances[$component],
+                static::$updated[$component]
             );
 
             return;
         }
 
-        self::$options   = [];
-        self::$aliases   = [];
-        self::$instances = [];
-        self::$updated   = [];
+        static::$options   = [];
+        static::$aliases   = [];
+        static::$instances = [];
+        static::$updated   = [];
     }
 
     /**
@@ -459,9 +451,8 @@ class Factories
      */
     public static function injectMock(string $component, string $alias, object $instance)
     {
-        $component = strtolower($component);
-
         // Force a configuration to exist for this component
+        $component = strtolower($component);
         self::getOptions($component);
 
         $class = get_class($instance);
@@ -501,17 +492,15 @@ class Factories
      */
     public static function getComponentInstances(string $component): array
     {
-        if (! isset(self::$aliases[$component])) {
+        if (! isset(static::$aliases[$component])) {
             return [
-                'options'   => [],
                 'aliases'   => [],
                 'instances' => [],
             ];
         }
 
         return [
-            'options'   => self::$options[$component],
-            'aliases'   => self::$aliases[$component],
+            'aliases'   => static::$aliases[$component],
             'instances' => self::$instances[$component],
         ];
     }
@@ -523,10 +512,8 @@ class Factories
      */
     public static function setComponentInstances(string $component, array $data): void
     {
-        self::$options[$component]   = $data['options'];
-        self::$aliases[$component]   = $data['aliases'];
+        static::$aliases[$component] = $data['aliases'];
         self::$instances[$component] = $data['instances'];
-
         unset(self::$updated[$component]);
     }
 

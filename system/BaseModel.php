@@ -1194,7 +1194,7 @@ abstract class BaseModel
         // Since multiple models may use the Pager, the Pager must be shared.
         $pager = Services::pager();
 
-        if ($segment !== 0) {
+        if ($segment) {
             $pager->setSegment($segment, $group);
         }
 
@@ -1439,8 +1439,8 @@ abstract class BaseModel
         if (is_string($rules)) {
             [$rules, $customErrors] = $this->validation->loadRuleGroup($rules);
 
-            $this->validationRules = $rules;
-            $this->validationMessages += $customErrors;
+            $this->validationRules    = $rules;
+            $this->validationMessages = $this->validationMessages + $customErrors;
         }
 
         $this->validationRules[$field] = $fieldRules;
@@ -1510,7 +1510,7 @@ abstract class BaseModel
         if (is_string($rules)) {
             [$rules, $customErrors] = $this->validation->loadRuleGroup($rules);
 
-            $this->validationMessages += $customErrors;
+            $this->validationMessages = $this->validationMessages + $customErrors;
         }
 
         if (isset($options['except'])) {
@@ -1656,10 +1656,8 @@ abstract class BaseModel
     {
         $properties = $this->objectToRawArray($data, $onlyChanged, $recursive);
 
-        assert(is_array($properties));
-
         // Convert any Time instances to appropriate $dateFormat
-        if ($properties !== []) {
+        if ($properties) {
             $properties = array_map(function ($value) {
                 if ($value instanceof Time) {
                     return $this->timeToDate($value);

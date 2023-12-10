@@ -381,11 +381,11 @@ class GDHandler extends BaseHandler
         // offset flips itself automatically
 
         if ($options['vAlign'] === 'bottom') {
-            $options['vOffset'] *= -1;
+            $options['vOffset'] = $options['vOffset'] * -1;
         }
 
         if ($options['hAlign'] === 'right') {
-            $options['hOffset'] *= -1;
+            $options['hOffset'] = $options['hOffset'] * -1;
         }
 
         // Set font width and height

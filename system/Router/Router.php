@@ -21,8 +21,6 @@ use Config\Feature;
 
 /**
  * Request router.
- *
- * @see \CodeIgniter\Router\RouterTest
  */
 class Router implements RouterInterface
 {

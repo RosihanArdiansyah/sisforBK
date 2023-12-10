@@ -21,7 +21,6 @@ use CodeIgniter\HTTP\Exceptions\HTTPException;
  * server wants.
  *
  * @see http://tools.ietf.org/html/rfc7231#section-5.3
- * @see \CodeIgniter\HTTP\NegotiateTest
  */
 class Negotiate
 {

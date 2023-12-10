@@ -53,8 +53,6 @@ use RuntimeException;
  *      // register the autoloader
  *      $loader->register();
  * ```
- *
- * @see \CodeIgniter\Autoloader\AutoloaderTest
  */
 class Autoloader
 {
@@ -124,21 +122,17 @@ class Autoloader
         }
 
         if (is_file(COMPOSER_PATH)) {
-            $this->loadComposerAutoloader($modules);
+            $this->loadComposerInfo($modules);
         }
 
         return $this;
     }
 
-    private function loadComposerAutoloader(Modules $modules): void
+    private function loadComposerInfo(Modules $modules): void
     {
-        // The path to the vendor directory.
-        // We do not want to enforce this, so set the constant if Composer was used.
-        if (! defined('VENDORPATH')) {
-            define('VENDORPATH', dirname(COMPOSER_PATH) . DIRECTORY_SEPARATOR);
-        }
-
-        /** @var ClassLoader $composer */
+        /**
+         * @var ClassLoader $composer
+         */
         $composer = include COMPOSER_PATH;
 
         $this->loadComposerClassmap($composer);

@@ -17,8 +17,6 @@ use Config\Toolbar;
 
 /**
  * Collector for the Database tab of the Debug Toolbar.
- *
- * @see \CodeIgniter\Debug\Toolbar\Collectors\DatabaseTest
  */
 class Database extends BaseCollector
 {

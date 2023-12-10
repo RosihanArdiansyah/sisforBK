@@ -27,8 +27,6 @@ use Throwable;
 
 /**
  * Exceptions manager
- *
- * @see \CodeIgniter\Debug\ExceptionsTest
  */
 class Exceptions
 {
@@ -201,7 +199,7 @@ class Exceptions
             return $this->handleDeprecationError($message, $file, $line);
         }
 
-        if ((error_reporting() & $severity) !== 0) {
+        if (error_reporting() & $severity) {
             throw new ErrorException($message, 0, $severity, $file, $line);
         }
 
@@ -227,7 +225,7 @@ class Exceptions
 
         ['type' => $type, 'message' => $message, 'file' => $file, 'line' => $line] = $error;
 
-        if ($this->exceptionCaughtByExceptionHandler instanceof Throwable) {
+        if ($this->exceptionCaughtByExceptionHandler) {
             $message .= "\n【Previous Exception】\n"
                 . get_class($this->exceptionCaughtByExceptionHandler) . "\n"
                 . $this->exceptionCaughtByExceptionHandler->getMessage() . "\n"
@@ -253,13 +251,7 @@ class Exceptions
         $view         = 'production.php';
         $templatePath = rtrim($templatePath, '\\/ ') . DIRECTORY_SEPARATOR;
 
-        if (
-            in_array(
-                strtolower(ini_get('display_errors')),
-                ['1', 'true', 'on', 'yes'],
-                true
-            )
-        ) {
+        if (str_ireplace(['off', 'none', 'no', 'false', 'null'], '', ini_get('display_errors'))) {
             $view = 'error_exception.php';
         }
 

@@ -330,7 +330,9 @@ class BaseService
     protected static function discoverServices(string $name, array $arguments)
     {
         if (! static::$discovered) {
-            if ((new Modules())->shouldDiscover('services')) {
+            $config = config(Modules::class);
+
+            if ($config->shouldDiscover('services')) {
                 $locator = static::locator();
                 $files   = $locator->search('Config/Services');
 
@@ -370,7 +372,9 @@ class BaseService
     protected static function buildServicesCache(): void
     {
         if (! static::$discovered) {
-            if ((new Modules())->shouldDiscover('services')) {
+            $config = config(Modules::class);
+
+            if ($config->shouldDiscover('services')) {
                 $locator = static::locator();
                 $files   = $locator->search('Config/Services');
 

@@ -23,7 +23,6 @@ use DateTime;
  * @property string $date
  *
  * @deprecated Use Time instead.
- * @see \CodeIgniter\I18n\TimeLegacyTest
  */
 class TimeLegacy extends DateTime
 {

@@ -25,8 +25,6 @@ use RuntimeException;
  * originally made available under.
  *
  * http://fuelphp.com
- *
- * @see \CodeIgniter\HTTP\CLIRequestTest
  */
 class CLIRequest extends Request
 {
@@ -73,9 +71,6 @@ class CLIRequest extends Request
         ignore_user_abort(true);
 
         $this->parseCommand();
-
-        // Set SiteURI for this request
-        $this->uri = new SiteURI($config, $this->getPath());
     }
 
     /**

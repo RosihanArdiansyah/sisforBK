@@ -104,7 +104,6 @@ use Locale;
  *
  * @see http://blog.ircmaxell.com/2015/11/simple-easy-risk-and-change.html
  * @see http://www.infoq.com/presentations/Simple-Made-Easy
- * @see \CodeIgniter\Config\ServicesTest
  */
 class Services extends BaseService
 {
@@ -521,7 +520,7 @@ class Services extends BaseService
         }
 
         // @TODO remove the following code for backward compatibility
-        return AppServices::incomingrequest($config, $getShared);
+        return static::incomingrequest($config, $getShared);
     }
 
     /**

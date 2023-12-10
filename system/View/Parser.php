@@ -19,11 +19,6 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class for parsing pseudo-vars
- *
- * @phpstan-type ParserCallable (callable(mixed): mixed)
- * @phpstan-type ParserCallableString (callable(mixed): mixed)&string
- *
- * @see \CodeIgniter\View\ParserTest
  */
 class Parser extends View
 {
@@ -63,8 +58,7 @@ class Parser extends View
     /**
      * Stores any plugins registered at run-time.
      *
-     * @var array<string, array<string>|callable|string>
-     * @phpstan-var array<string, array<ParserCallableString>|ParserCallableString|ParserCallable>
+     * @var array
      */
     protected $plugins = [];
 
@@ -84,7 +78,7 @@ class Parser extends View
     public function __construct(ViewConfig $config, ?string $viewPath = null, $loader = null, ?bool $debug = null, ?LoggerInterface $logger = null)
     {
         // Ensure user plugins override core plugins.
-        $this->plugins = $config->plugins;
+        $this->plugins = $config->plugins ?? [];
 
         parent::__construct($config, $viewPath, $loader, $debug, $logger);
     }

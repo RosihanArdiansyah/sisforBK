@@ -19,8 +19,6 @@ use Config\App;
  * Creates SiteURI using superglobals.
  *
  * This class also updates superglobal $_SERVER and $_GET.
- *
- * @see \CodeIgniter\HTTP\SiteURIFactoryTest
  */
 final class SiteURIFactory
 {

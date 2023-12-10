@@ -19,8 +19,6 @@ use Config\Honeypot as HoneypotConfig;
 
 /**
  * class Honeypot
- *
- * @see \CodeIgniter\Honeypot\HoneypotTest
  */
 class Honeypot
 {
@@ -89,16 +87,16 @@ class Honeypot
 
         $prepField = $this->prepareTemplate($this->config->template);
 
-        $bodyBefore = $response->getBody();
-        $bodyAfter  = str_ireplace('</form>', $prepField . '</form>', $bodyBefore);
+        $body = $response->getBody();
+        $body = str_ireplace('</form>', $prepField . '</form>', $body);
 
-        if ($response->getCSP()->enabled() && ($bodyBefore !== $bodyAfter)) {
+        if ($response->getCSP()->enabled()) {
             // Add style tag for the container tag in the head tag.
-            $style     = '<style ' . csp_style_nonce() . '>#' . $this->config->containerId . ' { display:none }</style>';
-            $bodyAfter = str_ireplace('</head>', $style . '</head>', $bodyAfter);
+            $style = '<style ' . csp_style_nonce() . '>#' . $this->config->containerId . ' { display:none }</style>';
+            $body  = str_ireplace('</head>', $style . '</head>', $body);
         }
 
-        $response->setBody($bodyAfter);
+        $response->setBody($body);
     }
 
     /**

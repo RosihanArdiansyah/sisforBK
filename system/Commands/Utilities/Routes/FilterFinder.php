@@ -20,8 +20,6 @@ use Config\Services;
 
 /**
  * Finds filters.
- *
- * @see \CodeIgniter\Commands\Utilities\Routes\FilterFinderTest
  */
 final class FilterFinder
 {

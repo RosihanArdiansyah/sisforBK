@@ -47,7 +47,7 @@ trait FeatureTestTrait
     {
         $collection = Services::routes();
 
-        if ($routes !== null) {
+        if ($routes) {
             $collection->resetRoutes();
 
             foreach ($routes as $route) {
@@ -289,7 +289,7 @@ trait FeatureTestTrait
 
         Services::injectMock('uri', $uri);
 
-        $request = Services::incomingrequest($config, false);
+        $request = Services::request($config, false);
 
         $request->setMethod($method);
         $request->setProtocolVersion('1.1');

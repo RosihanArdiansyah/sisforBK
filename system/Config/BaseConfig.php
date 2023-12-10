@@ -28,7 +28,6 @@ use RuntimeException;
  * These can be set within the .env file.
  *
  * @phpstan-consistent-constructor
- * @see \CodeIgniter\Config\BaseConfigTest
  */
 class BaseConfig
 {
@@ -55,7 +54,7 @@ class BaseConfig
     /**
      * The modules configuration.
      *
-     * @var Modules|null
+     * @var Modules
      */
     protected static $moduleConfig;
 
@@ -75,27 +74,6 @@ class BaseConfig
     }
 
     /**
-     * @internal For testing purposes only.
-     * @testTag
-     */
-    public static function setModules(Modules $modules): void
-    {
-        static::$moduleConfig = $modules;
-    }
-
-    /**
-     * @internal For testing purposes only.
-     * @testTag
-     */
-    public static function reset(): void
-    {
-        static::$registrars   = [];
-        static::$override     = true;
-        static::$didDiscovery = false;
-        static::$moduleConfig = null;
-    }
-
-    /**
      * Will attempt to get environment variables with names
      * that match the properties of the child class.
      *
@@ -103,7 +81,7 @@ class BaseConfig
      */
     public function __construct()
     {
-        static::$moduleConfig ??= new Modules();
+        static::$moduleConfig = config(Modules::class);
 
         if (! static::$override) {
             return;

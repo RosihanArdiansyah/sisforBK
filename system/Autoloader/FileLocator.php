@@ -14,8 +14,6 @@ namespace CodeIgniter\Autoloader;
 /**
  * Allows loading non-class files in a namespaced manner.
  * Works with Helpers, Views, etc.
- *
- * @see \CodeIgniter\Autoloader\FileLocatorTest
  */
 class FileLocator
 {
@@ -205,7 +203,7 @@ class FileLocator
      */
     protected function ensureExt(string $path, string $ext): string
     {
-        if ($ext !== '') {
+        if ($ext) {
             $ext = '.' . $ext;
 
             if (substr($path, -strlen($ext)) !== $ext) {

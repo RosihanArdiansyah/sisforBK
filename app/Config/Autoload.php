@@ -45,7 +45,7 @@ class Autoload extends AutoloadConfig
      * @phpstan-var array<string, string|list<string>>
      */
     public $psr4 = [
-        // 'Dompdf' => APPPATH . 'ThirdParty/dompdf/src',
+        'Dompdf' => APPPATH . 'ThirdParty/dompdf/src',
         APP_NAMESPACE => APPPATH, // For custom app namespace
         'Config'      => APPPATH . 'Config',
     ];

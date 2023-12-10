@@ -18,8 +18,6 @@ use Config\Database;
 
 /**
  * Validation Rules.
- *
- * @see \CodeIgniter\Validation\StrictRules\RulesTest
  */
 class Rules
 {
@@ -63,10 +61,6 @@ class Rules
      */
     public function exact_length($str, string $val): bool
     {
-        if (is_int($str) || is_float($str)) {
-            $str = (string) $str;
-        }
-
         if (! is_string($str)) {
             return false;
         }

@@ -15,8 +15,6 @@ use Config\UserAgents;
 
 /**
  * Abstraction for an HTTP user agent
- *
- * @see \CodeIgniter\HTTP\UserAgentTest
  */
 class UserAgent
 {

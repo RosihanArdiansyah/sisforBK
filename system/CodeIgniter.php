@@ -46,15 +46,13 @@ use Throwable;
  * This class is the core of the framework, and will analyse the
  * request, route it to a controller, and send back the response.
  * Of course, there are variations to that flow, but this is the brains.
- *
- * @see \CodeIgniter\CodeIgniterTest
  */
 class CodeIgniter
 {
     /**
      * The current version of CodeIgniter Framework
      */
-    public const CI_VERSION = '4.4.3';
+    public const CI_VERSION = '4.4.1';
 
     /**
      * App startup time.
@@ -198,8 +196,6 @@ class CodeIgniter
 
     /**
      * Handles some basic app and environment setup.
-     *
-     * @return void
      */
     public function initialize()
     {
@@ -225,8 +221,6 @@ class CodeIgniter
 
     /**
      * Checks system for missing required PHP extensions.
-     *
-     * @return void
      *
      * @throws FrameworkException
      *
@@ -255,8 +249,6 @@ class CodeIgniter
 
     /**
      * Initializes Kint
-     *
-     * @return void
      */
     protected function initializeKint()
     {
@@ -334,7 +326,7 @@ class CodeIgniter
      * This is "the loop" if you will. The main entry point into the script
      * that gets the required class instances, fires off the filters,
      * tries to route the response, loads the controller and generally
-     * makes all the pieces work together.
+     * makes all of the pieces work together.
      *
      * @return ResponseInterface|void
      */
@@ -570,8 +562,6 @@ class CodeIgniter
      *
      * @codeCoverageIgnore
      *
-     * @return void
-     *
      * @deprecated 4.4.0 No longer used. Moved to index.php and spark.
      */
     protected function detectEnvironment()
@@ -587,8 +577,6 @@ class CodeIgniter
      *
      * If no boot file exists, we shouldn't continue because something
      * is wrong. At the very least, they should have error reporting setup.
-     *
-     * @return void
      */
     protected function bootstrapEnvironment()
     {
@@ -609,8 +597,6 @@ class CodeIgniter
      *
      * The timer is used to display total script execution both in the
      * debug toolbar, and potentially on the displayed page.
-     *
-     * @return void
      */
     protected function startBenchmark()
     {
@@ -640,8 +626,6 @@ class CodeIgniter
 
     /**
      * Get our Request object, (either IncomingRequest or CLIRequest).
-     *
-     * @return void
      */
     protected function getRequestObject()
     {
@@ -661,8 +645,6 @@ class CodeIgniter
     /**
      * Get our Response object, and set some default values, including
      * the HTTP protocol version and a default successful response.
-     *
-     * @return void
      */
     protected function getResponseObject()
     {
@@ -685,8 +667,6 @@ class CodeIgniter
      *
      * @param int $duration How long the Strict Transport Security
      *                      should be enforced for this URL.
-     *
-     * @return void
      */
     protected function forceSecureAccess($duration = 31_536_000)
     {
@@ -703,13 +683,10 @@ class CodeIgniter
      * @return false|ResponseInterface
      *
      * @throws Exception
-     *
-     * @deprecated 4.4.2 The parameter $config is deprecated. No longer used.
      */
     public function displayCache(Cache $config)
     {
-        $cachedResponse = $this->pageCache->get($this->request, $this->response);
-        if ($cachedResponse instanceof ResponseInterface) {
+        if ($cachedResponse = $this->pageCache->get($this->request, $this->response)) {
             $this->response = $cachedResponse;
 
             $this->totalTime = $this->benchmark->getElapsedTime('total_execution');
@@ -725,7 +702,7 @@ class CodeIgniter
     /**
      * Tells the app that the final output should be cached.
      *
-     * @deprecated 4.4.0 Moved to ResponseCache::setTtl(). No longer used.
+     * @deprecated 4.4.0 Moved to ResponseCache::setTtl(). to No longer used.
      *
      * @return void
      */
@@ -797,7 +774,7 @@ class CodeIgniter
      * match a route against the current URI. If the route is a
      * "redirect route", will also handle the redirect.
      *
-     * @param RouteCollectionInterface|null $routes A collection interface to use in place
+     * @param RouteCollectionInterface|null $routes An collection interface to use in place
      *                                              of the config file.
      *
      * @return string|string[]|null Route filters, that is, the filters specified in the routes file
@@ -982,7 +959,8 @@ class CodeIgniter
         // Display 404 Errors
         $this->response->setStatusCode($e->getCode());
 
-        $this->outputBufferingEnd();
+        echo $this->outputBufferingEnd();
+        flush();
 
         // Throws new PageNotFoundException and remove exception message on production.
         throw PageNotFoundException::forPageNotFound(
@@ -998,8 +976,6 @@ class CodeIgniter
      * @param ResponseInterface|string|null $returned
      *
      * @deprecated $cacheConfig is deprecated.
-     *
-     * @return void
      */
     protected function gatherOutput(?Cache $cacheConfig = null, $returned = null)
     {
@@ -1036,8 +1012,6 @@ class CodeIgniter
      * This helps provider safer, more reliable previous_url() detection.
      *
      * @param string|URI $uri
-     *
-     * @return void
      */
     public function storePreviousURL($uri)
     {
@@ -1066,21 +1040,19 @@ class CodeIgniter
         }
 
         if (isset($_SESSION)) {
-            session()->set('_ci_previous_url', URI::createURIString(
+            $_SESSION['_ci_previous_url'] = URI::createURIString(
                 $uri->getScheme(),
                 $uri->getAuthority(),
                 $uri->getPath(),
                 $uri->getQuery(),
                 $uri->getFragment()
-            ));
+            );
         }
     }
 
     /**
      * Modifies the Request Object to use a different method if a POST
      * variable called _method is found.
-     *
-     * @return void
      */
     public function spoofRequestMethod()
     {
@@ -1122,8 +1094,6 @@ class CodeIgniter
      * @param int $code
      *
      * @deprecated 4.4.0 No longer Used. Moved to index.php.
-     *
-     * @return void
      */
     protected function callExit($code)
     {

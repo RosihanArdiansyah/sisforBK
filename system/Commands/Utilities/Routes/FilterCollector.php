@@ -19,8 +19,6 @@ use Config\Filters as FiltersConfig;
 
 /**
  * Collects filters for a route.
- *
- * @see \CodeIgniter\Commands\Utilities\Routes\FilterCollectorTest
  */
 final class FilterCollector
 {
@@ -51,7 +49,7 @@ final class FilterCollector
             ];
         }
 
-        $request = Services::incomingrequest(null, false);
+        $request = Services::request(null, false);
         $request->setMethod($method);
 
         $router  = $this->createRouter($request);

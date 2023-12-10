@@ -20,8 +20,6 @@ use ErrorException;
  * CodeIgniter Email Class
  *
  * Permits email to be sent using Mail, Sendmail, or SMTP.
- *
- * @see \CodeIgniter\Email\EmailTest
  */
 class Email
 {
@@ -352,8 +350,7 @@ class Email
      * Character sets valid for 7-bit encoding,
      * excluding language suffix.
      *
-     * @var array<int, string>
-     * @phpstan-var list<string>
+     * @var array
      */
     protected $baseCharsets = [
         'us-ascii',

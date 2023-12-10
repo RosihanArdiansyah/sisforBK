@@ -17,8 +17,6 @@ use SimpleXMLElement;
 
 /**
  * XML data formatter
- *
- * @see \CodeIgniter\Format\XMLFormatterTest
  */
 class XMLFormatter implements FormatterInterface
 {
