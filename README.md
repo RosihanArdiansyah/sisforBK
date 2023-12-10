@@ -1,6 +1,12 @@
 ## Instalasi Aplikasi Sistem Informasi BK SMKN 10 Makassar
+
+# Download composer
+Bisa di download disini 
+https://getcomposer.org
+
 # Download XAMPP untuk menjalankan websitenya
 wget https://www.apachefriends.org/xampp-files/7.4.16/xampp-linux-x64-7.4.16-0-installer.run(linux)
+download di https://www.apachefriends.org/download.html(windows)
 
 # Make the downloaded installer executable
 chmod +x xampp-linux-x64-7.4.16-0-installer.run(linux)
@@ -19,6 +25,9 @@ atau download zipnya melalui github (https://github.com/RosihanArdiansyah/sisfor
 
 # Buat Database di MySQL dengan nama yang sama dengan yang ada di dalam app/Database
 default name  = sisforBK
+
+# Jalankan composer 
+Buka command prompt, kemudian composer install
 
 # Migrate database
 php spark migrate
