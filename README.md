@@ -34,6 +34,7 @@ php spark migrate
 
 ## Jalankan seedernya
 php spark db:seed UserSeeder
+
 php spark db:seed KelasSeeder
 
 ## Terakhir jalankan webnya
