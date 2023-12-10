@@ -37,8 +37,8 @@
 									<td><?= date('H:i', strtotime($jwd['waktu'])); ?></td>
 									<td><?= $jwd['user_fullName']; ?></td>
 									<td>
-											<?php if ($jwd['status'] == 0): ?>
-													<span class="badge bg-danger">ditolak</span>
+											<?php if ($jwd['status'] == 2): ?>
+													<span class="badge bg-info">ditolak</span>
 											<?php elseif ($jwd['status'] == 1): ?>
 													<span class="badge bg-success">diterima</span>
 											<?php else: ?>
@@ -47,9 +47,13 @@
 									</td>
 									<td>
 										<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
-										<button type="button" class="btn btn-danger btn-sm" onClick="deleteJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-trash-alt"></i></button>
+										<?php if ($jwd['status'] != 1): ?>
+											<button type="button" class="btn btn-danger btn-sm" onClick="deleteJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-trash-alt"></i></button>
+										<?php endif; ?>
 										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="buat laporan konseling"  onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
-										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="cetak jadwal konseling" onClick="printJadwal(<?= $jwd['ID']; ?>)"><i class="fas fa-print"></i></button>
+										<?php if ($jwd['status'] == 1): ?>
+											<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="cetak jadwal konseling" onClick="printJadwal(<?= $jwd['ID']; ?>)"><i class="fas fa-print"></i></button>
+										<?php endif; ?>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
@@ -129,6 +133,7 @@
 
 						$('#addReportJadwalForm').submit(function(e) {
 							e.preventDefault();
+							console.log($('#addReportJadwalForm').serialize())
 
 							$.ajax({
 								url: '<?= base_url('createReport'); ?>',
@@ -246,10 +251,13 @@
 										if(jadwalData[0].reportID == null) {
 											$('#addReportId').val('');
 											$('#addReportJadwalId').val(jadwalData[0].ID);
+											// $('#addReportUserID').val(jadwalData[0].jadwalID);
 										} else {
 											$('#addReportId').val(jadwalData[0].reportID);
 											$('#addReportJadwalId').val(jadwalData[0].jadwalID);
+											// $('#addReportUserID').val(jadwalData[0].jadwalID);
 										}
+										
 										$('#addReportUserID').val(jadwalData[0].userID);
 										$('#addReportPermasalahan').val(jadwalData[0].permasalahan);
 										$('#addReportJadwal').val(jadwalData[0].jadwal);
@@ -407,8 +415,9 @@
 								<form id="addReportJadwalForm">
 									<div class="modal-body">
 											<div class="form-group">
-													<input type="hidden" class="form-control" id="addReportJadwalId" name="addReportJadwalId">
-													<input type="hidden" class="form-control" id="addReportId" name="addReportId">
+													<input type="hidden" readonly class="form-control" id="addReportJadwalId" name="addReportJadwalId">
+													<input type="hidden" readonly class="form-control" id="addReportId" name="addReportId">
+													<!-- <input type="hidden" readonly class="form-control" id="addReportUserId" name="addReportUserId"> -->
 													<label for="addReportUserID">Nama Siswa</label>
 													<select class="form-control" id="addReportUserID" name="addReportUserID" required>
 															<?php foreach ($users as $user): ?>

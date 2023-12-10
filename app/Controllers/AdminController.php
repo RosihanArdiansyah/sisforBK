@@ -57,6 +57,8 @@ class AdminController extends BaseController
         $kelasModel = new \App\Models\KelasModel();
         $data['kelas'] = $kelasModel->findAll();
         $data['users'] = $userModel
+            ->select('user.*, kelas.kelas as kls')
+            ->join('kelas', 'user.kelas = kelas.ID')
             ->Where('user.username', session()->get('username'))
             ->findAll();
         $data['title'] = "Profil";
@@ -283,8 +285,8 @@ class AdminController extends BaseController
             'ID' => $this->request->getPost('addReportId'),
             'JadwalID' => $this->request->getPost('addReportJadwalId'),
             'Waktu' => $this->request->getPost('addReportWaktu'),
+            // 'UserID' => $this->request->getPost('addReportUserID'),
             'GuruBK' => session()->get('ID'),
-            'UserID' => $this->request->getPost('addReportUserID'),
             'PelanggaranID' => $this->request->getPost('addReportPelanggaran'),
             'Tindakan' => $this->request->getPost('addReportTindakan'),
             'Sanksi' => $this->request->getPost('addReportSanksi'),
@@ -414,6 +416,7 @@ class AdminController extends BaseController
         $Bapak = $this->request->getPost('editBapak');
         $Ibu = $this->request->getPost('editIbu');
         $Kelas = $this->request->getPost('editKelas');
+        $Password = $this->request->getPost('editPassword');
 
         if (empty($NIS)) {
             $NIS = NULL; // Set a default value
@@ -428,18 +431,35 @@ class AdminController extends BaseController
         }
 
         // Get the form data
-        $data = [
-            // Add similar lines for other fields
-            'username' => $this->request->getPost('editUsername'),
-            'fullName' => $this->request->getPost('editFullName'),
-            $TTL,
-            $NIS,
-            $Bapak,
-            $Ibu,
-            $Kelas,
-            'Role' => $this->request->getPost('editRole'),
-            // ...
-        ];
+        if(empty($Password)){
+            $data = [
+                // Add similar lines for other fields
+                'username' => $this->request->getPost('editUsername'),
+                'fullName' => $this->request->getPost('editFullName'),
+                'TTL' =>$TTL,
+                'NIS' =>$NIS,
+                'Bapak' => $Bapak,
+                'Ibu' =>$Ibu,
+                'Kelas' =>$Kelas,
+                'Role' => $this->request->getPost('editRole'),
+                // ...
+            ];
+        }else{
+            $data = [
+                // Add similar lines for other fields
+                'username' => $this->request->getPost('editUsername'),
+                'fullName' => $this->request->getPost('editFullName'),
+                'TTL' =>$TTL,
+                'NIS' =>$NIS,
+                'Bapak' => $Bapak,
+                'Ibu' =>$Ibu,
+                'Kelas' =>$Kelas,
+                'Role' => $this->request->getPost('editRole'),
+                'Password' =>md5($this->request->getPost('editPassword')),
+                // ...
+            ];
+        }
+        
 
         // Update the user data
         if ($userModel->update($this->request->getPost('editUserId'), $data)) {

@@ -83,6 +83,10 @@
 							<input placeholder="Masukkan nama lengkap" type="text" class="form-control" id="editFullName" name="editFullName">
 						</div>
 						<div class="form-group">
+							<label for="editPassword">Password</label>
+							<input placeholder="Opsional, jika ingin mengganti password" type="password" class="form-control" id="editPassword" name="editPassword">
+						</div>
+						<div class="form-group">
 							<label for="editTTL">TTL</label>
 							<input type="date" placeholder="Masukkan tanggal lahir" class="form-control" id="editTTL" name="editTTL">
 						</div>

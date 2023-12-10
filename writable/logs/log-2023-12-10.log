@@ -50,3 +50,266 @@ in SYSTEMPATH\Database\BaseConnection.php on line 646.
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:18:19 --> mysqli_sql_exception: Column 'userID' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ko...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ko...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ko...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ko...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\sisforBK\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-12-10 10:18:20 --> Column 'userID' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `konseling` (`JadwalID`, `GuruBK`, `UserID`, `PelanggaranID`, `Tindakan`, `Sanksi`) VALUES (:JadwalID:, :GuruBK:, :UserID:, :PelanggaranID:, :Tindakan:, :Sanksi:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:18:55 --> mysqli_sql_exception: Column 'userID' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ko...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ko...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ko...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ko...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\sisforBK\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-12-10 10:18:55 --> Column 'userID' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `konseling` (`JadwalID`, `GuruBK`, `UserID`, `PelanggaranID`, `Tindakan`, `Sanksi`) VALUES (:JadwalID:, :GuruBK:, :UserID:, :PelanggaranID:, :Tindakan:, :Sanksi:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:22:36 --> mysqli_sql_exception: Column 'userID' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ko...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ko...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ko...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ko...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\sisforBK\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-12-10 10:22:36 --> Column 'userID' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `konseling` (`JadwalID`, `GuruBK`, `UserID`, `PelanggaranID`, `Tindakan`, `Sanksi`) VALUES (:JadwalID:, :GuruBK:, :UserID:, :PelanggaranID:, :Tindakan:, :Sanksi:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:26:11 --> mysqli_sql_exception: Column 'userID' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ko...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ko...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ko...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ko...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\sisforBK\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-12-10 10:26:11 --> Column 'userID' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `konseling` (`JadwalID`, `UserID`, `GuruBK`, `PelanggaranID`, `Tindakan`, `Sanksi`) VALUES (:JadwalID:, :UserID:, :GuruBK:, :PelanggaranID:, :Tindakan:, :Sanksi:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:27:56 --> mysqli_sql_exception: Column 'userID' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ko...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ko...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ko...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ko...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\sisforBK\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-12-10 10:27:56 --> Column 'userID' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `konseling` (`JadwalID`, `UserID`, `GuruBK`, `PelanggaranID`, `Tindakan`, `Sanksi`) VALUES (:JadwalID:, :UserID:, :GuruBK:, :PelanggaranID:, :Tindakan:, :Sanksi:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:30:19 --> mysqli_sql_exception: Column 'userID' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ko...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ko...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ko...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ko...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\sisforBK\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-12-10 10:30:19 --> Column 'userID' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `konseling` (`JadwalID`, `UserID`, `GuruBK`, `PelanggaranID`, `Tindakan`, `Sanksi`) VALUES (:JadwalID:, :UserID:, :GuruBK:, :PelanggaranID:, :Tindakan:, :Sanksi:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:33:04 --> mysqli_sql_exception: Column 'userID' cannot be null in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ko...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ko...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ko...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ko...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\xampp\htdocs\sisforBK\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2023-12-10 10:33:04 --> Column 'userID' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `konseling` (`JadwalID`, `UserID`, `GuruBK`, `PelanggaranID`, `Tindakan`, `Sanksi`) VALUES (:JadwalID:, :UserID:, :GuruBK:, :PelanggaranID:, :Tindakan:, :Sanksi:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(294): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->createReport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 10:45:21 --> mysqli_sql_exception: Unknown column 'konseling.userID' in 'where clause' in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `konseli...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `konseli...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `konseli...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `konseli...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sisforBK\app\Controllers\UserController.php(91): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\UserController->konseling()
+#8 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-12-10 10:45:21 --> Unknown column 'konseling.userID' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `konseling`.*, `jadwal`.`permasalahan` AS `permasalahan`, `jadwal`.`waktu` `AS`, `jadwal`.`jadwal` AS `jadwal`, `jadwal`.`guruBK` AS `userID`, `user`.`fullName` AS `userName`, `pelanggaran`.`namaPelanggaran` AS `namaPelanggaran`
+FROM `konseling`
+JOIN `jadwal` ON `konseling`.`jadwalID` = `jadwal`.`ID`
+JOIN `pelanggaran` ON `konseling`.`pelanggaranID` = `pelanggaran`.`ID`
+JOIN `user` ON `jadwal`.`guruBK` = `user`.`ID`
+WHERE `konseling`.`userID` = :konseling.userID:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserController.php(91): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->konseling()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 10:46:21 --> Undefined variable $title
+in APPPATH\Views\User\Layout\header.php on line 4.
+ 1 APPPATH\Views\User\Layout\header.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Layout\\header.php', 4)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Layout\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('User/Layout/header', [], true)
+ 5 APPPATH\Controllers\UserController.php(53): view('User/Layout/header')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-10 11:06:51 --> mysqli_sql_exception: Duplicate entry '123456' for key 'NIS' in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `user` S...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user` S...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user` S...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `user` S...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(449): CodeIgniter\Model->update('1', Array)
+#8 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->updateUser()
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-12-10 11:06:51 --> Duplicate entry '123456' for key 'NIS'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `user` SET `username` = :username:, `fullName` = :fullName:, `TTL` = :TTL:, `NIS` = :NIS:, `Bapak` = :Bapak:, `Ibu` = :Ibu:, `Kelas` = :Kelas:, `Role` = :Role:, `Password` = :Password:
+WHERE `user`.`ID` IN :user.ID:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\AdminController.php(449): CodeIgniter\Model->update('1', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->updateUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

@@ -49,46 +49,76 @@ class UserController extends BaseController
 
     public function profile()
     {
-        // Load header view from the layout folder
-        echo view('User/Layout/header');
+        $userModel = new \App\Models\UserModel();
+        $kelasModel = new \App\Models\KelasModel();
+        $data['kelas'] = $kelasModel->findAll();
+        $data['users'] = $userModel
+            ->select('user.*, kelas.kelas as kls')
+            ->join('kelas', 'user.kelas = kelas.ID')
+            ->Where('user.username', session()->get('username'))
+            ->findAll();
+        $data['title'] = "Profil";
+        if (session()->get('role') == 0) {
+            // User dashboard content
 
-        // Load sidebar view from the layout folder
-        echo view('User/Layout/sidebar');
+            // Load header view from the layout folder
+            echo view('User/Layout/header', $data);
 
-        // Load main content (index) view
-        echo view('User/Profil/index');
+            // Load sidebar view from the layout folder
+            echo view('User/Layout/sidebar');
 
-        // Load modal view from the layout folder
-        echo view('User/Layout/modal');
+            // Load main content (index) view
+            echo view('User/Profil/index', $data);
 
-        // Load footer view from the layout folder
-        echo view('User/Layout/footer');
-        // echo view('header');
-        // return view('login');
-        // echo('user');
-                // Your code here
+            // Load footer view from the layout folder
+            echo view('User/Layout/footer');
+        } else {
+            // Redirect to login or display an error message
+            return redirect()->to('/')->with('error', 'Access denied');
+        }
     }
 
     public function konseling()
     {
+        $konselingModel = new \App\Models\KonselingModel();
+        $jadwalModel = new \App\Models\JadwalModel();
+        $pelanggaranModel = new \App\Models\PelanggaranModel();
+        $userModel = new \App\Models\UserModel();
+        $data['pelanggaran'] = $pelanggaranModel->findAll();
+        $data['jadwal'] = $jadwalModel->findAll();
+        $data['users'] = $userModel
+            ->select('user.*, kelas.kelas as kls')
+            ->join('kelas', 'user.kelas = kelas.ID')
+            ->where('user.Role' , '0')
+            ->findAll();
+        $data['konselingData'] = $konselingModel
+            ->select('konseling.*, jadwal.permasalahan AS permasalahan, jadwal.waktu AS ,jadwal.jadwal AS jadwal, jadwal.guruBK AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran')
+            ->join('jadwal', 'konseling.jadwalID = jadwal.ID')
+            ->join('pelanggaran', 'konseling.pelanggaranID = pelanggaran.ID')
+            ->join('user', 'jadwal.guruBK = user.ID')
+            ->where('jadwal.userID', session()->get('ID'))
+            ->findAll();        
+
+        $data['title'] = "Data Konseling";
         // Load header view from the layout folder
-        echo view('User/Layout/header');
+        if (session()->get('role') == 0) {
+            // User dashboard content
 
-        // Load sidebar view from the layout folder
-        echo view('User/Layout/sidebar');
+            // Load header view from the layout folder
+            echo view('User/Layout/header', $data);
 
-        // Load main content (index) view
-        echo view('User/Konseling/index');
+            // Load sidebar view from the layout folder
+            echo view('User/Layout/sidebar');
 
-        // Load modal view from the layout folder
-        echo view('User/Layout/modal');
+            // Load main content (index) view
+            echo view('User/Konseling/index', $data);
 
-        // Load footer view from the layout folder
-        echo view('User/Layout/footer');
-        // echo view('header');
-        // return view('login');
-        // echo('user');
-                // Your code here
+            // Load footer view from the layout folder
+            echo view('User/Layout/footer');
+        } else {
+            // Redirect to login or display an error message
+            return redirect()->to('/')->with('error', 'Access denied');
+        }
     }
 
     public function createJadwal()
@@ -139,8 +169,4 @@ class UserController extends BaseController
         }
     }
 
-    public function logout()
-    {
-        // logout here
-    }
 }

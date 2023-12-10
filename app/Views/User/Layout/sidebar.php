@@ -15,7 +15,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/user/profile" class="nav-link">
+			<a href="<?=base_url("/user/profile");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="far fa-user"></i>
 				</div>
@@ -23,7 +23,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/user/konseling" class="nav-link">
+			<a href="<?=base_url("/user/konseling");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="fab fa-first-order"></i>
 				</div>
@@ -31,7 +31,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/" class="nav-link">
+			<a href="<?=base_url("logout");?>" class="nav-link">
 				<div class="icon-wrap">
 					<i class="fas fa-sign-out-alt"></i>
 				</div>

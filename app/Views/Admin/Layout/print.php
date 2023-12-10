@@ -43,9 +43,12 @@
 
   <p>Agar kiranya memenuhi pemanggilan oleh Bimbingan Konseling SMK Negeri 10 Makassar atas koordinasi guru BK dengan wali kelasnya, guna kepentingan pendidikan anak kita. Untuk itu kami sangat mengharapkan kedatangan bapak/ibu orang tua/wali bersama dengan peserta didik untuk membicarakan kepentingan tersebut, yang insyah allah pada:</p>
 
-  <p>Hari/Tanggal:</p>
-  <p>Jam:</p>
-  <p>Tempat:</p>
+  <?php foreach ($jadwal as $jwd): ?>
+    <?php setlocale(LC_TIME, 'id_ID'); ?>
+    <p>Hari/Tanggal : <?= strftime('%d %B %Y', strtotime($jwd['jadwal'])); ?></p>
+    <p>Jam          : <?= date('H:i', strtotime($jwd['waktu'])); ?></p>
+    <p>Tempat       : SMKN 10 Makassar</p>
+  <?php endforeach; ?>
 
   <p>Atas perhatian dan kerjasamanya yang baik dari bapak/ibu kami ucapkan terima kasih.</p>
 
