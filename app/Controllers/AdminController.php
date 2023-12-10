@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 // use App\Controller\BaseController;
-use Dompdf\Dompdf;
 
 class AdminController extends BaseController
 {
