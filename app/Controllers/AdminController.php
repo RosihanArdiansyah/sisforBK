@@ -284,6 +284,7 @@ class AdminController extends BaseController
             'JadwalID' => $this->request->getPost('addReportJadwalId'),
             'Waktu' => $this->request->getPost('addReportWaktu'),
             'GuruBK' => session()->get('ID'),
+            'UserID' => $this->request->getPost('addReportUserID'),
             'PelanggaranID' => $this->request->getPost('addReportPelanggaran'),
             'Tindakan' => $this->request->getPost('addReportTindakan'),
             'Sanksi' => $this->request->getPost('addReportSanksi'),

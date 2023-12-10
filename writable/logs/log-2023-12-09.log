@@ -95,3 +95,30 @@ in SYSTEMPATH\Model.php on line 380.
  5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
  6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-12-09 09:04:57 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UNSIGNED NOT NULL,
+	`userID` VARCHAR(5) UNSIGNED NOT NULL,
+	`pelanggaranID` I...' at line 4 in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `k...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `k...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `k...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\Forge.php(546): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `k...')
+#4 C:\xampp\htdocs\sisforBK\app\Database\Migrations\2023-11-04-153140_CreateKonselingTable.php(51): CodeIgniter\Database\Forge->createTable('konseling')
+#5 C:\xampp\htdocs\sisforBK\system\Database\MigrationRunner.php(877): App\Database\Migrations\Konseling->up()
+#6 C:\xampp\htdocs\sisforBK\system\Database\MigrationRunner.php(188): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\sisforBK\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\sisforBK\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\sisforBK\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\sisforBK\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+CRITICAL - 2023-12-09 09:24:14 --> Undefined array key "kls"
+in APPPATH\Views\User\index.php on line 237.
+ 1 APPPATH\Views\User\index.php(237): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "kls"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\index.php', 237)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('User/index', [], true)
+ 5 APPPATH\Controllers\UserController.php(39): view('User/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

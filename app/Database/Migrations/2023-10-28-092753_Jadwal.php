@@ -43,6 +43,7 @@ class Jadwal extends Migration
 
         $this->forge->addKey('ID', true);
         $this->forge->addForeignKey('userID', 'user', 'ID', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('guruBK', 'user', 'ID', 'CASCADE', 'CASCADE');
         $this->forge->createTable('jadwal');
     }
 

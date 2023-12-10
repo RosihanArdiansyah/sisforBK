@@ -21,8 +21,14 @@ class Konseling extends Migration
                 'unsigned' => true,
             ],
             'guruBK' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],
+            'userID' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
             ],
             'pelanggaranID' => [
                 'type' => 'INT',
@@ -40,6 +46,8 @@ class Konseling extends Migration
         $this->forge->addKey('ID', true);
         $this->forge->addForeignKey('jadwalID', 'jadwal', 'ID', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('pelanggaranID', 'pelanggaran', 'ID', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('userID', 'user', 'ID', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('guruBK', 'user', 'ID', 'CASCADE', 'CASCADE');
         $this->forge->createTable('konseling');
     }
 
