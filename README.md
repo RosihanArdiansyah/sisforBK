@@ -26,9 +26,6 @@ atau download zipnya melalui github (https://github.com/RosihanArdiansyah/sisfor
 ## Buat Database di MySQL dengan nama yang sama dengan yang ada di dalam app/Database
 default name  = sisforBK
 
-## Jalankan composer 
-Buka command prompt, kemudian composer install
-
 ## Migrate database
 php spark migrate
 
