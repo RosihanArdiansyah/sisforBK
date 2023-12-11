@@ -13,7 +13,6 @@
 		<!-- Button in the top right corner -->
 		<div style="display: flex; justify-content: flex-end;">
 				<button type="button" id="jadwalCreateBtn" class="btn btn-primary" style="margin: 10px;">Buat Jadwal Konseling</button>
-				<button type="button" id="jadwalPrintBtn" class="btn btn-success" style="margin: 10px;">Cetak Surat Panggilan</button>
 		</div>
 		<div class="card-body">
 			<h4 class="card-title" style="margin-bottom: 20px; position: absolute; top: 16px; left: 16px;">Jadwal Konseling</h4>
@@ -48,10 +47,13 @@
 									<td>
 										<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="ubah jadwal konseling" onClick="editJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-edit"></i></button>
 										<?php if ($jwd['status'] != 1): ?>
+											<!-- hapus jadwal -->
 											<button type="button" class="btn btn-danger btn-sm" onClick="deleteJadwal(<?= $jwd['ID']; ?>)"><i class="far fa-trash-alt"></i></button>
 										<?php endif; ?>
-										<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="buat laporan konseling"  onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
+											<!-- buat laporan hasil konseling -->
+											<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="buat laporan konseling"  onClick="buatLaporan(<?= $jwd['ID']; ?>)"><i class="far fa-sticky-note"></i></button>
 										<?php if ($jwd['status'] == 1): ?>
+											<!-- mencetak hasil konseling -->
 											<button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="cetak jadwal konseling" onClick="printJadwal(<?= $jwd['ID']; ?>)"><i class="fas fa-print"></i></button>
 										<?php endif; ?>
 									</td>
@@ -80,164 +82,135 @@
 
 				// Create a DataTable object
 				var dataTable = $('#jadwalTable').DataTable({
-							// Add a search filter
-							search: {
-								smart: true,
-								columns: ['ID', 'jadwal', 'waktu', 'user_fullName', 'status']
-							},
-							
-						});
+					// Add a search filter
+					search: {
+						smart: true,
+						columns: ['ID', 'jadwal', 'waktu', 'user_fullName', 'status']
+					},
+					
+				});
 
-						// Handle the search event
-						$('#jadwalTable_filter input').on('keyup', function() {
-							dataTable.search(this.value).draw();
-						});
+				// Handle the search event
+				$('#jadwalTable_filter input').on('keyup', function() {
+					dataTable.search(this.value).draw();
+				});
 
-						$('#jadwalCreateBtn').click(function() {
-							$('#statusForm').hide();
-							$('#createJadwalModal').modal('show');
-						});
+				// membuka form membuat jadwal
+				$('#jadwalCreateBtn').click(function() {
+					$('#statusForm').hide();
+					$('#createJadwalModal').modal('show');
+				});
 
-						$('#createJadwalForm').submit(function(e) {
-							e.preventDefault();
+				// submit form buat jadwal
+				$('#createJadwalForm').submit(function(e) {
+					e.preventDefault();
 
-							var jadwalId = $('#addJadwalId').val();
-							var ajaxUrl = jadwalId === '' ? '<?= base_url('createJadwal'); ?>' : '<?= base_url('updateJadwal'); ?>';
-							var successMessage = jadwalId === '' ? 'Jadwal berhasil dibuat!' : 'Jadwal berhasil diperbarui!';
-							var errorMessage = jadwalId === '' ? 'Jadwal tidak dapat dibuat!' : 'Jadwal tidak dapat diperbarui!';
+					var jadwalId = $('#addJadwalId').val();
+					var ajaxUrl = jadwalId === '' ? '<?= base_url('createJadwal'); ?>' : '<?= base_url('updateJadwal'); ?>';
+					var successMessage = jadwalId === '' ? 'Jadwal berhasil dibuat!' : 'Jadwal berhasil diperbarui!';
+					var errorMessage = jadwalId === '' ? 'Jadwal tidak dapat dibuat!' : 'Jadwal tidak dapat diperbarui!';
 
-							$.ajax({
-								url: ajaxUrl,
-								method: 'POST',
-								data: $('#createJadwalForm').serialize(),
-								success: function(data) {
-									$('#createJadwalModal').modal('hide');
-									$('#createJadwalForm').trigger('reset');
-									Swal.fire({
-										icon: 'success',
-										title: jadwalId === '' ? 'Jadwal Created' : 'Jadwal Updated',
-										text: successMessage,
-									}).then(function () {
-										window.location.href = '<?= base_url('admin'); ?>';
-									});
-								},
-								error: function(error) {
-									Swal.fire({
-										icon: 'error',
-										title: 'Error',
-										text: errorMessage,
-									});
-								}
+					$.ajax({
+						url: ajaxUrl,
+						method: 'POST',
+						data: $('#createJadwalForm').serialize(),
+						success: function(data) {
+							$('#createJadwalModal').modal('hide');
+							$('#createJadwalForm').trigger('reset');
+							Swal.fire({
+								icon: 'success',
+								title: jadwalId === '' ? 'Jadwal Created' : 'Jadwal Updated',
+								text: successMessage,
+							}).then(function () {
+								window.location.href = '<?= base_url('admin'); ?>';
 							});
-						});
-
-						$('#addReportJadwalForm').submit(function(e) {
-							e.preventDefault();
-							console.log($('#addReportJadwalForm').serialize())
-
-							$.ajax({
-								url: '<?= base_url('createReport'); ?>',
-								method: 'POST',
-								data: $('#addReportJadwalForm').serialize(),
-								success: function(data) {
-									$('#addKonselingModal').modal('hide');
-									$('#addReportJadwalForm').trigger('reset');
-									Swal.fire({
-											icon: 'success',
-											title: 'Report Created',
-											text: 'Laporan berhasil dibuat!',
-									}).then(function () {
-											window.location.href = '<?= base_url('admin'); ?>';
-									});
-								},
-								error: function(error) {
-									Swal.fire({
-										icon: 'error',
-										title: 'Error',
-										text: 'Laporan tidak dapat dibuat!',
-									});
-								}
+						},
+						error: function(error) {
+							Swal.fire({
+								icon: 'error',
+								title: 'Error',
+								text: errorMessage,
 							});
-						});
+						}
+					});
+				});
 
-						$('#editJadwalForm').submit(function(e) {
-							e.preventDefault();
-							var formData = $(this).serialize();
-							console.log(formData);
+				// submit form buat laporan
+				$('#addReportJadwalForm').submit(function(e) {
+					e.preventDefault();
+					console.log($('#addReportJadwalForm').serialize())
 
-							$.ajax({
-									url: '<?= base_url('updateJadwal'); ?>', // Change the URL to your controller method for updating user data
-									method: 'POST',
-									data: formData,
-									success: function(data) {
-											console.log(data);
-											$('#editJadwalModal').modal('hide');
-											$('#editJadwalForm').trigger('reset');
-											Swal.fire({
-													icon: 'success',
-													title: 'Jadwal Updated',
-													text: 'Jadwal berhasil diperbarui!',
-											}).then(function () {
-													// You may want to reload or update the table data here
-													window.location.href = '<?= base_url('admin'); ?>';
-													// For example: window.location.reload();
-											});
-									},
-									error: function(error) {
-											Swal.fire({
-													icon: 'error',
-													title: 'Error',
-													text: 'Jadwal tidak dapat diperbarui!',
-											});
+					$.ajax({
+						url: '<?= base_url('createReport'); ?>',
+						method: 'POST',
+						data: $('#addReportJadwalForm').serialize(),
+						success: function(data) {
+							$('#addKonselingModal').modal('hide');
+							$('#addReportJadwalForm').trigger('reset');
+							Swal.fire({
+									icon: 'success',
+									title: 'Report Created',
+									text: 'Laporan berhasil dibuat!',
+							}).then(function () {
+									window.location.href = '<?= base_url('admin'); ?>';
+							});
+						},
+						error: function(error) {
+							Swal.fire({
+								icon: 'error',
+								title: 'Error',
+								text: 'Laporan tidak dapat dibuat!',
+							});
+						}
+					});
+				});
+
+	});
+
+	</script>
+
+		<!-- fungsi untuk edit jadwal -->
+		<script>
+			// Define the editUser function to handle the edit action
+			function editJadwal(id) {
+					$.ajax({
+							url: '<?= base_url('showJadwal'); ?>'+id, // Change the URL to your controller method
+							method: 'GET',
+							success: function(data) {
+									// Parse the JSON response
+									var jadwalData = JSON.parse(data);
+									console.log(jadwalData[0].ID);
+
+									// Populate the modal fields with user data
+									$('#addJadwalId').val(jadwalData[0].ID);
+									$('#userID').val(jadwalData[0].userID);
+									$('#permasalahan').val(jadwalData[0].permasalahan);
+									$('#jadwal').val(jadwalData[0].jadwal);
+									$('#waktu').val(jadwalData[0].waktu);
+									if (jadwalData[0].ID) {
+											$('#status').val(jadwalData[0].status);
+											$('#statusForm').show();
+									} else {
+											$('#statusForm').hide();
 									}
-							});
-						});
-			});
+									// Add similar lines for other input fields
 
+									// Show the editUserModal
+									$('#createJadwalModal').modal('show');
+								},
+							error: function(error) {
+									Swal.fire({
+											icon: 'error',
+											title: 'Error',
+											text: 'Jadwal tidak dapat diedit!',
+									});
+							}
+					});
+			}
 		</script>
 
+		<!-- fungsi untuk membuat laporan -->
 		<script>
-				// Define the editUser function to handle the edit action
-				function editJadwal(id) {
-						$.ajax({
-								url: '<?= base_url('showJadwal'); ?>'+id, // Change the URL to your controller method
-								method: 'GET',
-								success: function(data) {
-										// Parse the JSON response
-										var jadwalData = JSON.parse(data);
-										console.log(jadwalData[0].ID);
-
-										// Populate the modal fields with user data
-										$('#addJadwalId').val(jadwalData[0].ID);
-										$('#userID').val(jadwalData[0].userID);
-										$('#permasalahan').val(jadwalData[0].permasalahan);
-										$('#jadwal').val(jadwalData[0].jadwal);
-										$('#waktu').val(jadwalData[0].waktu);
-										if (jadwalData[0].ID) {
-												$('#status').val(jadwalData[0].status);
-												$('#statusForm').show();
-										} else {
-												$('#statusForm').hide();
-										}
-										// Add similar lines for other input fields
-
-										// Show the editUserModal
-										$('#createJadwalModal').modal('show');
-									},
-								error: function(error) {
-										Swal.fire({
-												icon: 'error',
-												title: 'Error',
-												text: 'Jadwal tidak dapat diedit!',
-										});
-								}
-						});
-						
-				}
-		</script>
-
-		<script>
-				// Define the editUser function to handle the edit action
 				function buatLaporan(id) {
 						$.ajax({
 								url: '<?= base_url('showReport'); ?>'+id, // Change the URL to your controller method
@@ -283,6 +256,7 @@
 				}
 		</script>
 
+		<!-- fungsi untuk mencetak surat panggilan -->
 		<script>
 				function printJadwal(id) {
 						// Create a new window
@@ -308,6 +282,7 @@
 				}
 		</script>
 
+		<!-- fungsi untuk menghapus jadwal -->
 		<script>
 				// Define the editUser function to handle the edit action
 				function deleteJadwal(id) {
@@ -354,7 +329,7 @@
 		</script>
 		
 
-		  <!-- create jadwal -->
+		  <!-- form membuat jadwal -->
 		<div class="modal fade" id="createJadwalModal" tabindex="-1" role="dialog" aria-labelledby="createJadwalModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -404,7 +379,7 @@
 			</div>
 		</div>
 		
-		<!-- post konseling report -->
+		<!-- form membuat laporan -->
 		<div class="modal fade" id="addKonselingModal" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -462,50 +437,3 @@
 				</div>
 		</div>
 
-		<!-- Add this modal for editing user information -->
-		<!-- <div class="modal fade" id="editJadwalModal" tabindex="-1" role="dialog" aria-labelledby="editJadwalModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-						<div class="modal-content">
-								<div class="modal-header">
-										<h5 class="modal-title" id="editJadwalModalLabel">Edit Jadwal Konseling</h5>
-										<button type="button" class="btn btn-secondary btn-danger" id="jadwalEditCloseBtn" style="float: right">Close</button>
-								</div>
-								<form id="editJadwalForm">
-									<div class="modal-body">
-											<div class="form-group">
-												<input type="hidden" class="form-control" id="editJadwalId" name="editJadwalId">
-												<label for="editUserID">Nama Siswa</label>
-												<select class="form-control" id="editUserID" name="editUserID" required>
-														<option value="">Pilih Siswa</option>
-														<?php foreach ($users as $user): ?>
-																<option value="<?= $user['ID']; ?>"><?= $user['fullName']; ?>- <?= $user['kls']; ?></option>
-														<?php endforeach; ?>
-												</select>      
-											</div>
-											<div class="form-group">
-												<label for="editPermasalahan">Permasalahan</label>
-												<textarea  class="form-control" id="editPermasalahan" name="editPermasalahan"></textarea>          
-											</div>
-											<div class="form-group">
-												<label for="editJadwal">Tanggal:</label>
-												<input class="form-control" id="editJadwal" type="date" name="editJadwal" required>            
-											</div>
-											<div class="form-group">
-												<label for="editWaktu">Waktu:</label>
-												<input class="form-control" id="editWaktu" type="time" name="editWaktu" required>           
-											</div>
-											<div class="form-group">
-													<label for="editStatus">Status</label>
-													<select class="form-control" id="editStatus" name="editStatus">
-														<option value="">Ditunda</option>
-														<option value="0">Ditolak</option>
-														<option value="1">Diterima</option>
-													</select>
-												</div>
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-primary" id="editJadwalButton">Buat Jadwal Konseling</button>
-									</div>
-								</form>
-						</div>
-				</div>
-		</div>		 -->

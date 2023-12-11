@@ -40,7 +40,7 @@
 			</div>
 		</div>
 
-		<!-- modal -->
+		<!-- modal create rule-->
 		<div class="modal fade" id="createRuleModal" tabindex="-1" role="dialog" aria-labelledby="createRuleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -74,6 +74,7 @@
 			</div>
 		</div>
 
+		<!-- modal edit rule -->
 		<div class="modal fade" id="editRuleModal" tabindex="-1" role="dialog" aria-labelledby="editRuleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -137,10 +138,12 @@
 					dataTable.search(this.value).draw();
 				});
 
+				// open form create rule
 				$('#ruleCreateBtn').click(function() {
 					$('#createRuleModal').modal('show');
 				});
 
+				// submit create rule
 				$('#createRuleForm').submit(function(e) {
 					e.preventDefault();
 
@@ -169,6 +172,7 @@
 					});
 				});
 
+				// submit edit rule
 				$('#editRuleForm').submit(function(e) {
 					e.preventDefault();
 					var formData = $(this).serialize();
@@ -204,6 +208,7 @@
 		});
 		</script>
 
+		<!-- fungsi untuk edit rule -->
 		<script>
 				// Define the editUser function to handle the edit action
 				function editRule(id) {

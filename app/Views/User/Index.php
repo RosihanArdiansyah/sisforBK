@@ -88,11 +88,13 @@
 							dataTable.search(this.value).draw();
 						});
 
+						// open create jadwal form
 						$('#jadwalCreateBtn').click(function() {
 							$('#statusForm').hide();
 							$('#createJadwalModal').modal('show');
 						});
 
+						// submit create jadwal
 						$('#createJadwalForm').submit(function(e) {
 							e.preventDefault();
 
@@ -130,6 +132,7 @@
 
 		</script>
 
+		<!-- function edit jadwal -->
 		<script>
 				// Define the editUser function to handle the edit action
 				function editJadwal(id) {
@@ -170,6 +173,7 @@
 				}
 		</script>
 
+		<!-- function delete jadwal -->
 		<script>
 				// Define the editUser function to handle the edit action
 				function deleteJadwal(id) {

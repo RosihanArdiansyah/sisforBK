@@ -17,6 +17,8 @@ sudo ./xampp-linux-x64-7.4.16-0-installer.run(linux)
 ## Start the XAMPP services
 sudo /opt/lampp/lampp start(linux)
 
+click xampp.exe(windows)
+
 ## Download atau clone project dari github
 git clone https://github.com/RosihanArdiansyah/sisforBK.git
 atau download zipnya melalui github (https://github.com/RosihanArdiansyah/sisforBK)
@@ -36,3 +38,8 @@ php spark db:seed KelasSeeder
 
 ## Terakhir jalankan webnya
 php spark serve
+
+## Panduan Login
+Sebagai admin (username : admin, password : 123456)
+
+Sebagai user (username : user, password : 123456)

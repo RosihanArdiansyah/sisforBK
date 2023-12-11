@@ -43,7 +43,7 @@
 	</div>
 
 	<!-- modal -->
-	<!-- post konseling report -->
+	<!-- edit konseling report -->
 	<div class="modal fade" id="editKonselingModal" tabindex="-1" role="dialog" aria-labelledby="addReportModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -129,6 +129,7 @@
 			dataTable.search(this.value).draw();
 		});
 
+		// submit edit report
 		$('#addReportJadwalForm').submit(function(e) {
 			e.preventDefault();
 
@@ -159,6 +160,7 @@
 	});
 	</script>
 
+	<!-- fungsi edit data konseling -->
 	<script>
 					// Define the editUser function to handle the edit action
 		function buatLaporan(id) {

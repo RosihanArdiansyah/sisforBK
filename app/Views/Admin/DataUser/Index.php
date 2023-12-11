@@ -53,7 +53,7 @@
 		</div>
 
 
-		<!-- modal -->
+		<!-- modal form membuat user -->
 		<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -113,7 +113,7 @@
 			</div>
 		</div>
 
-		<!-- Add this modal for editing user information -->
+		<!-- modal form edit user -->
 		<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 						<div class="modal-content">
@@ -217,10 +217,12 @@
 					dataTable.column(0).search(this.value).draw();
 				});
 
+				// membuka form create user
 				$('#userCreateBtn').click(function() {
 					$('#createUserModal').modal('show');
 				});
 
+				// fungsi submit create user
 				$('#createUserForm').submit(function(e) {
 					e.preventDefault();
 
@@ -249,7 +251,7 @@
 					});
 				});
 
-				// Add an event listener for the edit form submission
+				// fungsi submit edit user
 				$('#editUserForm').submit(function(e) {
 						e.preventDefault();
 						var formData = $(this).serialize();
@@ -287,6 +289,7 @@
 
 		</script>
 
+		<!-- fungsi edit user -->
 		<script>
 				// Define the editUser function to handle the edit action
 				function editUser(id) {
@@ -327,6 +330,7 @@
 				
 		</script>
 
+		<!-- fungsi delete user -->
 		<script>
 				// Define the deleteUser function to handle the delete action
 				function deleteUser(id) {
