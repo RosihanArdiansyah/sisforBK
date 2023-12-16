@@ -365,8 +365,8 @@
 								<div class="form-group" id="statusForm">
 									<label for="status">Status</label>
 									<select class="form-control" id="status" name="status">
-										<option value="">Ditunda</option>
-										<option value="0">Ditolak</option>
+										<option value="0">Ditunda</option>
+										<option value="2">Ditolak</option>
 										<option value="1">Diterima</option>
 									</select>
 								</div>
