@@ -1,0 +1,48 @@
+CRITICAL - 2023-12-17 02:56:12 --> Undefined variable $user
+in APPPATH\Views\Admin\Profil\index.php on line 107.
+ 1 APPPATH\Views\Admin\Profil\index.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Profil\\index.php', 107)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Profil\\index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Profil/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(72): view('Admin/Profil/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\sisforBK\\public\\index.php')
+CRITICAL - 2023-12-17 03:00:42 --> view(): Argument #3 ($options) must be of type array, string given, called in C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php on line 73
+in SYSTEMPATH\Common.php on line 1176.
+ 1 APPPATH\Controllers\AdminController.php(73): view('Admin/Profil/index', [...], '1')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->profile()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\sisforBK\\public\\index.php')
+ERROR - 2023-12-17 03:14:37 --> mysqli_sql_exception: Unknown column 'kelas.kelas' in 'field list' in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `user`.*...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `user`.*...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `user`.*...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `user`.*...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\sisforBK\app\Controllers\AdminController.php(61): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(919): App\Controllers\AdminController->profile()
+#8 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\sisforBK\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\sisforBK\public\index.php(80): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\sisforBK\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2023-12-17 03:14:37 --> Unknown column 'kelas.kelas' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `user`.*, `kelas`.`kelas` as `kls`
+FROM `user`
+WHERE `user`.`username` = :user.username:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(61): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->profile()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\sisforBK\\public\\index.php')

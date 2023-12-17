@@ -56,8 +56,7 @@ class AdminController extends BaseController
         $kelasModel = new \App\Models\KelasModel();
         $data['kelas'] = $kelasModel->findAll();
         $data['users'] = $userModel
-            ->select('user.*, kelas.kelas as kls')
-            ->join('kelas', 'user.kelas = kelas.ID')
+            ->select('user.*')
             ->Where('user.username', session()->get('username'))
             ->findAll();
         $data['title'] = "Profil";

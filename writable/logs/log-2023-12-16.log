@@ -31,3 +31,14 @@ Stack trace:
 #12 C:\xampp\htdocs\sisforBK\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
 #13 C:\xampp\htdocs\sisforBK\spark(102): CodeIgniter\CLI\Console->run()
 #14 {main}
+CRITICAL - 2023-12-16 03:44:17 --> Undefined variable $user
+in APPPATH\Views\Admin\Profil\index.php on line 107.
+ 1 APPPATH\Views\Admin\Profil\index.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Profil\\index.php', 107)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\Admin\\Profil\\index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Profil/index', [], true)
+ 5 APPPATH\Controllers\AdminController.php(72): view('Admin/Profil/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()

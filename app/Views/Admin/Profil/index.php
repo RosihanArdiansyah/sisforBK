@@ -32,12 +32,12 @@
 									<label style="width: 120px"><strong>Full Name:</strong></label>
 									<span style="margin-left: 8px; display: inline-block;"><?php echo $user['fullName']; ?></span>
 							</div>
-							<div class="profile-item">
+							<!-- <div class="profile-item">
 								<label style="width: 120px"><strong>Kelas:</strong></label>
 								<?php if ($user['Kelas'] !== null && $user['Kelas'] !== "0"): ?>
 									<span style="margin-left: 8px; display: inline-block;"><?php echo $user['Kelas']; ?></span>
 								<?php endif; ?>
-							</div>
+							</div> -->
 							<div class="profile-item">
 								<label style="width: 120px"><strong>NIS/NIP:</strong></label>
 								<?php if ($user['NIS'] !== null && $user['NIS'] !== "0"): ?>
@@ -102,24 +102,26 @@
 							<label for="editIbu">Ibu</label>
 							<input type="text" class="form-control" placeholder="Masukkan nama ibu" id="editIbu" name="editIbu">
 						</div>
-						<div class="form-group">
-							<label for="editKelas">Kelas</label>
-							<?php if ($user['Role'] != 1): ?>
-							<select class="form-control" id="editKelas" name="editKelas" required>
-								<option value="null">--Pilih Kelas--</option>
-								<?php foreach ($kelas as $kls): ?>
-									<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>
-								<?php endforeach; ?>
-							</select>
-							<?php else: ?>
-							<select class="form-control" id="editKelas" name="editKelas">
-								<option value="null">--Pilih Kelas--</option>
-								<?php foreach ($kelas as $kls): ?>
-									<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>
-								<?php endforeach; ?>
-							</select>
-							<?php endif; ?>
-						</div>
+						<!-- <div class="form-group">
+							<?php foreach ($users as $user): ?>
+								<label for="editKelas">Kelas</label>
+								<?php if ($user['Role'] != 1): ?>
+									<select class="form-control" id="editKelas" name="editKelas" required>
+										<option value="null">--Pilih Kelas--</option>
+										<?php foreach ($kelas as $kls): ?>
+											<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>
+										<?php endforeach; ?>
+									</select>
+									<?php else: ?>
+									<select class="form-control" id="editKelas" name="editKelas">
+										<option value="null">--Pilih Kelas--</option>
+										<?php foreach ($kelas as $kls): ?>
+											<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>
+										<?php endforeach; ?>
+									</select>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						</div> -->
 						<div class="form-group">
 							<label for="editRole">Status</label>
 							<select class="form-control" id="editRole" name="editRole" required>
@@ -207,7 +209,7 @@
 							$('#editNIS').val(userData[0].NIS);
 							$('#editBapak').val(userData[0].Bapak);
 							$('#editIbu').val(userData[0].Ibu);
-							$('#editKelas').val(userData[0].Kelas);
+							// $('#editKelas').val(userData[0].Kelas);
 							$('#editRole').val(userData[0].Role);
 							// Add similar lines for other input fields
 

@@ -104,30 +104,14 @@
 						</div>
 						<div class="form-group">
 							<label for="editKelas">Kelas</label>
-							<?php if ($user['Role'] != 1): ?>
-							<select class="form-control" id="editKelas" name="editKelas" required>
-								<option value="null">--Pilih Kelas--</option>
-								<?php foreach ($kelas as $kls): ?>
-									<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>
-								<?php endforeach; ?>
-							</select>
-							<?php else: ?>
 							<select class="form-control" id="editKelas" name="editKelas">
 								<option value="null">--Pilih Kelas--</option>
 								<?php foreach ($kelas as $kls): ?>
 									<option value="<?= $kls['ID']; ?>"><?= $kls['kelas']; ?></option>
 								<?php endforeach; ?>
 							</select>
-							<?php endif; ?>
 						</div>
-						<div class="form-group">
-							<label for="editRole">Status</label>
-							<select class="form-control" id="editRole" name="editRole" required>
-								<option value="">--Pilih Status Pengguna--</option>
-								<option value="0">Siswa</option>
-								<option value="1">Guru</option>
-							</select>
-						</div>
+						
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-primary" id="editUserButton">Edit User</button>
