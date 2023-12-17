@@ -54,16 +54,24 @@
 										<label for="namaPelanggaran">Nama Pelanggaran</label>
 										<input type="text" class="form-control" id="namaPelanggaran" name="namaPelanggaran" required>
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 										<label for="poin">Poin</label>
 										<select class="form-control" id="poin" name="poin" required>
-											<option value="">-- Pilih Poin --</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
+												<option value="">-- Pilih Poin --</option>
+												<?php for ($i = 1; $i <= 100; $i++) { ?>
+														<?php if ($i <= 10) { ?>
+																<option value="<?php echo $i; ?>"><?php echo $i; ?> - Ringan</option>
+														<?php } else if ($i < 50) { ?>
+																<option value="<?php echo $i; ?>"><?php echo $i; ?> - Sedang</option>
+														<?php } else { ?>
+																<option value="<?php echo $i; ?>"><?php echo $i; ?> - Berat</option>
+														<?php } ?>
+												<?php } ?>
 										</select>
+								</div> -->
+								<div class="form-group">
+										<label for="poin">Poin</label>
+										<input type="number" class="form-control" id="poin" name="poin" required>
 								</div>
 						</div>
 						<div class="modal-footer">
@@ -89,16 +97,24 @@
 										<label for="editNamaPelanggaran">Nama Pelanggaran</label>
 										<input type="text" class="form-control" id="editNamaPelanggaran" name="editNamaPelanggaran" required>
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 										<label for="editPoin">Poin</label>
 										<select class="form-control" id="editPoin" name="editPoin" required>
-											<option value="">-- Pilih Poin --</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
+												<option value="">-- Pilih Poin --</option>
+												<?php for ($i = 1; $i <= 100; $i++) { ?>
+														<?php if ($i <= 10) { ?>
+																<option value="<?php echo $i; ?>"><?php echo $i; ?> - Ringan</option>
+														<?php } else if ($i < 50) { ?>
+																<option value="<?php echo $i; ?>"><?php echo $i; ?> - Sedang</option>
+														<?php } else { ?>
+																<option value="<?php echo $i; ?>"><?php echo $i; ?> - Berat</option>
+														<?php } ?>
+												<?php } ?>
 										</select>
+								</div> -->
+								<div class="form-group">
+										<label for="editPoin">Poin</label>
+										<input type="number" class="form-control" id="editPoin" name="editPoin" required>
 								</div>
 						</div>
 						<div class="modal-footer">
@@ -126,6 +142,8 @@
 
 				// Create a DataTable object
 				var dataTable = $('#ruleTable').DataTable({
+					pageLength: 5,
+					lengthMenu: [5, 10, 25, 30],
 					// Add a search filter
 					search: {
 						smart: true,
