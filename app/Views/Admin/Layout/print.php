@@ -25,10 +25,12 @@
   <hr style="border: 1px solid #000;" />
   <hr style="border: 1px solid #000;" />
 
-  <p>Nomor : /BK/UPT.SMKN10.MKS/</p>
-  <p>Lamp : Penyampaian / Konsultasi</p>
-  <p>Sifat : <strong>PENTING</strong></p>
-  <p>Melalui surat ini, kami sampaikan bahwa peserta didik yang tertera namanya di bawah ini:</p>
+  <?php foreach ($jadwal as $jwd): ?>
+    <p>Nomor : 0<?= $jwd['ID'] ?>/BK/UPT.SMKN10.MKS/</p>
+    <p>Lamp : Penyampaian / Konsultasi</p>
+    <p>Sifat : <strong>PENTING</strong></p>
+    <p>Melalui surat ini, kami sampaikan bahwa peserta didik yang tertera namanya di bawah ini:</p>
+   <?php endforeach; ?>
 
   <table style="width: 533px; margin: auto;">
       <tbody>
