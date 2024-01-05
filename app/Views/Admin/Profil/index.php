@@ -32,12 +32,6 @@
 									<label style="width: 120px"><strong>Full Name:</strong></label>
 									<span style="margin-left: 8px; display: inline-block;"><?php echo $user['fullName']; ?></span>
 							</div>
-							<!-- <div class="profile-item">
-								<label style="width: 120px"><strong>Kelas:</strong></label>
-								<?php if ($user['Kelas'] !== null && $user['Kelas'] !== "0"): ?>
-									<span style="margin-left: 8px; display: inline-block;"><?php echo $user['Kelas']; ?></span>
-								<?php endif; ?>
-							</div> -->
 							<div class="profile-item">
 								<label style="width: 120px"><strong>NIS/NIP:</strong></label>
 								<?php if ($user['NIS'] !== null && $user['NIS'] !== "0"): ?>
