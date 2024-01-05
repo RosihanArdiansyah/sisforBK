@@ -25,9 +25,9 @@
 					</tr>
 				</thead>
 					<tbody>
-						<?php foreach ($konselingData as $konseling): ?>
+						<?php foreach ($konselingData as $index => $konseling): ?>
 							<tr>
-								<td><?= $konseling['ID']; ?></td>
+								<td><?= $index+1; ?></td>
 								<td><?= $konseling['userName']; ?></td>
 								<td><?= $konseling['permasalahan']; ?></td>
 								<td><?= strftime('%A, %d %B %Y', strtotime($konseling['jadwal'])); ?></td>

@@ -24,13 +24,14 @@
 						</tr>
 					</thead>
 					<tbody>
-					<?php foreach ($rules as $rule): ?>
+					<?php foreach ($rules as $index => $rule): ?>
 							<tr>
-									<td><?= $rule['ID']; ?></td>
-									<td><?= $rule['namaPelanggaran']; ?></td>
+									<td><?= $index+1; ?></td>
+									<td  style="width: 70%;"><?= $rule['namaPelanggaran']; ?></td>
 									<td><?= $rule['poin']; ?></td>
 									<td>
 										<button type="button" class="btn btn-primary" onClick="editRule(<?= $rule['ID']; ?>)"><i class="far fa-edit"></i></button>
+										<button type="button" class="btn btn-danger" onClick="deleteRule(<?= $rule['ID']; ?>)"><i class="far fa-trash-alt"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
 							</tr>
@@ -257,5 +258,49 @@
 								}
 						});
 						
+				}
+		</script>
+
+<script>
+				// Define the deleteUser function to handle the delete action
+				function deleteRule(id) {
+						Swal.fire({
+								title: 'Apakah Anda yakin?',
+								text: "Anda tidak akan dapat mengembalikan ini!",
+								icon: 'warning',
+								showCancelButton: true,
+								confirmButtonColor: '#3085d6',
+								cancelButtonColor: '#d33',
+								confirmButtonText: 'Ya!'
+						}).then((result) => {
+								if (result.isConfirmed) {
+										$.ajax({
+												type: 'DELETE',
+												url:  '<?= base_url('deleteRule/'); ?>' + id, // Refactored endpoint
+												success: function(data) {
+														Swal.fire({
+																icon: 'success',
+																title: 'Rule Deleted',
+																text: 'Aturan berhasil dihapus!', // Changed message to reflect user deletion
+														}).then(function () {
+																location.reload();
+														});
+												},
+												error: function(error) {
+														Swal.fire({
+																icon: 'error',
+																title: 'Error',
+																text: 'Aturan tidak dapat dihapus!', // Changed message to reflect user deletion error
+														});
+												}
+										});
+								} else {
+										Swal.fire({
+												icon: 'error',
+												title: 'Batal',
+												text: 'Batal menghapus aturan', // Changed message to canceled user deletion
+										});
+								}
+						});
 				}
 		</script>

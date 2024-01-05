@@ -555,5 +555,19 @@ class AdminController extends BaseController
         }
     }
 
+    public function deleteRule($id){
+        $ruleModel = new \App\Models\PelanggaranModel();
+        $deleted = $ruleModel->where('ID', $id)->delete();
+
+        if ($deleted) {
+            // Deletion was successful
+            echo json_encode(['success' => true, 'message' => 'User deleted successfully']);
+            return redirect()->back()->with('success', 'User deleted successfully');
+        } else {
+            // Handle errors during deletion
+            echo json_encode(['success' => false, 'error' => 'Failed to delete user']);
+        }
+    }
+
 
 }

@@ -28,9 +28,9 @@
 						</tr>
 					</thead>
 					<tbody>
-					<?php foreach ($jadwal as $jwd): ?>
+					<?php foreach ($jadwal as $index => $jwd): ?>
 							<tr>
-									<td><?= $jwd['ID']; ?></td>
+									<td><?= $index+1; ?></td>
 									<?php setlocale(LC_TIME, 'id_ID'); ?>
 									<td><?= strftime('%A, %d %B %Y', strtotime($jwd['jadwal'])); ?></td>
 									<td><?= date('H:i', strtotime($jwd['waktu'])); ?></td>

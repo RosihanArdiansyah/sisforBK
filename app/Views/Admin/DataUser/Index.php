@@ -26,9 +26,9 @@
 						</tr>
 					</thead>
 					<tbody>
-					<?php foreach ($users as $user): ?>
+					<?php foreach ($users as $index => $user): ?>
 							<tr>
-									<td><?= $user['ID']; ?></td>
+									<td><?= $index+1; ?></td>
 									<td><?= $user['username']; ?></td>
 									<td><?= $user['NIS']; ?></td>
 									<td><?= $user['fullName']; ?></td>
@@ -238,7 +238,7 @@
 									title: 'User Created',
 									text: 'User berhasil dibuat!',
 							}).then(function () {
-									window.location.href = '<?= base_url('admin/dataUser'); ?>';
+								location.reload();
 							});
 						},
 						error: function(error) {
@@ -271,7 +271,7 @@
 												text: 'User berhasil diperbarui!',
 										}).then(function () {
 												// You may want to reload or update the table data here
-												window.location.href = '<?= base_url('admin/dataUser'); ?>';
+												location.reload();
 												// For example: window.location.reload();
 										});
 								},

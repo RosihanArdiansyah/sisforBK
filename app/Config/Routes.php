@@ -43,3 +43,4 @@ $routes->post('updateRule', 'AdminController::updateRule');
 $routes->post('createReport', 'AdminController::createReport');
 $routes->get('showReport(:num)', 'AdminController::showReport/$1');
 $routes->get('showRule(:num)', 'AdminController::showRule/$1');
+$routes->delete('deleteRule/(:num)', 'AdminController::deleteRule/$1');
