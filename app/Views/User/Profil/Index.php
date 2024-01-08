@@ -34,9 +34,7 @@
 							</div>
 							<div class="profile-item">
 								<label style="width: 120px"><strong>Kelas:</strong></label>
-								<?php if ($user['Kelas'] !== null && $user['Kelas'] !== "0"): ?>
 									<span style="margin-left: 8px; display: inline-block;"><?php echo $user['kls']; ?></span>
-								<?php endif; ?>
 							</div>
 							<div class="profile-item">
 								<label style="width: 120px"><strong>NIS/NIP:</strong></label>

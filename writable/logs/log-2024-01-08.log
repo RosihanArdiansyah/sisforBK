@@ -1,0 +1,36 @@
+CRITICAL - 2024-01-08 03:00:17 --> Undefined array key "Kelas"
+in APPPATH\Views\User\Profil\Index.php on line 37.
+ 1 APPPATH\Views\User\Profil\Index.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Kelas"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Profil\\Index.php', 37)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Profil\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('User/Profil/index', [], true)
+ 5 APPPATH\Controllers\UserController.php(71): view('User/Profil/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\sisforBK\\public\\index.php')
+CRITICAL - 2024-01-08 03:00:20 --> Undefined array key "Kelas"
+in APPPATH\Views\User\Profil\Index.php on line 37.
+ 1 APPPATH\Views\User\Profil\Index.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Kelas"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Profil\\Index.php', 37)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Profil\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('User/Profil/index', [], true)
+ 5 APPPATH\Controllers\UserController.php(71): view('User/Profil/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\sisforBK\\public\\index.php')
+CRITICAL - 2024-01-08 03:00:32 --> Undefined array key "Kelas"
+in APPPATH\Views\User\Profil\Index.php on line 37.
+ 1 APPPATH\Views\User\Profil\Index.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Kelas"', 'C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Profil\\Index.php', 37)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\sisforBK\\app\\Views\\User\\Profil\\Index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('User/Profil/index', [], true)
+ 5 APPPATH\Controllers\UserController.php(71): view('User/Profil/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(80): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\sisforBK\\public\\index.php')
