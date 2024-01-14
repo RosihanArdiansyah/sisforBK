@@ -146,7 +146,7 @@
 
 										// Populate the modal fields with user data
 										$('#addJadwalId').val(jadwalData[0].ID);
-										$('#userID').val(jadwalData[0].guruBK);
+										$('#guruBK').val(jadwalData[0].guruBK);
 										$('#permasalahan').val(jadwalData[0].permasalahan);
 										$('#jadwal').val(jadwalData[0].jadwal);
 										$('#waktu').val(jadwalData[0].waktu);
@@ -253,14 +253,7 @@
 									<label for="waktu">Waktu:</label>
 									<input class="form-control" id="waktu" type="time" name="waktu" required>           
 								</div>
-								<div class="form-group" id="statusForm">
-									<label for="status">Status</label>
-									<select class="form-control" id="status" name="status">
-										<option value="">Ditunda</option>
-										<option value="0">Ditolak</option>
-										<option value="1">Diterima</option>
-									</select>
-								</div>
+								
 							</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-primary" id="createJadwalButton">Create Jadwal</button>

@@ -1,0 +1,16 @@
+ERROR - 2024-01-14 05:44:11 --> mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\xampp\htdocs\sisforBK\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\sisforBK\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\sisforBK\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\sisforBK\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\sisforBK\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\sisforBK\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\sisforBK\app\Database\Seeds\UserSeeder.php(31): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\sisforBK\system\Database\Seeder.php(146): App\Database\Seeds\UserSeeder->run()
+#9 C:\xampp\htdocs\sisforBK\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#10 C:\xampp\htdocs\sisforBK\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#11 C:\xampp\htdocs\sisforBK\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#12 C:\xampp\htdocs\sisforBK\spark(102): CodeIgniter\CLI\Console->run()
+#13 {main}

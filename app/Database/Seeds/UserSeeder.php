@@ -17,7 +17,9 @@ class UserSeeder extends Seeder
             ],
             [
                 'username' => 'user',
-                'fullName' => 'User',
+                'fullName' => 'Siswa',
+                'NIS' => '111111',
+                'Kelas' => 1,
                 'Password' => md5('123456'),
                 'Role' => 0,
             ],
