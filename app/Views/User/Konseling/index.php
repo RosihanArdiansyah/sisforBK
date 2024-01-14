@@ -32,9 +32,7 @@
 								<td><?= $konseling['permasalahan']; ?></td>
 								<td><?= strftime('%A, %d %B %Y', strtotime($konseling['jadwal'])); ?></td>
 								<td><?= $konseling['namaPelanggaran']; ?></td>
-								<td>
-										<button type="button" class="btn btn-primary" data-toggle="tooltip" title="ubah laporan konseling" onClick="buatLaporan(<?= $konseling['ID']; ?>)"><i class="far fa-edit"></i></button>
-								</td>
+								
 							</tr>
 						<?php endforeach; ?>
 					</tbody>
