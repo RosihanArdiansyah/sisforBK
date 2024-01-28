@@ -153,6 +153,7 @@ class AdminController extends BaseController
         ->findAll();
         $data['kelas'] = $kelasModel->findAll();
         $data['title'] = "Data Pengguna";
+        $data['route'] = "dataUser";
         if (session()->get('role') == 1) {
             // Load header view from the layout folder
             echo view('Admin/Layout/header', $data);
@@ -184,6 +185,7 @@ class AdminController extends BaseController
         ->findAll();
         $data['kelas'] = $kelasModel->findAll();
         $data['title'] = "Data Pengguna";
+        $data['route'] = "dataGuru";
         if (session()->get('role') == 1) {
             // Load header view from the layout folder
             echo view('Admin/Layout/header', $data);
@@ -567,6 +569,40 @@ class AdminController extends BaseController
             // Handle errors during deletion
             echo json_encode(['success' => false, 'error' => 'Failed to delete user']);
         }
+    }
+
+    public function recapReport($id){
+        // Load the user model
+        $jadwalModel = new \App\Models\JadwalModel();
+        $konselingModel = new \App\Models\KonselingModel();
+
+        // Retrieve user data by ID
+        $jadwalData = $jadwalModel->getWhere(['userID' => $id])->getResult();
+
+        $konselingData = [];
+        foreach ($jadwalData as $jadwal) {
+            $tempKonselingData = $konselingModel
+                ->select('konseling.*, konseling.ID AS reportID, jadwal.permasalahan AS permasalahan, jadwal.waktu AS waktu, jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran, pelanggaran.poin AS poin')
+                ->join('jadwal', 'konseling.jadwalID = jadwal.ID')
+                ->join('pelanggaran', 'konseling.pelanggaranID = pelanggaran.ID')
+                ->join('user', 'jadwal.userID = user.ID')
+                ->getWhere(['jadwalID' => $jadwal->ID])->getResult();
+
+            $konselingData = array_merge($konselingData, $tempKonselingData);
+        }
+
+        // Check if user data was found
+        if ($konselingData) {
+            // Display user data
+            echo json_encode($konselingData);
+        } else if($jadwalData){
+            // Handle user not found error
+            echo json_encode($jadwalData);
+            
+        } else {
+            echo 'Report not found';
+        }
+        
     }
 
 

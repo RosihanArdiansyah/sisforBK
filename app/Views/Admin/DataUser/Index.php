@@ -79,14 +79,16 @@
 								<label for="NIS">NIS/NIP</label>
 								<input type="text" class="form-control" placeholder="Masukkan NIS/ NIP" id="NIS" name="NIS" required>
 							</div>
-							<div class="form-group">
-								<label for="Bapak">Bapak</label>
-								<input type="text" placeholder="Masukkan nama bapak" class="form-control" id="Bapak" name="Bapak">
-							</div>
-							<div class="form-group">
-								<label for="Ibu">Ibu</label>
-								<input type="text" class="form-control" placeholder="Masukkan nama ibu" id="Ibu" name="Ibu">
-							</div>
+							<?php if ($route === "dataUser"): ?>
+									<div class="form-group">
+											<label for="Bapak">Bapak</label>
+											<input type="text" placeholder="Masukkan nama bapak" class="form-control" id="Bapak" name="Bapak">
+									</div>
+									<div class="form-group">
+											<label for="Ibu">Ibu</label>
+											<input type="text" class="form-control" placeholder="Masukkan nama ibu" id="Ibu" name="Ibu">
+									</div>
+							<?php endif; ?>
 							<div class="form-group">
 								<label for="Kelas">Kelas</label>
 								<select class="form-control" id="Kelas" name="Kelas">
@@ -140,14 +142,16 @@
 													<label for="editNIS">NIS/NIP</label>
 													<input type="text" class="form-control" placeholder="Masukkan NIS/ NIP" id="editNIS" name="editNIS" required>
 												</div>
-												<div class="form-group">
-													<label for="editBapak">Bapak</label>
-													<input type="text" placeholder="Masukkan nama bapak" class="form-control" id="editBapak" name="editBapak">
-												</div>
-												<div class="form-group">
-													<label for="editIbu">Ibu</label>
-													<input type="text" class="form-control" placeholder="Masukkan nama ibu" id="editIbu" name="editIbu">
-												</div>
+												<?php if ($route === "dataUser"): ?>
+													<div class="form-group">
+														<label for="editBapak">Bapak</label>
+														<input type="text" placeholder="Masukkan nama bapak" class="form-control" id="editBapak" name="editBapak">
+													</div>
+													<div class="form-group">
+														<label for="editIbu">Ibu</label>
+														<input type="text" class="form-control" placeholder="Masukkan nama ibu" id="editIbu" name="editIbu">
+													</div>
+												<?php endif; ?>
 												<div class="form-group">
 													<label for="editKelas">Kelas</label>
 													<select class="form-control" id="editKelas" name="editKelas">

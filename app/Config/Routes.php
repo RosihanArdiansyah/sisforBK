@@ -27,6 +27,7 @@ $routes->post('createUser', 'AdminController::createUser');
 $routes->post('updateUser', 'AdminController::updateUser');
 $routes->get('/admin/dataUser/(:num)', 'AdminController::show/$1');
 $routes->delete('deleteUser/(:num)', 'AdminController::deleteUser/$1');
+$routes->get('recapReport(:num)', 'AdminController::recapReport/$1');
 
 // jadwal CRUD
 $routes->post('createJadwal', 'AdminController::createJadwal');

@@ -190,7 +190,9 @@
 									if (jadwalData[0].ID) {
 											$('#status').val(jadwalData[0].status);
 											$('#statusForm').show();
+											$('#createJadwalButton').text('Update Jadwal');
 									} else {
+											$('#createJadwalButton').text('Create Jadwal');
 											$('#statusForm').hide();
 									}
 									// Add similar lines for other input fields
