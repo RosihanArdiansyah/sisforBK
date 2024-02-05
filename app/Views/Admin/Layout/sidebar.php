@@ -44,7 +44,7 @@
 				<div class="icon-wrap">
 					<i class="far fa-user"></i>
 				</div>
-				<span>Data User</span>
+				<span>Data Siswa</span>
 			</a>
 		</li>
 		<li>

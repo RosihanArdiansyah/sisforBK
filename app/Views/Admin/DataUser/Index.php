@@ -41,6 +41,7 @@
 									</td>
 									<td>
 										<button type="button" class="btn btn-primary" onClick="editUser(<?= $user['ID']; ?>)" data-toggle="tooltip" title="ubah data siswa"><i class="far fa-edit"></i></button>
+										<button type="button" class="btn btn-secondary" onClick="seeUser(<?= $user['ID']; ?>)" data-toggle="tooltip" title="lihat data pelanggaran"><i class="far fa-eye"></i></button>
 										<button type="button" class="btn btn-danger" onClick="deleteUser(<?= $user['ID']; ?>)"><i class="far fa-trash-alt"></i></button>
 									</td>
 									<!-- Add more table cells for other user properties -->
@@ -172,6 +173,31 @@
 											</div>
 										<div class="modal-footer">
 												<button type="submit" class="btn btn-primary" id="editUserButton">Edit User</button>
+										</div>
+								</form>
+						</div>
+				</div>
+		</div>
+		
+		<!-- modal form lihat user -->
+		<div class="modal fade" id="seeUserModal" tabindex="-1" role="dialog" aria-labelledby="seeUserModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+						<div class="modal-content">
+								<div class="modal-header">
+										<h5 class="modal-title" id="seeUserModalLabel">Lihat User</h5>
+										<button type="button" class="btn btn-secondary btn-danger" id="userSeeCloseBtn" style="float: right">Close</button>
+								</div>
+								<form id="seeUserForm">
+									<div class="modal-body">
+											<div class="form-group">
+												<input type="hidden" class="form-control" id="seeUserId" name="seeUserId">
+												<label for="seeUsername">Username</label>
+												<span style="margin-left: 8px; display: inline-block;"><?php echo $user['username']; ?></span>
+											</div>
+											<div class="form-group">
+												<label for="editFullName">Full Name</label>
+												<span style="margin-left: 8px; display: inline-block;"><?php echo $user['fullName']; ?></span>
+											</div>
 										</div>
 								</form>
 						</div>
@@ -320,6 +346,48 @@
 
 										// Show the editUserModal
 										$('#editUserModal').modal('show');
+									},
+								error: function(error) {
+										Swal.fire({
+												icon: 'error',
+												title: 'Error',
+												text: 'User tidak dapat diedit!',
+										});
+								}
+						});
+				}
+
+				
+		</script>
+
+		<!-- fungsi lihat user -->
+		<script>
+				// Define the editUser function to handle the edit action
+				function seeUser(id) {
+						
+						$.ajax({
+								url: '<?= base_url('/admin/dataUser/'); ?>'+id, // Change the URL to your controller method
+								method: 'GET',
+								success: function(data) {
+										// Parse the JSON response
+										var userData = JSON.parse(data);
+										console.log(userData[0]);
+
+										// Populate the modal fields with user data
+										$('#seeUserId').val(userData[0].ID);
+										$('#editUsername').val(userData[0].username);
+										$('#editFullName').val(userData[0].fullName);
+
+										//$('#editTTL').val(userData[0].TTL);
+										//$('#editNIS').val(userData[0].NIS);
+										//$('#editBapak').val(userData[0].Bapak);
+										//$('#editIbu').val(userData[0].Ibu);
+										//$('#editKelas').val(userData[0].kelas);
+										//$('#editRole').val(userData[0].Role);
+										// Add similar lines for other input fields
+
+										// Show the editUserModal
+										$('#seeUserModal').modal('show');
 									},
 								error: function(error) {
 										Swal.fire({

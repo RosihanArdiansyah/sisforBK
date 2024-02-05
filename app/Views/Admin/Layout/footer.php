@@ -12,6 +12,9 @@
   $('#userEditCloseBtn').click(function() {
     $('#editUserModal').modal('hide');
   });
+  $('#userSeeCloseBtn').click(function() {
+    $('#seeUserModal').modal('hide');
+  });
   $('#jadwalEditCloseBtn').click(function() {
     $('#editJadwalModal').modal('hide');
   });
