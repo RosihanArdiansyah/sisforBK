@@ -154,8 +154,10 @@ class UserController extends BaseController
         $data = [
             'Jadwal' => $this->request->getPost('jadwal'),
             'Waktu' => $this->request->getPost('waktu'),
-            'GuruBK' => $this->request->getPost('userID'),
+            'UserID' => session()->get('ID'),
             'Permasalahan' => $this->request->getPost('permasalahan'),
+            'GuruBK' => $this->request->getPost('guruBK'),
+            'Status' => 0,
         ];
 
         // Update the user data
