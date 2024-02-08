@@ -21,7 +21,6 @@
 						<th>Permasalahan</th>
 						<th>Waktu</th>
 						<th>Pelanggaran</th>
-						<th>Action</th>
 					</tr>
 				</thead>
 					<tbody>
@@ -60,7 +59,7 @@
 			// Add a search filter
 			search: {
 				smart: true,
-				columns: ['ID', 'username','permasalahan','waktu','namaPelanggaran']
+				columns: [ 'username','permasalahan','waktu','namaPelanggaran']
 			},
 		});
 

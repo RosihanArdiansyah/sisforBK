@@ -582,7 +582,7 @@ class AdminController extends BaseController
         $konselingData = [];
         foreach ($jadwalData as $jadwal) {
             $tempKonselingData = $konselingModel
-                ->select('konseling.*, konseling.ID AS reportID, jadwal.permasalahan AS permasalahan, jadwal.waktu AS waktu, jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.fullName AS userName, pelanggaran.namaPelanggaran AS namaPelanggaran, pelanggaran.poin AS poin, guru.fullName AS guruName')
+                ->select('konseling.*, konseling.ID AS reportID, jadwal.permasalahan AS permasalahan, jadwal.waktu AS waktu, jadwal.jadwal AS jadwal, jadwal.userID AS userID, user.username AS userName,user.fullName AS fullName, pelanggaran.namaPelanggaran AS namaPelanggaran, pelanggaran.poin AS poin, guru.fullName AS guruName')
                 ->join('jadwal', 'konseling.jadwalID = jadwal.ID')
                 ->join('pelanggaran', 'konseling.pelanggaranID = pelanggaran.ID')
                 ->join('user', 'jadwal.userID = user.ID')

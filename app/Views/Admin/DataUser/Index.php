@@ -194,11 +194,11 @@
 												<div class="form-group">
 														<input type="hidden" class="form-control" id="seeUserId" name="seeUserId">
 														<label for="seeUsername" class="text-white">Username :</label>
-														<span class="text-white" style="margin-left: 8px; display: inline-block;"><?php echo $user['username']; ?></span>
+														<span class="text-white" id="seeUsername" style="margin-left: 8px; display: inline-block;"></span>
 												</div>
 												<div class="form-group">
 														<label class="text-white" for="seeUserFullName">Nama Lengkap :</label>
-														<span class="text-white" style="margin-left: 8px; display: inline-block;"><?php echo $user['fullName']; ?></span>
+														<span id="seeUserFullName" class="text-white" style="margin-left: 8px; display: inline-block;"></span>
 												</div>
 												<div class="form-group">
 														<label class="text-white">Total Poin :</label>
@@ -438,7 +438,6 @@
 											});
 
 											// Populate the modal with user data and total poin
-											$('#seeUserId').val(userData[0].userID);
 											$('#seeUsername').text(userData[0].userName);
 											$('#seeUserFullName').text(userData[0].fullName);
 											$('#seeUserPoin').text(totalPoin);
