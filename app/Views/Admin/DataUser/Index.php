@@ -406,6 +406,30 @@
 											// Clear existing content inside seeUserReport card
 											$('#seeUserReport').empty();
 
+											// Calculate the total poin
+											var totalPoin = 0;
+											$.each(userData, function(index, element) {
+													totalPoin += parseInt(element.poin);
+											});
+
+											if(!totalPoin){
+												$('#seeUserModal').modal('hide');
+												Swal.fire({
+													icon: 'info',
+													title: 'No Data',
+													text: 'No user data available!',
+													didClose: function() {
+														// Close the Bootstrap modal
+														$('#seeUserModal').modal('hide');
+												}
+												});
+												
+											}
+											console.log(totalPoin)
+											// Populate the modal with user data and total poin
+											$('#seeUsername').text(userData[0].userName);
+											$('#seeUserFullName').text(userData[0].fullName);
+											$('#seeUserPoin').text(totalPoin);
 											// Loop through userData and append each data entry to seeUserReport card
 											
 											$.each(userData, function(index, element) {
@@ -424,23 +448,11 @@
 													poin.append('<label>Total Poin :</label>');
 													poin.append('<span style="margin-left: 8px; display: inline-block;">' + element.poin + '</span>');
 													cardBody.append(poin);
-
-													console.log(element)
-													console.log(index)
 													// Append cardBody to seeUserReport card
 													$('#seeUserReport').append(cardBody);
 											});
 
-											// Calculate the total poin
-											var totalPoin = 0;
-											$.each(userData, function(index, element) {
-													totalPoin += parseInt(element.poin);
-											});
-
-											// Populate the modal with user data and total poin
-											$('#seeUsername').text(userData[0].userName);
-											$('#seeUserFullName').text(userData[0].fullName);
-											$('#seeUserPoin').text(totalPoin);
+											
 
 											// Adjust modal size based on the array length
 											var modalBody = $('#seeUserModal').find('.modal-body');

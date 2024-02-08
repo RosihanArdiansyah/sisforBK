@@ -82,6 +82,8 @@
 
 				// Create a DataTable object
 				var dataTable = $('#jadwalTable').DataTable({
+					pageLength: 5,
+					lengthMenu: [5, 10, 25, 30],
 					// Add a search filter
 					search: {
 						smart: true,
