@@ -184,21 +184,46 @@
 				<div class="modal-dialog" role="document">
 						<div class="modal-content">
 								<div class="modal-header">
-										<h5 class="modal-title" id="seeUserModalLabel">Lihat User</h5>
+										<h5 class="modal-title" id="seeUserModalLabel">Laporan Siswa</h5>
 										<button type="button" class="btn btn-secondary btn-danger" id="userSeeCloseBtn" style="float: right">Close</button>
 								</div>
 								<form id="seeUserForm">
 									<div class="modal-body">
-											<div class="form-group">
-												<input type="hidden" class="form-control" id="seeUserId" name="seeUserId">
-												<label for="seeUsername">Username</label>
-												<span style="margin-left: 8px; display: inline-block;"><?php echo $user['username']; ?></span>
-											</div>
-											<div class="form-group">
-												<label for="editFullName">Full Name</label>
-												<span style="margin-left: 8px; display: inline-block;"><?php echo $user['fullName']; ?></span>
+										<div class="card bg-primary">
+											<div class="card-body">
+												<div class="form-group">
+														<input type="hidden" class="form-control" id="seeUserId" name="seeUserId">
+														<label for="seeUsername" class="text-white">Username :</label>
+														<span class="text-white" style="margin-left: 8px; display: inline-block;"><?php echo $user['username']; ?></span>
+												</div>
+												<div class="form-group">
+														<label class="text-white" for="seeUserFullName">Nama Lengkap :</label>
+														<span class="text-white" style="margin-left: 8px; display: inline-block;"><?php echo $user['fullName']; ?></span>
+												</div>
+												<div class="form-group">
+														<label class="text-white">Total Poin :</label>
+														<span id="seeUserPoin" class="text-white" style="margin-left: 8px; display: inline-block;"></span>
+												</div>
 											</div>
 										</div>
+										<div class="card bg-warning mt-3" id="seeUserReport">
+											<div class="card-body">
+												<div class="form-group">
+														<input type="hidden" class="form-control" id="seeUserReportId" name="seeUserReportId">
+														<label for="seeUserReportName" class="text-white">Pelanggaran :</label>
+														<span id="seeUserReportName" class="text-white" style="margin-left: 8px; display: inline-block;"></span>
+												</div>
+												<div class="form-group">
+														<label class="text-white" for="seeUserReportGuru">Nama Guru BK :</label>
+														<span id="seeUserReportGuru" class="text-white" style="margin-left: 8px; display: inline-block;"></span>
+												</div>
+												<div class="form-group">
+														<label class="text-white">Total Poin :</label>
+														<span id="seeUserReportPoin" class="text-white" style="margin-left: 8px; display: inline-block;"></span>
+												</div>
+											</div>
+										</div>
+									</div>
 								</form>
 						</div>
 				</div>
@@ -365,38 +390,85 @@
 				// Define the editUser function to handle the edit action
 				function seeUser(id) {
 						
-						$.ajax({
-								url: '<?= base_url('/admin/dataUser/'); ?>'+id, // Change the URL to your controller method
-								method: 'GET',
-								success: function(data) {
-										// Parse the JSON response
-										var userData = JSON.parse(data);
-										console.log(userData[0]);
+					$.ajax({
+							url: '<?= base_url('recapReport'); ?>' + id, // Change the URL to your controller method
+							method: 'GET',
+							success: function(data) {
+									// Parse the JSON response
+									var userData = JSON.parse(data);
+									console.log(userData);
 
-										// Populate the modal fields with user data
-										$('#seeUserId').val(userData[0].ID);
-										$('#editUsername').val(userData[0].username);
-										$('#editFullName').val(userData[0].fullName);
+									// Check if there is userData
+									if (userData.length > 0) {
+											// Show the modal
+											$('#seeUserModal').modal('show');
 
-										//$('#editTTL').val(userData[0].TTL);
-										//$('#editNIS').val(userData[0].NIS);
-										//$('#editBapak').val(userData[0].Bapak);
-										//$('#editIbu').val(userData[0].Ibu);
-										//$('#editKelas').val(userData[0].kelas);
-										//$('#editRole').val(userData[0].Role);
-										// Add similar lines for other input fields
+											// Clear existing content inside seeUserReport card
+											$('#seeUserReport').empty();
 
-										// Show the editUserModal
-										$('#seeUserModal').modal('show');
-									},
-								error: function(error) {
-										Swal.fire({
-												icon: 'error',
-												title: 'Error',
-												text: 'User tidak dapat diedit!',
-										});
-								}
-						});
+											// Loop through userData and append each data entry to seeUserReport card
+											
+											$.each(userData, function(index, element) {
+													var cardBody = $('<div class="card-body"></div>');
+													var pelanggaran = $('<div class="form-group"></div>');
+													pelanggaran.append('<label for="seeUserReportName" >Pelanggaran :</label>');
+													pelanggaran.append('<span style="margin-left: 8px; display: inline-block;">' + element.namaPelanggaran + '</span>');
+													cardBody.append(pelanggaran);
+
+													var guru = $('<div class="form-group"></div>');
+													guru.append('<label  for="seeUserReportGuru">Nama Guru BK :</label>');
+													guru.append('<span  style="margin-left: 8px; display: inline-block;">' + element.guruName + '</span>');
+													cardBody.append(guru);
+
+													var poin = $('<div class="form-group"></div>');
+													poin.append('<label>Total Poin :</label>');
+													poin.append('<span style="margin-left: 8px; display: inline-block;">' + element.poin + '</span>');
+													cardBody.append(poin);
+
+													console.log(element)
+													console.log(index)
+													// Append cardBody to seeUserReport card
+													$('#seeUserReport').append(cardBody);
+											});
+
+											// Calculate the total poin
+											var totalPoin = 0;
+											$.each(userData, function(index, element) {
+													totalPoin += parseInt(element.poin);
+											});
+
+											// Populate the modal with user data and total poin
+											$('#seeUserId').val(userData[0].userID);
+											$('#seeUsername').text(userData[0].userName);
+											$('#seeUserFullName').text(userData[0].fullName);
+											$('#seeUserPoin').text(totalPoin);
+
+											// Adjust modal size based on the array length
+											var modalBody = $('#seeUserModal').find('.modal-body');
+											if (userData.length > 1) {
+													modalBody.css('max-height', '70vh').css('overflow-y', 'auto');
+											} else {
+													modalBody.css('max-height', '').css('overflow-y', '');
+											}
+									} else {
+											// Handle case when no userData is available
+											Swal.fire({
+													icon: 'info',
+													title: 'No Data',
+													text: 'No user data available!',
+											});
+									}
+							},
+							error: function(error) {
+									Swal.fire({
+											icon: 'error',
+											title: 'Error',
+											text: 'User tidak dapat diedit!',
+									});
+							}
+					});
+	
+
 				}
 
 				
