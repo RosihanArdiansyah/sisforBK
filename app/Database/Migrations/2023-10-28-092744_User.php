@@ -26,7 +26,7 @@ class User extends Migration
             ],
             'NIS' => [
                 'type' => 'VARCHAR',
-                'constraint' => 10,
+                'constraint' => 18,
                 'null' => true,
             ],
             'TTL' => [

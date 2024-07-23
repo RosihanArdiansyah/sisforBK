@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <?php if (session()->get('error')): ?>
-    <p><?= session()->get('error') ?></p>
-  <?php endif; ?>
   <div class="login-container">
     <form method="post" action="<?= base_url('login') ?>">
       <img style="justify-content: center;" src="<?= base_url('assets/pictures/LOGO SMKN 10 MAKASSAR.png'); ?>" alt="Profile Picture" class="profile-img">
       <h4 style="margin-bottom: 20px; text-align: center">Selamat Datang</h4>
+      <?php if (session()->getFlashdata('error')): ?>
+        <div class="form-group">
+          <div class="alert alert-danger">
+            <?= session()->getFlashdata('error') ?>
+          </div>
+        </div>
+      <?php endif; ?>
       <div class="form-group">
         <input type="text" class="form-control" name="username" placeholder="Username" required>
       </div>

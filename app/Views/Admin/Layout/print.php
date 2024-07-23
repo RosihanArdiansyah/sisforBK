@@ -26,7 +26,7 @@
   <hr style="border: 1px solid #000;" />
 
   <?php foreach ($jadwal as $jwd): ?>
-    <p>Nomor : 0<?= $jwd['ID'] ?>/BK/UPT.SMKN10.MKS/</p>
+    <p>Nomor : 0<?= $jwd['ID'] ?>/BK/UPT.SMKN10.MKS/2024</p>
     <p>Lamp : Penyampaian / Konsultasi</p>
     <p>Sifat : <strong>PENTING</strong></p>
     <p>Melalui surat ini, kami sampaikan bahwa peserta didik yang tertera namanya di bawah ini:</p>

@@ -189,7 +189,7 @@
 							$('#editNIS').val(userData[0].NIS);
 							$('#editBapak').val(userData[0].Bapak);
 							$('#editIbu').val(userData[0].Ibu);
-							$('#editKelas').val(userData[0].Kelas);
+							$('#editKelas').val(userData[0].kelas);
 							$('#editRole').val(userData[0].Role);
 							// Add similar lines for other input fields
 

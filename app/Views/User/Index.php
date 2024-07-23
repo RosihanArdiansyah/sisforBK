@@ -196,7 +196,7 @@
 																title: 'Jadwal Deleted',
 																text: 'Jadwal berhasil dihapus!',
 														}).then(function () {
-																window.location.href = '<?= base_url('admin'); ?>';
+																window.location.href = '<?= base_url('user'); ?>';
 																console.log(data);
 														});
 												},
